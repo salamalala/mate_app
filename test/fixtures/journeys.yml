@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start: 2015-02-07
+  end: 2015-02-07
+  start_port_latitude: 1.5
+  end_port_latitutude: 1.5
+  start_address: MyString
+  start_city: MyString
+  end_address: MyString
+  end_city: MyString
+  start_country: MyString
+  end_country: MyString
+  title: MyString
+  description: MyText
+  deal: MyString
+  comment: MyString
+
+two:
+  start: 2015-02-07
+  end: 2015-02-07
+  start_port_latitude: 1.5
+  end_port_latitutude: 1.5
+  start_address: MyString
+  start_city: MyString
+  end_address: MyString
+  end_city: MyString
+  start_country: MyString
+  end_country: MyString
+  title: MyString
+  description: MyText
+  deal: MyString
+  comment: MyString

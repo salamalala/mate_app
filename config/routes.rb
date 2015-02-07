@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :journeys
+
+  resources :bookings
+
   devise_for :users
   root to: "home#index"
   

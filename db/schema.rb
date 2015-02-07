@@ -1,4 +1,4 @@
- # encoding: UTF-8
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207140217) do
+ActiveRecord::Schema.define(version: 20150207144038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: true do |t|
+    t.text     "comment"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "journeys", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.float    "start_port_latitude"
+    t.float    "end_port_latitude"
+    t.string   "start_address"
+    t.string   "start_city"
+    t.string   "start_country"
+    t.string   "end_address"
+    t.string   "end_city"
+    t.string   "end_country"
+    t.string   "title"
+    t.text     "description"
+    t.string   "deal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

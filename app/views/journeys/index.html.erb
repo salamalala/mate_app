@@ -1,0 +1,51 @@
+<h1>Listing journeys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>End</th>
+      <th>Start port latitude</th>
+      <th>End port latitutude</th>
+      <th>Start address</th>
+      <th>Start city</th>
+      <th>End address</th>
+      <th>End city</th>
+      <th>Start country</th>
+      <th>End country</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Deal</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @journeys.each do |journey| %>
+      <tr>
+        <td><%= journey.start %></td>
+        <td><%= journey.end %></td>
+        <td><%= journey.start_port_latitude %></td>
+        <td><%= journey.end_port_latitutude %></td>
+        <td><%= journey.start_address %></td>
+        <td><%= journey.start_city %></td>
+        <td><%= journey.end_address %></td>
+        <td><%= journey.end_city %></td>
+        <td><%= journey.start_country %></td>
+        <td><%= journey.end_country %></td>
+        <td><%= journey.title %></td>
+        <td><%= journey.description %></td>
+        <td><%= journey.deal %></td>
+        <td><%= journey.comment %></td>
+        <td><%= link_to 'Show', journey %></td>
+        <td><%= link_to 'Edit', edit_journey_path(journey) %></td>
+        <td><%= link_to 'Destroy', journey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Journey', new_journey_path %>
