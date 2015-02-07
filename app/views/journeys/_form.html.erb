@@ -12,20 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :start %><br>
-    <%= f.date_select :start %>
-  </div>
-  <div class="field">
-    <%= f.label :end %><br>
-    <%= f.date_select :end %>
-  </div>
-  <div class="field">
     <%= f.label :start_port_latitude %><br>
     <%= f.text_field :start_port_latitude %>
   </div>
   <div class="field">
-    <%= f.label :end_port_latitutude %><br>
-    <%= f.text_field :end_port_latitutude %>
+    <%= f.label :end_port_latitude%><br>
+    <%= f.text_field :end_port_latitude %>
   </div>
   <div class="field">
     <%= f.label :start_address %><br>
@@ -62,10 +54,6 @@
   <div class="field">
     <%= f.label :deal %><br>
     <%= f.text_field :deal %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_field :comment %>
   </div>
   <div class="actions">
     <%= f.submit %>
