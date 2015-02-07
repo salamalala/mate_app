@@ -1,6 +1,17 @@
 source 'https://rubygems.org'
 
+gem 'haml-rails'
+gem 'neat'
 gem 'devise'
+gem 'cancancan'
+gem 'geocoder'
+gem 'kaminari'
+gem 'simple_form'
+gem 'country_select'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'jquery-datetimepicker-rails'
+gem 'active_model_serializers'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
