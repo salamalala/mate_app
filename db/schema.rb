@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207144038) do
+ActiveRecord::Schema.define(version: 20150207145603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boats", force: true do |t|
+    t.string   "boat_image"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bookings", force: true do |t|
     t.text     "comment"
@@ -37,6 +44,13 @@ ActiveRecord::Schema.define(version: 20150207144038) do
     t.string   "title"
     t.text     "description"
     t.string   "deal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ratings", force: true do |t|
+    t.integer  "rating"
+    t.text     "review"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
