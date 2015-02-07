@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Boat image:
+  = @boat.boat_image
+%p
+  %strong Description:
+  = @boat.description
+= link_to 'Edit', edit_boat_path(@boat)
+|
+= link_to 'Back', boats_path

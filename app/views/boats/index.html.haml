@@ -1,0 +1,17 @@
+%h1 Listing boats
+%table
+  %thead
+    %tr
+      %th Boat image
+      %th Description
+      %th{:colspan => "3"}
+  %tbody
+    - @boats.each do |boat|
+      %tr
+        %td= boat.boat_image
+        %td= boat.description
+        %td= link_to 'Show', boat
+        %td= link_to 'Edit', edit_boat_path(boat)
+        %td= link_to 'Destroy', boat, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Boat', new_boat_path

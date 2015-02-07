@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'haml-rails'
+gem "haml-rails", "~> 0.8"
 gem 'neat'
 gem 'devise'
 gem 'cancancan'

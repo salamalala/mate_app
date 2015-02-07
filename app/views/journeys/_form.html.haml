@@ -1,0 +1,55 @@
+= form_for(@journey) do |f|
+  - if @journey.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@journey.errors.count, "error")
+        prohibited this journey from being saved:
+      %ul
+        - @journey.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :start_port_latitude
+    %br/
+    = f.text_field :start_port_latitude
+  .field
+    = f.label :end_port_latitude
+    %br/
+    = f.text_field :end_port_latitude
+  .field
+    = f.label :start_address
+    %br/
+    = f.text_field :start_address
+  .field
+    = f.label :start_city
+    %br/
+    = f.text_field :start_city
+  .field
+    = f.label :end_address
+    %br/
+    = f.text_field :end_address
+  .field
+    = f.label :end_city
+    %br/
+    = f.text_field :end_city
+  .field
+    = f.label :start_country
+    %br/
+    = f.text_field :start_country
+  .field
+    = f.label :end_country
+    %br/
+    = f.text_field :end_country
+  .field
+    = f.label :title
+    %br/
+    = f.text_field :title
+  .field
+    = f.label :description
+    %br/
+    = f.text_area :description
+  .field
+    = f.label :deal
+    %br/
+    = f.text_field :deal
+  .actions
+    = f.submit

@@ -1,0 +1,46 @@
+%p#notice= notice
+%p
+  %strong Start:
+  = @journey.start
+%p
+  %strong End:
+  = @journey.end
+%p
+  %strong Start port latitude:
+  = @journey.start_port_latitude
+%p
+  %strong End port latitutude:
+  = @journey.end_port_latitutude
+%p
+  %strong Start address:
+  = @journey.start_address
+%p
+  %strong Start city:
+  = @journey.start_city
+%p
+  %strong End address:
+  = @journey.end_address
+%p
+  %strong End city:
+  = @journey.end_city
+%p
+  %strong Start country:
+  = @journey.start_country
+%p
+  %strong End country:
+  = @journey.end_country
+%p
+  %strong Title:
+  = @journey.title
+%p
+  %strong Description:
+  = @journey.description
+%p
+  %strong Deal:
+  = @journey.deal
+%p
+  %strong Comment:
+  = @journey.comment
+= link_to 'Edit', edit_journey_path(@journey)
+|
+= link_to 'Back', journeys_path
