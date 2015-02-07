@@ -2,10 +2,8 @@
 %table
   %thead
     %tr
-      %th Start
-      %th End
       %th Start port latitude
-      %th End port latitutude
+      %th End port latitude
       %th Start address
       %th Start city
       %th End address
@@ -15,15 +13,12 @@
       %th Title
       %th Description
       %th Deal
-      %th Comment
       %th{:colspan => "3"}
   %tbody
     - @journeys.each do |journey|
       %tr
-        %td= journey.start
-        %td= journey.end
         %td= journey.start_port_latitude
-        %td= journey.end_port_latitutude
+        %td= journey.end_port_latitude
         %td= journey.start_address
         %td= journey.start_city
         %td= journey.end_address
@@ -33,7 +28,6 @@
         %td= journey.title
         %td= journey.description
         %td= journey.deal
-        %td= journey.comment
         %td= link_to 'Show', journey
         %td= link_to 'Edit', edit_journey_path(journey)
         %td= link_to 'Destroy', journey, method: :delete, data: { confirm: 'Are you sure?' }
