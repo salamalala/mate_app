@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem "haml-rails", "~> 0.8"
 gem 'neat'
+gem 'normalize-scss', '~> 2.2.0'
 gem 'devise'
 gem 'cancancan'
 gem 'geocoder'
