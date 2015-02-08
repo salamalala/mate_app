@@ -1,35 +1,17 @@
-%h1 Listing journeys
-%table
-  %thead
-    %tr
-      %th Start port latitude
-      %th End port latitude
-      %th Start address
-      %th Start city
-      %th End address
-      %th End city
-      %th Start country
-      %th End country
-      %th Title
-      %th Description
-      %th Deal
-      %th{:colspan => "3"}
-  %tbody
-    - @journeys.each do |journey|
-      %tr
-        %td= journey.start_port_latitude
-        %td= journey.end_port_latitude
-        %td= journey.start_address
-        %td= journey.start_city
-        %td= journey.end_address
-        %td= journey.end_city
-        %td= journey.start_country
-        %td= journey.end_country
-        %td= journey.title
-        %td= journey.description
-        %td= journey.deal
-        %td= link_to 'Show', journey
-        %td= link_to 'Edit', edit_journey_path(journey)
-        %td= link_to 'Destroy', journey, method: :delete, data: { confirm: 'Are you sure?' }
+%h1 All journeys
+
+- @journeys.each do |journey|
+  %div
+    %p= journey.title
+    %p= journey.start_city
+    %p= journey.end_city
+    %p= (journey.start_date).strftime("%d | %m | %y - ") 
+    %p= (journey.end_date).strftime("%d | %m | %y") 
+    /Formats date according to the directives in the given format string
+    %p= "#{journey.berth} berth available"
+
+    %p= link_to 'More', journey
+    %p= link_to 'Edit', edit_journey_path(journey)
+    %p= link_to 'Delete', journey, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Journey', new_journey_path

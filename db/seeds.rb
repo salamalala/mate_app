@@ -27,5 +27,5 @@ User.create!(first_name:"Lexie", last_name: "Papaspyrou", email:"lexie@ga.com", 
 
 
 Journey.delete_all
-Journey.create!(start_date: "2015-03-15", end_date: "2015-03-22", title: "From Athen to Istanbul")
-Journey.create!(start_date: "2015-04-15", end_date: "2015-04-22", title: "Norwegen - Lofoten")
+Journey.create!(start_date: "2015-03-15", end_date: "2015-03-22", title: "From Athen to Istanbul", berth: 4)
+Journey.create!(start_date: "2015-04-15", end_date: "2015-04-22", title: "Norwegen - Lofoten", berth: 6)
