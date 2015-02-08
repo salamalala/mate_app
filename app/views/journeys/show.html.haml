@@ -1,46 +1,33 @@
 %p#notice= notice
-%p
-  %strong Start:
-  = @journey.start
-%p
-  %strong End:
-  = @journey.end
-%p
-  %strong Start port latitude:
-  = @journey.start_port_latitude
-%p
-  %strong End port latitutude:
-  = @journey.end_port_latitutude
-%p
-  %strong Start address:
-  = @journey.start_address
-%p
-  %strong Start city:
-  = @journey.start_city
-%p
-  %strong End address:
-  = @journey.end_address
-%p
-  %strong End city:
-  = @journey.end_city
-%p
-  %strong Start country:
-  = @journey.start_country
-%p
-  %strong End country:
-  = @journey.end_country
-%p
-  %strong Title:
-  = @journey.title
-%p
-  %strong Description:
-  = @journey.description
-%p
-  %strong Deal:
-  = @journey.deal
-%p
-  %strong Comment:
-  = @journey.comment
-= link_to 'Edit', edit_journey_path(@journey)
-|
-= link_to 'Back', journeys_path
+%div
+  %h2
+    = @journey.title
+  %p= (@journey.start_date).strftime("%d | %m | %y - ") 
+  %p= (@journey.end_date).strftime("%d | %m | %y") 
+  = @journey.description 
+
+  %p
+    %strong Description:
+    = @journey.description
+  %p
+    %strong Deal:
+    = @journey.deal
+  %p
+    = "#{@journey.berth} berth still available"
+  = link_to 'Edit', edit_journey_path(@journey)
+
+  = link_to 'Back', journeys_path
+
+%div
+  %h2 
+    Book your berth now:
+
+  = simple_form_for @journey do |f| 
+    = f.label "Select number of berths: "
+    = f.input :berth, collection: 1..(@journey.berth)
+    = f.label "Write a comment: "
+
+    = f.button :submit
+
+
+
