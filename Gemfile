@@ -13,6 +13,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'jquery-datetimepicker-rails'
 gem 'active_model_serializers'
+gem 'typekit-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
