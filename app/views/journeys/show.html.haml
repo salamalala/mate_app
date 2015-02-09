@@ -24,11 +24,11 @@
 
   = simple_form_for @booking do |b|
     = b.label "Select number of berths: "
-    = b.input :berthbooked, collection: 1..(@journey.berth),include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked]
+    = b.input :berthbooked, collection: 1..(@journey.berth),include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
     = b.label "#{@journey.deal} :"
     = b.input :dealconfirmation,  as: :check_boxes, collection: ['Ok'], label: false
     = b.label "Write a comment: "
-    = b.input :comment, as: :text
+    = b.input :comment, as: :text,label: false
     = b.button :submit, "Request to book"
 
 
