@@ -9,7 +9,8 @@ class JourneysController < ApplicationController
   end
 
   def show
-    respond_with(@journey)
+    @booking = Booking.new
+    respond_with(@journey, @booking)
   end
 
   def new

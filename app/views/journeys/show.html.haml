@@ -22,14 +22,14 @@
   %h2 
     Book your berth now:
 
-  = simple_form_for @journey do |f| 
-    = f.label "Select number of berths: "
-    = f.input :berth, collection: 1..(@journey.berth)
-    = f.label "#{@journey.deal} :"
-    = f.input :deal,  as: :check_boxes, collection: ['Ok'], label: false
-    = f.label "Write a comment: "
-
-    = f.button :submit
+  = simple_form_for @booking do |b|
+    = b.label "Select number of berths: "
+    = b.input :berthbooked, collection: 1..(@journey.berth),include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked]
+    = b.label "#{@journey.deal} :"
+    = b.input :dealconfirmation,  as: :check_boxes, collection: ['Ok'], label: false
+    = b.label "Write a comment: "
+    = b.input :comment, as: :text
+    = b.button :submit, "Request to book"
 
 
 
