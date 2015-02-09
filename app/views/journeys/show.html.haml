@@ -25,8 +25,8 @@
   = simple_form_for @journey do |f| 
     = f.label "Select number of berths: "
     = f.input :berth, collection: 1..(@journey.berth)
-    = f.label :deal
-    = f.input :deal,  as: :check_boxes
+    = f.label "#{@journey.deal} :"
+    = f.input :deal,  as: :check_boxes, collection: ['Ok'], label: false
     = f.label "Write a comment: "
 
     = f.button :submit
