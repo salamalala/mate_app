@@ -2,10 +2,15 @@
 %div
   %h2
     = @journey.title
-  %p= (@journey.start_date).strftime("%d | %m | %y - ") 
-  %p= (@journey.end_date).strftime("%d | %m | %y") 
+  
+  %p= @journey.start_date.strftime("%d | %m | %y - ") if @journey.start_date 
+  %p= (@journey.end_date).strftime("%d | %m | %y") if @journey.end_date
   = @journey.description 
 
+  %p Start Port Latitude:
+  = @journey.start_port_latitude
+  %p Start Port Longitude:
+  = @journey.start_port_longitude
   %p
     %strong Description:
     = @journey.description
@@ -24,7 +29,7 @@
 
   = simple_form_for @booking do |b|
     = b.label "Select number of berths: "
-    = b.input :berthbooked, collection: 1..(@journey.berth),include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
+    = b.input :berthbooked, collection: 1..(@journey.berth).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
     = b.label "#{@journey.deal} :"
     = b.input :dealconfirmation,  as: :check_boxes, collection: ['Ok'], label: false
     = b.label "Write a comment: "
