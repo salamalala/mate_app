@@ -6,6 +6,9 @@ class Journey < ActiveRecord::Base
 
   geocoded_by :start_full_address, latitude: :start_port_latitude, longitude: :start_port_longitude
 
+  #specifies when to do the actual geo coding. 
+  after_validation :geocode
+
   geocoded_by :end_full_address, latitude: :end_port_latitude, longitude: :end_port_longitude
 
   #specifies when to do the actual geo coding. 

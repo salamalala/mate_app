@@ -6,11 +6,23 @@
   %p= @journey.start_date.strftime("%d | %m | %y - ") if @journey.start_date 
   %p= (@journey.end_date).strftime("%d | %m | %y") if @journey.end_date
   = @journey.description 
+    
+  %h3 Start Address
+  = @journey.start_full_address
 
   %p Start Port Latitude:
   = @journey.start_port_latitude
   %p Start Port Longitude:
   = @journey.start_port_longitude
+  
+  %h3 End Address
+  = @journey.end_full_address
+
+  %p End Port Latitude:
+  = @journey.end_port_latitude
+  %p End Port Longitude:
+  = @journey.end_port_longitude
+
   %p
     %strong Description:
     = @journey.description
