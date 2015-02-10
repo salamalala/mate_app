@@ -13,6 +13,7 @@ gem 'rmagick'
 gem 'jquery-datetimepicker-rails'
 gem 'active_model_serializers'
 gem 'typekit-rails'
+gem 'social-share-button', '~> 0.1.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'

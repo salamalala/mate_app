@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require typekit
+//= require social-share-button
 //= require_tree .

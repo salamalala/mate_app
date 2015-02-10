@@ -173,6 +173,9 @@ GEM
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     slop (3.6.0)
+    social-share-button (0.1.8)
+      coffee-rails
+      sass-rails
     spring (1.2.0)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -226,6 +229,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form
+  social-share-button (~> 0.1.6)
   spring
   turbolinks
   typekit-rails

@@ -43,6 +43,6 @@ class JourneysController < ApplicationController
     end
 
     def journey_params
-      params.require(:journey).permit(:start_date, :end_date, :start_port_latitude, :end_port_latitude, :start_address, :start_city, :start_country, :end_address, :end_city, :end_country, :title, :description, :deal, :berth)
+      params.require(:journey).permit(:start_date, :end_date, :start_port_latitude, :end_port_latitude, :start_address, :start_city, :start_country, :end_address, :end_city, :end_country, :title, :description, :deal, :berth, :start_port_longitude, :end_port_latitude)
     end
 end

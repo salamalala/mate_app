@@ -31,6 +31,10 @@
     = @journey.deal
   %p
     = "#{@journey.berth} berth still available"
+
+  %p Share that journey: 
+  = social_share_button_tag("Check out the journey on Mate App")
+
   = link_to 'Edit', edit_journey_path(@journey)
 
   = link_to 'Back', journeys_path

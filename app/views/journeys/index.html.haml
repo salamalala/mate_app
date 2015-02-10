@@ -1,12 +1,10 @@
-= form_tag "/journeys", id: :search_form do
+= form_tag "/journeys", method: :get, id: :search_form do
   = country_select("user", "country", priority_countries: ["GB", "FR", "NL"])
   = text_field_tag :search, params[:search], placeholder: "Search for a destination"
   = date_field :start_date, autofocus: true, placeholder: 'Start date'
-  = date_field :end_date, autofocus: true, :placeholder => "End date"
+  = date_field :end_date, autofocus: true, placeholder: "End date"
   = select_tag :berth, options_for_select((1..15).map{|x| "#{x} berth"})
   = submit_tag "List journeys", id: "searchbutton"
-
-
 
 = render @journeys
   
