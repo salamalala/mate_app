@@ -1,17 +1,12 @@
-%h1 All journeys
+= form_tag "/journeys", method: "get", id: :search_form, remote: :true do
+  = country_select("user", "country", priority_countries: ["GB", "FR", "NL"])
+  = text_field_tag :search, params[:search], placeholder: "Search for a destination"
+  / = collection_select :category, :category_id, Category.all, :id, :name, {prompt: "All categories", selected: params[:category]&&params[:category][:category_id]}
+  = submit_tag "List journeys", id: "searchbutton", class: "btn"
 
-- @journeys.each do |journey|
-  %div
-    %p= journey.title
-    %p= journey.start_city
-    %p= journey.end_city
-    %p= (journey.start_date).strftime("%d | %m | %y - ") if journey.start_date 
-    %p= (journey.end_date).strftime("%d | %m | %y") if journey.end_date 
-    /Formats date according to the directives in the given format string
-    %p= "#{journey.berth} berth available"
 
-    %p= link_to 'More', journey
-    %p= link_to 'Edit', edit_journey_path(journey)
-    %p= link_to 'Delete', journey, method: :delete, data: { confirm: 'Are you sure?' }
+
+= render @journeys
+  
 %br/
 = link_to 'New Journey', new_journey_path

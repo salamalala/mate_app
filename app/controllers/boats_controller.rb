@@ -5,6 +5,7 @@ class BoatsController < ApplicationController
 
   def index
     @boats = Boat.all
+    @journeys = Journey.all
     respond_with(@boats)
   end
 
