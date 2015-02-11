@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.status = "Requested"
     @booking.save
     respond_with(@booking)
   end
