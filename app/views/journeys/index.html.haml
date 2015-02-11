@@ -1,7 +1,6 @@
 = search_form_for @q do |f| 
   = f.country_select(:country_eq, {priority_countries: ["GB", "FR"] })
-
-
+  = f.date_field :start_date_lteq, autofocus: true, placeholder: 'Start date'
 
   = f.submit "List journeys", id: "searchbutton"
 
@@ -11,8 +10,6 @@
 = link_to 'New Journey', new_journey_path
 
 
-/ "/journeys", method: :get, id: :search_form do
-/   = country_select("user", "country", priority_countries: ["GB", "FR", "NL"])
 /   = text_field_tag :search, params[:search], placeholder: "Search for a destination"
 /   = date_field :start_date, autofocus: true, placeholder: 'Start date'
 /   = date_field :end_date, autofocus: true, placeholder: "End date"
