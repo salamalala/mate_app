@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all
+    @journeys = Journey.all
     respond_with(@bookings)
   end
 

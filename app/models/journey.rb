@@ -1,3 +1,9 @@
+require 'barometer'
+
+# barometer = Barometer.new('London')
+# weather = barometer.measure
+# puts "#{weather.current.temperature}**************"
+
 class Journey < ActiveRecord::Base
   has_many :bookings
   belongs_to :boat
@@ -23,22 +29,30 @@ class Journey < ActiveRecord::Base
   end
 
 
+  def weather_start_port
+    # coordinates = "#{self.start_port_latitude}, #{self.start_port_longitude}"
+    Barometer.new("Paris").measure.temperature
+  end
+
+
 #give a long and latitude to start full adress and end full adress. 
 # Send: When the method is identified by a string, the string is converted to a symbol. 
-  private
+
+  # private
   def geocode_addresses
     %w(start end).each do |port|
       if send("#{port}_address_changed?")
         coords = Geocoder.coordinates(send("#{port}_full_address"))
         send("#{port}_port_latitude=", coords[0])
         send("#{port}_port_longitude=", coords[1])
+        puts "#{coords} *********"
       end
     end
 
     # if start_address_changed?
-    #   coords = Geocoder.coordinates(self.start_full_address)
-    #   self.start_port_latitude = coords[0]
-    #   self.start_port_longitude = coords[1]
+      # coords = Geocoder.coordinates(self.start_full_address)
+      # self.start_port_latitude = coords[0]
+      # self.start_port_longitude = coords[1]
     # end
 
     # if end_address_changed?
