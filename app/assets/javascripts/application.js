@@ -15,4 +15,12 @@
 //= require turbolinks
 //= require typekit
 //= require social-share-button
+//= require jquery.datetimepicker
 //= require_tree .
+
+$(function() {
+  $('.datepicker').datetimepicker({
+    minDate: 0
+  
+    });
+});

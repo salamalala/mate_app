@@ -1,9 +1,9 @@
 = search_form_for @q do |f| 
   = f.country_select(:country_eq, {include_blank: 'All countries', priority_countries: ["GB", "FR", "NL"]})
-  = f.label "Earliest possible embarking date: "
-  = f.date_field :start_date_gteq, autofocus: true, placeholder: 'Start date'
+  = f.text_field :start_date_gteq, autofocus: true, placeholder: 'Embarking date', class: :datepicker
   = f.label "Latest possible end date: "
-  = f.date_field :end_date_lteq, autofocus: true, placeholder: 'Start date'
+  = f.text_field :end_date_lteq, autofocus: true, placeholder: 'Check out', class: :datepicker
+  = f.select :berth_gteq, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @q.berth_gteq)
 
   = f.submit "List journeys", id: "searchbutton"
 
@@ -13,7 +13,3 @@
 = link_to 'New Journey', new_journey_path
 
 
-/   = text_field_tag :search, params[:search], placeholder: "Search for a destination"
-/   = date_field :start_date, autofocus: true, placeholder: 'Start date'
-/   = date_field :end_date, autofocus: true, placeholder: "End date"
-/   = select_tag :berth, options_for_select((1..15).map{|x| "#{x} berth"})
