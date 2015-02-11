@@ -7,19 +7,19 @@ class Journey < ActiveRecord::Base
 
   #takes all attributes and turns them into a string for google search
   def start_full_address
-    [start_address, start_city, start_country].compact.join(', ')
+    [start_address, start_city, country].compact.join(', ')
   end
 
   def end_full_address
-    [end_address, end_city, end_country].compact.join(', ')
+    [end_address, end_city, country].compact.join(', ')
   end
 
   def start_full_address_changed?
-    [start_address_changed?, start_city_changed?, start_country_changed?].any?
+    [start_address_changed?, start_city_changed?, country_changed?].any?
   end
 
   def end_full_address_changed?
-    [end_address_changed?, end_city_changed?, end_country_changed?].any?
+    [end_address_changed?, end_city_changed?, country_changed?].any?
   end
 
 

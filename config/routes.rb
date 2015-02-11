@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   root to: "journeys#index"
  
   get "/my_profile", to: "users#show", as: :my_profile
+
+  get "/edit_my_profile", to: "users#edit", as: :edit_my_profile
+
 end

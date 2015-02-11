@@ -4,7 +4,8 @@ class JourneysController < ApplicationController
   respond_to :html
 
   def index
-    @journeys = Journey.all
+    @q = Journey.search(params[:q])
+    @journeys = @q.result(distinct: true)
     respond_with(@journeys)
   end
 
@@ -43,6 +44,6 @@ class JourneysController < ApplicationController
     end
 
     def journey_params
-      params.require(:journey).permit(:start_date, :end_date, :start_port_latitude, :end_port_latitude, :start_address, :start_city, :start_country, :end_address, :end_city, :end_country, :title, :description, :deal, :berth, :start_port_longitude, :end_port_latitude)
+      params.require(:journey).permit(:start_date, :end_date, :start_port_latitude, :end_port_latitude, :start_address, :start_city, :country, :end_address, :end_city, :country, :title, :description, :deal, :berth, :start_port_longitude, :end_port_latitude)
     end
 end
