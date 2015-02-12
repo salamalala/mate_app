@@ -11,20 +11,21 @@
   = @journey.start_full_address
 
   %p Start Port Latitude:
-  = @journey.start_port_latitude
+  = @journey.start_port_latitude if @journey.start_port_latitude
   %p Start Port Longitude:
-  = @journey.start_port_longitude
+  = @journey.start_port_longitude if @journey.start_port_longitude
 
-  %p Weather
-  = @journey.weather_start_port
+  %p
+  = "Current weather in #{@journey.start_city}: " 
+  = @journey.weather_at_location("start")["weather"][0]["main"] 
   
   %h3 End Address
   = @journey.end_full_address
 
   %p End Port Latitude:
-  = @journey.end_port_latitude
+  = @journey.end_port_latitude if @journey.end_port_latitude
   %p End Port Longitude:
-  = @journey.end_port_longitude
+  = @journey.end_port_longitude if @journey.end_port_longitude
 
   %p
     %strong Description:

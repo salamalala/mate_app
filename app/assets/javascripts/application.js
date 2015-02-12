@@ -20,7 +20,10 @@
 
 $(function() {
   $('.datepicker').datetimepicker({
-    minDate: 0
+    minDate: 0,
+    timepicker: false,
+    format:'d.m.Y'
+  
   
     });
 });

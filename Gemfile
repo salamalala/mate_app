@@ -16,6 +16,7 @@ gem 'typekit-rails'
 gem 'social-share-button', '~> 0.1.6'
 gem 'ransack'
 gem 'barometer', '~> 0.9.7'
+gem 'httparty'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
