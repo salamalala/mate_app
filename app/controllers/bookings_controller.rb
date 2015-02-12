@@ -24,6 +24,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.status = "Requested"
+    @booking.user_id = current_user.id
     @booking.save
     respond_with(@booking)
   end
