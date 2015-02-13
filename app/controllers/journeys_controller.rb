@@ -23,7 +23,7 @@ class JourneysController < ApplicationController
   end
 
   def create
-    @journey = Journey.new(journey_params)
+    @journey = current_user.journeys_as_captain.new(journey_params)
     @journey.save
     respond_with(@journey)
   end

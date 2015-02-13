@@ -1,6 +1,7 @@
 class Journey < ActiveRecord::Base
   has_many :bookings
   belongs_to :boat
+  belongs_to :captain, class_name: 'User'
   has_many :users, through: :bookings
 
 

@@ -2,6 +2,8 @@
 %div
   %h2
     = @journey.title
+
+  %p= @journey.captain.try :name
   
   %p= @journey.start_date.strftime("%d | %m | %y - ") if @journey.start_date 
   %p= (@journey.end_date).strftime("%d | %m | %y") if @journey.end_date
