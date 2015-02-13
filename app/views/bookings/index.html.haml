@@ -29,6 +29,7 @@
         = "Name of person who booked: #{booking.user.name}"
         = "Amount of berth %booked: #{booking.berthbooked}"
         = "Status of booking: #{booking.status}"
+        = button_to "Approve", booking_approve_path(booking)
       %br 
     -else 
       %p You don't have any bookings for that journey yet.   

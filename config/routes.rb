@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   get "/edit_my_profile", to: "users#edit", as: :edit_my_profile
 
+  post "/bookings/:id/approved", to: "bookings#approve_booking", as: :booking_approve
+
 end

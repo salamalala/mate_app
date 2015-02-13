@@ -39,6 +39,13 @@ class BookingsController < ApplicationController
     respond_with(@booking)
   end
 
+  def approve_booking
+    @booking = Booking.find(params[:id])
+    @booking.status = "Approved"
+    @booking.save
+    redirect_to bookings_path
+  end
+
   private
     def set_booking
       @booking = Booking.find(params[:id])
