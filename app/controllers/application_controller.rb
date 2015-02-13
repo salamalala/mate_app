@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
   before_filter :configure_devise_params, if: :devise_controller?
 
  
-
+#attributes to update for the user model. 
   def configure_devise_params
     [:sign_up, :account_update].each do |action|
       devise_parameter_sanitizer.for(action) do |u|
-        u.permit(:prename, :lastname, :dob, :email, :password, :password_confirmation, :current_password, :remote_user_image_url)
+        u.permit(:first_name, :last_name,  :email, :password, :password_confirmation, :current_password, :remote_user_image_url)
       end
     end
   end
