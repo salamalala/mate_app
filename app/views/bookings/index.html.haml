@@ -1,4 +1,4 @@
-%h1 Your booked journeys
+%h1 Journeys you booked
 -if current_user.bookings.any?
   - current_user.bookings.each do |booking|
     = "Start of the journey: #{booking.journey.start_city}"
@@ -13,6 +13,27 @@
     = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' }
     %br
 -else
-  %p You don't have any bookings yet. 
+  %p You didn't book any journey yet. 
+
+
+%h1 Journeys where you're the sailor 
+-if current_user.journeys_as_captain.any?
+  - current_user.journeys_as_captain.each do |journey|
+    = "Start of the journey: #{journey.start_city}"
+    = "End of the journey: #{journey.end_city}"
+    = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
+    = "End date: #{journey.end_date.strftime('%d/%m/%Y')}"
+    = "Totally offered amount of berth: #{journey.berth}"
+    -if journey.bookings.any? 
+      - journey.bookings.each do |booking|
+        = "Name of person who booked: #{booking.user.name}"
+        = "Amount of berth %booked: #{booking.berthbooked}"
+        = "Status of booking: #{booking.status}"
+      %br 
+    -else 
+      %p You don't have any bookings for that journey yet.   
+    %br
+-else
+  %p You didn't list any journeys yet. 
 
 
