@@ -1,9 +1,13 @@
 %h1 Your booked journeys
 -if current_user.bookings.any?
   - current_user.bookings.each do |booking|
-    = booking.berthbooked
-    = booking.comment
-    = booking.status
+    = "Start of the journey: #{booking.journey.start_city}"
+    = "End of the journey: #{booking.journey.end_city}"
+    = "Start date: #{booking.journey.start_date.strftime('%d/%m/%Y')}"
+    = "End date: #{booking.journey.end_date.strftime('%d/%m/%Y')}"
+    = "You booked #{booking.berthbooked} out of totally #{booking.journey.berth} berth"
+    = "Your comment #{booking.comment}"
+    = "The status or your booking: '#{booking.status}'"
     = link_to 'Show', booking
     = link_to 'Edit', edit_booking_path(booking)
     = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,13 +1,17 @@
 %p#notice= notice
 
-%
-  = current_user.first_name
-%p
-  %strong Comment:
-  = @booking.comment
-%p
-  %strong Status:
-  = @booking.status
+%p User who booked that journey
+= current_user.first_name
+
+%p How many berth did you book?
+= @booking.berthbooked
+
+%p Comment:
+= @booking.comment
+
+%p Status:
+= @booking.status
+
 = link_to 'Edit', edit_booking_path(@booking)
 |
 = link_to 'Back', bookings_path
