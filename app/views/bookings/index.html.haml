@@ -1,12 +1,14 @@
 %h1 Your booked journeys
 -if current_user.bookings.any?
   - current_user.bookings.each do |booking|
+    = booking.berthbooked
     = booking.comment
     = booking.status
     = link_to 'Show', booking
     = link_to 'Edit', edit_booking_path(booking)
     = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' }
+    %br
 -else
-  %p you don't have any bookings yet. 
+  %p You don't have any bookings yet. 
 
 
