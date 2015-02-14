@@ -10,6 +10,9 @@ class Journey < ActiveRecord::Base
   validates :berth, numericality: { greater_than_or_equal_to: 0 }
   validate :end_must_be_after_start
 
+  scope :journeys_in_past, ->  { where('start_date < ?', Date.today)}
+  scope :journeys_in_future, ->  {where('start_date >= ?', Date.today)}
+
   def end_must_be_after_start
     errors.add(:end_date, "must be after embarking date") if end_date <= start_date
   end

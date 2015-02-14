@@ -14,6 +14,26 @@
 = image_tag current_user.boat.try :boat_image
 
 
+%h4 Journeys in the past:
+-if current_user.journeys_as_captain.journeys_in_past.any?
+  - current_user.journeys_as_captain.journeys_in_past.each do |journey|
+    = "Start of the journey: #{journey.start_city}"
+    = "End of the journey: #{journey.end_city}"
+    = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
+    = "End date: #{journey.end_date.strftime('%d/%m/%Y')}"
+- else 
+  no journeys as captain in the past.
+
+%h4 Journeys in the future:
+-if current_user.journeys_as_captain.journeys_in_future.any? 
+  - current_user.journeys_as_captain.journeys_in_future.each do |journey|
+    = "Start of the journey: #{journey.start_city}"
+    = "End of the journey: #{journey.end_city}"
+    = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
+    = "End date: #{journey.end_date.strftime('%d/%m/%Y')}"
+- else 
+  no journeys as captain in the future.
+
 
 
 
