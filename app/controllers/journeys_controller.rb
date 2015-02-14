@@ -11,9 +11,8 @@ class JourneysController < ApplicationController
   end
 
   def show
-    @booking = Booking.new
-    respond_with(@journey, @booking)
-    @journey.
+    @booking = Booking.new 
+    respond_with(@journey, @booking)   
   end
 
 #show user_id for journey.captain

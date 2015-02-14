@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "journeys#index"
  
-  get "/my_profile", to: "users#show", as: :my_profile
+  get "/profile", to: "users#show", as: :profile
 
   get "/edit_my_profile", to: "users#edit", as: :edit_my_profile
 
