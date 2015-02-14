@@ -8,6 +8,11 @@
 = current_user.about_me
 
 %h4 My Boat: 
+= current_user.boat.try :description
+
+%h4 Image of the boat: 
+= image_tag current_user.boat.try :boat_image
+
 
 
 

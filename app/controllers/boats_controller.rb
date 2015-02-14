@@ -23,6 +23,7 @@ class BoatsController < ApplicationController
 
   def create
     @boat = Boat.new(boat_params)
+    @boat.user = current_user
     @boat.save
     respond_with(@boat)
   end
@@ -43,6 +44,6 @@ class BoatsController < ApplicationController
     end
 
     def boat_params
-      params.require(:boat).permit(:boat_image, :description)
+      params.require(:boat).permit(:boat_image, :description, :remote_boat_image_url)
     end
 end

@@ -1,5 +1,5 @@
 %h1 Journeys you booked
--if current_user.bookings.any?
+-if current_user.bookings.present?
   - current_user.bookings.each do |booking|
     = "Start of the journey: #{booking.journey.start_city}"
     = "End of the journey: #{booking.journey.end_city}"

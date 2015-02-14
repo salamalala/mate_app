@@ -7,6 +7,7 @@ class Journey < ActiveRecord::Base
 
   #validations
   validates :start_date, :end_date, :start_city, :end_city, :country, :deal, :berth, presence: true
+  validates :berth, numericality: { greater_than_or_equal_to: 0 }
   validate :end_must_be_after_start
 
   def end_must_be_after_start
@@ -32,12 +33,14 @@ class Journey < ActiveRecord::Base
     [end_address_changed?, end_city_changed?, country_changed?].any?
   end
 
+
+
   def weather_at_location(location)
     lat = send("#{location}_port_latitude")
     long = send("#{location}_port_longitude")
 
     response = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&units=metric?id=524901&APPID=#{ENV['APP_WEATHER']}")
- 
+
   end
 #ajax: fire off the request to get the view of the weather. 
 

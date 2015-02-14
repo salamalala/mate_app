@@ -7,12 +7,16 @@ class JourneysController < ApplicationController
     @q = Journey.search(params[:q])
     @journeys = @q.result(distinct: true)
     respond_with(@journeys)
+    
   end
 
   def show
     @booking = Booking.new
     respond_with(@journey, @booking)
+    @journey.
   end
+
+#show user_id for journey.captain
 
   def new
     @journey = Journey.new

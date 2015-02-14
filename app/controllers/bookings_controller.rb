@@ -22,12 +22,23 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @bookings = Booking.all
     @booking = Booking.new(booking_params)
     @booking.status = "Requested"
     @booking.user_id = current_user.id
-    @booking.save
-    respond_with(@booking)
+    if @booking.save
+      @journey = Journey.find(@booking.journey_id)
+      @journey.berth -=  @booking.berthbooked
+      @journey.berth
+      @booking.save
+      render :index
+    else
+      render :new
+    end
   end
+
+  
+
 
   def update
     @booking.update(booking_params)
@@ -47,11 +58,11 @@ class BookingsController < ApplicationController
   end
 
   private
-    def set_booking
-      @booking = Booking.find(params[:id])
-    end
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 
-    def booking_params
-      params.require(:booking).permit(:comment, :journey_id, :berthbooked, :dealconfirmation)
-    end
+  def booking_params
+    params.require(:booking).permit(:comment, :journey_id, :berthbooked, :dealconfirmation)
+  end
 end
