@@ -1,8 +1,8 @@
-%nav
-  .logo
-    = link_to "Ahoy Mate", root_path
+%nav  
+  .logo= link_to "Ahoy Mate", root_path
   - if user_signed_in? 
     %ul
+      %li.list_sailing= link_to "List Sailing Trip", new_journey_path 
       .list_items
         .profile_link
           %li= link_to "#{current_user.first_name}", profile_path(current_user)      
@@ -13,12 +13,9 @@
             %li= link_to "Add a Boat to Profile", new_boat_path
           %li= link_to "My Journeys", bookings_path
           %li= link_to "My Profile", profile_path(current_user)
-          %li= link_to "Log Out", destroy_user_session_path, method: :delete
-      %li= link_to "List Sailing Trip", new_journey_path 
+          %li= link_to "Log Out", destroy_user_session_path, method: :delete  
   - else
-    %p
     %ul
-      %li= link_to "Log In", new_user_session_path
-      %li= link_to "Sign Up", new_user_registration_path
-      %li= link_to "List Sailing Trip", new_journey_path
-     
+      %li.list_items= link_to "Log In", new_user_session_path
+      %li.list_items= link_to "Sign Up", new_user_registration_path
+      %li.list_sailing= link_to "List Sailing Trip", new_journey_path

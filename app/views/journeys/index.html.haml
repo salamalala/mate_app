@@ -1,3 +1,5 @@
+.front_image
+
 = search_form_for @q do |f| 
   = f.country_select(:country_eq, {include_blank: 'All countries', priority_countries: ["GB", "FR", "NL"]})
   = f.text_field :start_date_gteq, autofocus: true, placeholder: 'Embarking date', class: :datepicker

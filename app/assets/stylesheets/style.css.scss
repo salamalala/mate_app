@@ -1,105 +1,113 @@
 body{
   font-family: $font-text;
+  color: $grey;
   a{
     text-decoration: none;
   }
 }
 
 nav{
-  background-color: $primary-color;
-
-  .logo{
-    @include span-columns(8);
+  background-color: $primary-color;  
+  font-family: $font-heading;
+  line-height: 80px; 
+  letter-spacing: 1px;
+  a{
+    color: white;
   }
-
+  
   ul {
     padding-left: 0;
+    margin-top: 0;
+    display: inline-block;
     li{
       list-style: none;
     }
   }
 }
 
-.list_items {
- cursor: default;
- display: inline-block;
- position: relative;
+.logo{
+  font-size: $heading-1;
+  display: inline-block;
+  padding-left: 20px;
 
-.profile_link a{
-  padding: 0 80px 80px 80px;
 }
 
- .popover {
-   background-color: $secondary-color;
-   border-radius: 5px;
-   top: 42px;
-   color: #fff;
-   display: none;
-   padding: 7px 10px;
-   position: absolute;
-   width: 200px;
-   z-index: 2;
+.list_sailing{   
+  display: inline-block;
+  float: right;
+  padding-right: 20px;
+
+  a{
+    background-color: $grey;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+}
+
+.list_items {
+  cursor: default;
+  position: relative;
+  display: inline-block;
+  float: right;
+
+
+  .profile_link a{
+    padding: 35px 60px  60px  60px;
+  }
+
+  .popover {
+    display: inline-block;
+    background-color: $secondary-color;
+    border-radius: 5px;
+    top: 70px;
+    color: #fff;
+    display: none;
+    padding: 12px;
+    position: absolute;
+    z-index: 2;
+    line-height:30px;
 
   // to create the speech bubble at the bottom
-   &:before {
-     border-bottom: 7px solid $secondary-color;
-     border-right: 7px solid transparent;
-     border-left: 7px solid transparent;
-     top: -7px;
-     content: '';
-     display: block;
-     left: 50%;
-     margin-left: -7px;
-     position: absolute;
-   }
-   ul {
-    padding-left: 0;
-   }
+  &:before {
+   border-bottom: 7px solid $secondary-color;
+   border-right: 7px solid transparent;
+   border-left: 7px solid transparent;
+   top: -7px;
+   content: '';
+   display: block;
+   left: 50%;
+   margin-left: -7px;
+   position: absolute;
  }
-
- &:hover {
-   .popover {
-     display: block;
-     -webkit-animation: fade-in .3s linear 1, move-down .3s linear 1;
-     -moz-animation: fade-in .3s linear 1, move-down .3s linear 1;
-     -ms-animation: fade-in .3s linear 1, move-down .3s linear 1;
-   }
+}
+&:hover {
+ .popover {
+   display: block;
+   -webkit-animation: fade-in .3s linear 1, move-down .3s linear 1;
+   -moz-animation: fade-in .3s linear 1, move-down .3s linear 1;
+   -ms-animation: fade-in .3s linear 1, move-down .3s linear 1;
  }
 }
 
+} //end of list_items
 
-@-webkit-keyframes fade-in {
-  from   { opacity: 0; }
-  to { opacity: 1; }
-}
-@-moz-keyframes fade-in {
-  from   { opacity: 0; }
-  to { opacity: 1; }
-}
-@-ms-keyframes fade-in {
-  from   { opacity: 0; }
-  to { opacity: 1; }
-}
-@-webkit-keyframes move-down {
-  from   { top: 30px; }
-  to { top: 42px; }
-}
-@-moz-keyframes move-down {
-  from   { top: 30px; }
-  to { top: 42px; }
-}
-@-ms-keyframes move-down {
-  from   { top: 30px; }
-  to { top: 42px; }
+
+main{
+  clear: both;
 }
 
+.front_image{
+  margin-top: -20px;
+  background: image-url("home_page3.jpg") no-repeat center center; 
 
-
-
-
-
-
-
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 400px;
+  z-index: -1;
+} 
 
 #map_canvas{
   height: 200px;

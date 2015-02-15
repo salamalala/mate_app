@@ -1,3 +1,12 @@
 // Place all the styles related to the Journeys controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.front_image{
+  background: image-url("home_page.jpg") no-repeat center center fixed; 
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} 
