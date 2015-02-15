@@ -1,12 +1,16 @@
 .front_image
 
-= search_form_for @q do |f| 
-  = f.country_select(:country_eq, {include_blank: 'All countries', priority_countries: ["GB", "FR", "NL"]})
-  = f.text_field :start_date_gteq, autofocus: true, placeholder: 'Embarking date', class: :datepicker
-  = f.text_field :end_date_lteq, autofocus: true, placeholder: 'Check out', class: :datepicker
-  = f.select :berth_gteq, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @q.berth_gteq)
+.above_image
 
-  = f.submit "List journeys", id: "searchbutton"
+  %h2 We are sailing, we are sailing 'cross the sea
+
+  = search_form_for @q do |f| 
+    = f.country_select(:country_eq, {include_blank: 'All countries', priority_countries: ["GB", "FR", "NL"]})
+    = f.text_field :start_date_gteq, autofocus: true, placeholder: 'Embarking date', class: :datepicker
+    = f.text_field :end_date_lteq, autofocus: true, placeholder: 'Check out', class: :datepicker
+    = f.select :berth_gteq, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @q.berth_gteq)
+
+    = f.submit "List journeys", id: "searchbutton"
 
 = render @journeys
   

@@ -109,6 +109,29 @@ main{
   z-index: -1;
 } 
 
+.above_image{
+  margin-top: -200px;
+  z-index: 2;
+  text-align: center;
+
+  h2{
+    font-size: $heading-1;
+    font-family: $font-heading;
+    font-style: italic;
+    color: $secondary-color;
+    letter-spacing: 3px;
+    font-weight: 300;
+  }
+
+  select{
+    padding: 5px;
+  }
+
+  input{
+    margin: 0 10px;
+  }
+}
+
 #map_canvas{
   height: 200px;
   background-color: grey;
