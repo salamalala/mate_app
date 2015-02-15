@@ -97,6 +97,8 @@ main{
   clear: both;
 }
 
+
+//journey_page
 .front_image{
   margin-top: -20px;
   background: image-url("home_page3.jpg") no-repeat center center; 
@@ -125,12 +127,45 @@ main{
 
   select{
     padding: 5px;
+    margin: 5px 7px 20px 7px;
+    text-align: center;
+    padding: 0 15px;
+    line-height: 40px; 
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: $font-heading;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: $heading-3;
   }
 
-  input{
-    margin: 0 10px;
+  input{   
+    margin: 5px 7px 20px 7px;
+    font-size: $heading-3;
+    border: none; //darkgrey
+    text-transform: uppercase;
+    font-family: $font-heading;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0 15px;
+    line-height: 40px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+  }
+
+  #searchbutton{
+    background-color: $tertiary-color;
+    color: white;
+    &:hover{
+      background-color: saturate( $tertiary-color, 10% )
+    }
   }
 }
+
+
 
 #map_canvas{
   height: 200px;
