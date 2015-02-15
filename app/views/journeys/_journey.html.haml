@@ -8,5 +8,5 @@
   %p= "#{journey.berth} berth available"
 
   %p= link_to 'More', journey
-  %p= link_to 'Edit', edit_journey_path(journey)
-  %p= link_to 'Delete', journey, method: :delete, data: { confirm: 'Are you sure?' }
+  %p= link_to 'Edit', edit_journey_path(journey) 
+  %p= link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' }

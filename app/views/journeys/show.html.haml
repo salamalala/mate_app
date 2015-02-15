@@ -67,6 +67,9 @@
       = b.label "Write a comment: "
       = b.input :comment, as: :text,label: false
       = b.button :submit, "Request to book"
+      /Doesnt work yet! 
+      / = b.mail_to @journey.try :captain_id, "Contact the captain"
+
   - else    
     = link_to "Log in to book your berth", new_user_session_path
 
