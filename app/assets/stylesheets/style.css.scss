@@ -12,6 +12,12 @@ nav{
   @include fill-parent();
   font-family: $font-heading;
   line-height: 80px; 
+  .anchor{
+    height: 30px;
+    padding-left: 20px;
+    line-height: 80px; 
+    -webkit-animation: anchor-rotate alternate ease-in-out .5s infinite both; 
+  }
   a{
     color: white;
   }
@@ -30,7 +36,6 @@ nav{
   font-size: $heading-1;
   display: inline-block;
   padding-left: 20px;
-  float: left;
 
 }
 
