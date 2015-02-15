@@ -1,6 +1,7 @@
 body{
   font-family: $font-text;
   color: $grey;
+  letter-spacing: 1px;
   a{
     text-decoration: none;
   }
@@ -11,7 +12,6 @@ nav{
   @include fill-parent();
   font-family: $font-heading;
   line-height: 80px; 
-  letter-spacing: 1px;
   a{
     color: white;
   }
@@ -50,18 +50,18 @@ nav{
     &:hover{
       background-color: $grey;
     }
-  
+
     &:before {
-    content: "➞";
-    position: absolute;
-    right: 1.5em;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
+      content: "➞";
+      position: absolute;
+      right: 1.5em;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
     &:hover:before, &:focus:before, &:active:before {
-    -webkit-animation: icon-wobble-horizontal 1s ease-in-out 1;
-    animation-name: icon-wobble-horizontal 1s ease-in-out 1;
-  }
+      -webkit-animation: icon-wobble-horizontal 1s ease-in-out 1;
+      animation-name: icon-wobble-horizontal 1s ease-in-out 1;
+    }
   }
 
 
@@ -79,7 +79,6 @@ nav{
   }
 
   .popover {
-    display: inline-block;
     background-color: $secondary-color;
     border-radius: 5px;
     top: 70px;
@@ -87,8 +86,9 @@ nav{
     display: none;
     padding: 12px;
     position: absolute;
-    z-index: 2;
+    z-index: 5;
     line-height:30px;
+    width: 200px;
 
   // to create the speech bubble at the bottom
   &:before {
@@ -115,16 +115,38 @@ nav{
 } //end of list_items
 
 
+
 main{
   clear: both;
 }
 
+.btn{
+  background-color: $tertiary-color;
+  margin: 5px 7px 20px 7px;
+  font-size: $heading-3;
+  border: none; 
+  color: white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 5px;
+  text-align: center;
+  line-height: 40px; 
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  &:hover{
+    background-color: saturate( $tertiary-color, 10% )
+  }
+}
 
-//journey_page
+
+
+
+//journey_page ... to be put in the journey.css file 
 .front_image{
   margin-top: -20px;
   background: image-url("home_page3.jpg") no-repeat center center; 
-
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -167,7 +189,7 @@ main{
   input{   
     margin: 5px 7px 20px 7px;
     font-size: $heading-3;
-    border: none; //darkgrey
+    border: none; 
     text-transform: uppercase;
     font-family: $font-heading;
     -webkit-appearance: none;
@@ -188,6 +210,37 @@ main{
   }
 }
 
+
+//background_image_journey
+.background_image{
+  margin-top: -20px;
+  background: image-url("backgroundb_w.jpg") no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: -1;
+  height: 800px;
+  position: relative;
+
+}
+
+.container_above_image{
+  @include outer-container;
+
+  .journey{    
+    background-color: rgba($background-color, 0.9);
+    z-index:2;
+    position:absolute;    
+    top: 140px;
+    padding: 30px;
+    border-radius: 5px;
+
+    
+
+
+  }
+}
 
 
 #map_canvas{

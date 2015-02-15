@@ -8,10 +8,10 @@
         - @journey.errors.full_messages.each do |message|
           %li= message
  
-  = f.label :title
+  = f.label "Title of the journey"
   = f.text_field :title
 
-  = f.label :description
+  = f.label "Describe your journey"
   = f.text_area :description
 
   = f.label :start_port_latitude
@@ -33,7 +33,7 @@
   = f.text_field :end_city
 
   = f.label :country
-  = f.country_select(:country, {priority_countries: ["GB", "FR", "NL"]})
+  = f.country_select(:country, { only: ["GB","FR", "NL", "GR" ]})
 
   = f.text_field :start_date, autofocus: true, placeholder: 'Embarking date', class: :datepicker
   = f.text_field :end_date, autofocus: true, placeholder: 'Check out', class: :datepicker
@@ -44,5 +44,5 @@
   = f.label :berth
   = f.select :berth, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @journey.berth)
 
-  .actions
-    = f.submit "List your journey"
+
+  = f.submit "List your journey", class: "btn"

@@ -26,6 +26,4 @@ User.create!(first_name:"Lexie", last_name: "Papaspyrou", email:"lexie@ga.com", 
 
 
 
-Journey.delete_all
-Journey.create!(start_date: "2015-03-15", end_date: "2015-03-22", title: "From Athen to Istanbul", start_city: "London", end_city: "Istanbul", deal: "help us on the boat with all kind of things", berth: 4, country: "GB")
-Journey.create!(start_date: "2015-04-15", end_date: "2015-04-22", title: "Norwegen - Lofoten", start_city: "London", end_city: "Istanbul", deal: "help us on the boat with all kind of things f.ex cooking and sailing", berth: 6, country: "DE")
+
