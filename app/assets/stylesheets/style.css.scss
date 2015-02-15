@@ -213,28 +213,35 @@ main{
 
 //background_image_journey
 .background_image{
-  margin-top: -20px;
-  background: image-url("backgroundb_w.jpg") no-repeat center center; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  z-index: -1;
-  height: 800px;
-  position: relative;
+ /* Set rules to fill background */
+ min-height: 100%;
+ min-width: 1024px;
+ 
+ /* Set up proportionate scaling */
+ width: 100%;
+ height: auto;
+ 
+ /* Set up positioning */
+ position: fixed;
+ top: 0;
+ left: 0;
+ z-index: -4;
 
 }
 
 .container_above_image{
-  @include outer-container;
+  @include outer-container; 
 
-  .journey{    
+  .journey{
+    @include span-columns(6);
+    @include shift(3);
     background-color: rgba($background-color, 0.9);
     z-index:2;
     position:absolute;    
     top: 140px;
     padding: 30px;
     border-radius: 5px;
+    width: 100%;
 
     
 
@@ -247,4 +254,31 @@ main{
   height: 200px;
   background-color: grey;
 
+}
+
+
+
+// footer
+footer{
+  font-family: $font-heading;
+  width: 100%;
+  position: absolute;
+  height: 80px;
+  bottom: 0;
+  left: 0;
+  background-color: $grey;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  a {
+    color: #fff;
+    text-decoration: none;
+    &:link, &:visited, &:active {
+      color: #fff;
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  } 
 }
