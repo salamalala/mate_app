@@ -1,9 +1,11 @@
 %nav
-  = link_to "Ahoy Mate", root_path
+  .logo
+    = link_to "Ahoy Mate", root_path
   - if user_signed_in? 
     %ul
       .list_items
-        %li= link_to "#{current_user.first_name}", profile_path(current_user)      
+        .profile_link
+          %li= link_to "#{current_user.first_name}", profile_path(current_user)      
         .popover   
           - if current_user.boat.present?
             %li= link_to "Manage Boat", edit_boat_path(current_user.boat)

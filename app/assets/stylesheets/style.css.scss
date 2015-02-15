@@ -8,11 +8,14 @@ body{
 nav{
   background-color: $primary-color;
 
+  .logo{
+    @include span-columns(8);
+  }
+
   ul {
     padding-left: 0;
     li{
       list-style: none;
-      display: inline;
     }
   }
 }
@@ -20,46 +23,46 @@ nav{
 .list_items {
  cursor: default;
  display: inline-block;
- height: 30px;
- line-height: 30px;
  position: relative;
- text-align: center;
- width: 30px;
+
+.profile_link a{
+  padding: 0 80px 80px 80px;
+}
 
  .popover {
-   background-color: rgba(0,0,0,0.85);
+   background-color: $secondary-color;
    border-radius: 5px;
-   bottom: 42px;
-   box-shadow: 0 0 5px rgba(0,0,0,0.4);
+   top: 42px;
    color: #fff;
    display: none;
-   font-size: 12px;
-   font-family: 'Helvetica',sans-serif;
-   left: -95px;
    padding: 7px 10px;
    position: absolute;
    width: 200px;
-   z-index: 4;
+   z-index: 2;
 
+  // to create the speech bubble at the bottom
    &:before {
-     border-top: 7px solid rgba(0,0,0,0.85);
+     border-bottom: 7px solid $secondary-color;
      border-right: 7px solid transparent;
      border-left: 7px solid transparent;
-     bottom: -7px;
+     top: -7px;
      content: '';
      display: block;
      left: 50%;
      margin-left: -7px;
      position: absolute;
    }
+   ul {
+    padding-left: 0;
+   }
  }
 
  &:hover {
    .popover {
      display: block;
-     -webkit-animation: fade-in .3s linear 1, move-up .3s linear 1;
-     -moz-animation: fade-in .3s linear 1, move-up .3s linear 1;
-     -ms-animation: fade-in .3s linear 1, move-up .3s linear 1;
+     -webkit-animation: fade-in .3s linear 1, move-down .3s linear 1;
+     -moz-animation: fade-in .3s linear 1, move-down .3s linear 1;
+     -ms-animation: fade-in .3s linear 1, move-down .3s linear 1;
    }
  }
 }
@@ -77,17 +80,17 @@ nav{
   from   { opacity: 0; }
   to { opacity: 1; }
 }
-@-webkit-keyframes move-up {
-  from   { bottom: 30px; }
-  to { bottom: 42px; }
+@-webkit-keyframes move-down {
+  from   { top: 30px; }
+  to { top: 42px; }
 }
-@-moz-keyframes move-up {
-  from   { bottom: 30px; }
-  to { bottom: 42px; }
+@-moz-keyframes move-down {
+  from   { top: 30px; }
+  to { top: 42px; }
 }
-@-ms-keyframes move-up {
-  from   { bottom: 30px; }
-  to { bottom: 42px; }
+@-ms-keyframes move-down {
+  from   { top: 30px; }
+  to { top: 42px; }
 }
 
 
