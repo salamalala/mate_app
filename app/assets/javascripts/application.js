@@ -37,18 +37,47 @@ myMap.initialize = function(){
 
   var markerOptionsStart = {
    position: {lat: startPortLat, lng: startPortLong}
-  };
+ };
 
-  var markerStart = new google.maps.Marker(markerOptionsStart);
-  markerStart.setMap(map);
+ var markerStart = new google.maps.Marker(markerOptionsStart);
+ markerStart.setMap(map);
 
-  var markerOptionsEnd = {
+ var markerOptionsEnd = {
    position: {lat: endPortLat, lng: endPortLong}
-  };
+ };
 
-  var markerEnd = new google.maps.Marker(markerOptionsEnd);
-  markerEnd.setMap(map);
-  };
+ var markerEnd = new google.maps.Marker(markerOptionsEnd);
+ markerEnd.setMap(map);
+
+ myMap.getPosition();
+
+};
+
+//get current_location
+myMap.getPosition = function(){
+  if (navigator.geolocation){
+    var geolocation = navigator.geolocation.getCurrentPosition(myMap.geolocationSuccess, myMap.geolocationFail);
+  } else{
+    alert("You don't have geolocation enabled");
+  }
+};
+
+
+myMap.geolocationSuccess = function(position){
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  var url = '/journeys/weather_at/current/';
+  var data = {'lat': latitude, 'long': longitude };
+
+  $.get(url, data).success(function(data) {
+    $('#current_weather_partial').html(data);
+  });
+
+  
+};
+myMap.geolocationFail = function(position){
+  console.log('fail geolocation');
+};
 
 
 
@@ -59,7 +88,7 @@ $(function(){
 });
 
 
-//ajax for weather api
+//ajax for weather api, get the partial and 
 $(function() {
   $('.weather_partial').each(function(index, div) {
     var id = $(div).data('journeyId');

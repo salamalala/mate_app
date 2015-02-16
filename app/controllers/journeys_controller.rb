@@ -49,9 +49,9 @@ class JourneysController < ApplicationController
       @city = @journey.send("#{@location}_city")
     else
       #for current location 
-      # go lookup lat and long of current
-      @journey = Journey.new(current_city: @location, current_port_latitude: 51, current_port_latitude: 88)
-      @city = @location
+      # go lookup lat and long of current location.
+      @journey = Journey.new(current_city: :current, current_port_latitude: params[:lat], current_port_longitude: params[:long])
+      @city = 'your current location'
     end
 
     render layout: false

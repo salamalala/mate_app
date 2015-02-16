@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   #create a route for weather ajax. 
   resources :journeys do
+    collection do
+      get 'weather_at/:location', action: :weather_at
+    end
     member do
       get 'weather_at/:location', action: :weather_at
     end

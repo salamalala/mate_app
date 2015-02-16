@@ -16,7 +16,8 @@ nav{
     height: 30px;
     padding-left: 20px;
     line-height: 80px; 
-    -webkit-animation: anchor-rotate alternate cubic-bezier(0.785, 0.135, 0.150, 0.860) .6s infinite both; 
+    -webkit-animation: anchor-rotate alternate-reverse cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.7s infinite both; 
+    -webkit-transform-origin:top;
   }
   a{
     color: white;

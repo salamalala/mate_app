@@ -103,8 +103,8 @@
 /* Anchor rocking */
 
 @-webkit-keyframes anchor-rotate {
-  from   { transform: rotate(-4deg);}
-  to {transform: rotate(4deg) }
+  0%   { transform: rotate(-7deg);}
+  100% {transform: rotate(7deg) }
 }
 
 
