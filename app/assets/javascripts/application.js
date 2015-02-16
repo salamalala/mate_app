@@ -72,16 +72,6 @@ $(function() {
   });
 
 
-
-  // $.ajax({
-  //   type: "GET",
-  //   url: "/meals",
-  //   data: data,
-  //   dataType: 'json',
-  //   success: function(response){
-  //     deskSpace.renderMeals(response);
-  //   }
-  // });
 });
 
 

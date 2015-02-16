@@ -56,7 +56,9 @@ class Journey < ActiveRecord::Base
     lat = send("#{location}_port_latitude")
     long = send("#{location}_port_longitude")
 
-    @weather_at_location = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&units=metric&id=524901&APPID=#{ENV['APP_WEATHER']}")
+    url = "http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&units=metric&APPID=#{ENV['APP_WEATHER']}"
+
+    @weather_at_location = HTTParty.get(url)
   end
 
   def weather_temp(location)
