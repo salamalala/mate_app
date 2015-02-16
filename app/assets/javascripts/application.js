@@ -11,12 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require typekit
 //= require social-share-button
 //= require jquery.datetimepicker
-//= require_tree .
+//= require turbolinks
+//= require_tree 
 
 //Google Maps
 var myMap = myMap || {};
