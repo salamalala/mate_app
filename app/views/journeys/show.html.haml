@@ -14,9 +14,10 @@
   = @journey.start_full_address
 
   %p Start Port Latitude:
-  = @journey.start_port_latitude if @journey.start_port_latitude
+
+  #start_port_lat= @journey.start_port_latitude if @journey.start_port_latitude
   %p Start Port Longitude:
-  = @journey.start_port_longitude if @journey.start_port_longitude
+  #start_port_long= @journey.start_port_longitude if @journey.start_port_longitude
 
   %p
   = "Current weather in #{@journey.start_city}: " 
@@ -28,9 +29,9 @@
   = @journey.end_full_address
 
   %p End Port Latitude:
-  = @journey.end_port_latitude if @journey.end_port_latitude
+  #start_port_long= @journey.end_port_latitude if @journey.end_port_latitude
   %p End Port Longitude:
-  = @journey.end_port_longitude if @journey.end_port_longitude
+  #end_port_long= @journey.end_port_longitude if @journey.end_port_longitude
 
   %p
   = "Current weather in #{@journey.end_city}: " 

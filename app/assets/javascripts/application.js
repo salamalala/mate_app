@@ -18,19 +18,31 @@
 //= require jquery.datetimepicker
 //= require_tree .
 
-
+//Google Maps
 var myMap = myMap || {};
 
 myMap.initialize = function(){
 
+  var startPortLat = parseFloat($("#start_port_lat").text());
+  var startPortLong = parseFloat($("#start_port_long").text());
+  console.log(startPortLong)
+  var endPortLat = parseFloat($("#end_port_lat").text());
+  var endPortLong = parseFloat($("#end_port_long").text());
+
   var mapOptions = {
-    center: { lat: 51.52, lng: -0.115},
+    center: { lat: startPortLat, lng:  startPortLong},
     zoom: 14,
   };
 
- var map = new google.maps.Map(myMap.mapElement, mapOptions);
-};
+  var map = new google.maps.Map(myMap.mapElement, mapOptions);
 
+  var markerOptionsStart = {
+   position: {lat: startPortLat, lng: startPortLong}
+  };
+
+  var markerStart = new google.maps.Marker(markerOptionsStart);
+  markerStart.setMap(map);
+  };
 
 $(function(){
   myMap.mapElement = $('#map_canvas')[0];
@@ -40,6 +52,10 @@ $(function(){
 
 
 
+
+
+
+//datepicker from today on. 
 $(function() {
   $('.datepicker').datetimepicker({
     minDate: 0,
