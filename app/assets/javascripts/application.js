@@ -27,12 +27,13 @@ myMap.initialize = function(){
     center: { lat: 51.52, lng: -0.115},
     zoom: 14,
   };
-  myMap.map = new google.maps.Map(myMap.mapElement, mapOptions);
+
+ var map = new google.maps.Map(myMap.mapElement, mapOptions);
 };
 
 
 $(function(){
-  myMap.mapElement = ('map_canvas')[0];
+  myMap.mapElement = $('#map_canvas')[0];
   myMap.initialize();
 
 });
