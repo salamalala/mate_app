@@ -1,4 +1,10 @@
 %p#notice= notice
+
+
+
+.weather_partial{data: { location: :current } }
+  current weather where you are
+
 %div
   %h2
     = @journey.title
@@ -19,10 +25,10 @@
   %p Start Port Longitude:
   #start_port_long= @journey.start_port_longitude if @journey.start_port_longitude
 
-  %p
-  = "Current weather in #{@journey.start_city}: " 
-  = @journey.weather_temp
-  = @journey.weather_main
+  
+  //current weather at endport: look up the partial.
+  .weather_partial{data: { journey_id: @journey.id, location: :start } }
+    Please wait while we look up the weather here...
 
   
   %h3 End Address
@@ -33,10 +39,10 @@
   %p End Port Longitude:
   #end_port_long= @journey.end_port_longitude if @journey.end_port_longitude
 
-  %p
-  = "Current weather in #{@journey.end_city}: " 
-  = @journey.weather_at_location("end")["main"]["temp"] 
-  = @journey.weather_at_location("end")["weather"][0]["main"] 
+
+  //current weather at endport: look up the partial.
+  .weather_partial{data: { journey_id: @journey.id, location: :end } }
+    Please wait while we look up the weather here...
 
   %p
     %strong Description:

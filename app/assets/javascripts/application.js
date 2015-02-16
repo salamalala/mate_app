@@ -26,7 +26,6 @@ myMap.initialize = function(){
   var startPortLat = parseFloat($("#start_port_lat").text());
   var startPortLong = parseFloat($("#start_port_long").text());
   var endPortLat = parseFloat($("#end_port_lat").text());
-  console.log(endPortLat)
   var endPortLong = parseFloat($("#end_port_long").text());
 
   var mapOptions = {
@@ -59,6 +58,31 @@ $(function(){
 
 });
 
+
+//ajax for weather api
+$(function() {
+  $('.weather_partial').each(function(index, div) {
+    var id = $(div).data('journeyId');
+    var location = $(div).data('location');
+    var url ='/journeys/' + id + '/weather_at/' + location;
+
+    $.get(url).success(function(data) {
+      $(div).html(data);
+    });
+  });
+
+
+
+  // $.ajax({
+  //   type: "GET",
+  //   url: "/meals",
+  //   data: data,
+  //   dataType: 'json',
+  //   success: function(response){
+  //     deskSpace.renderMeals(response);
+  //   }
+  // });
+});
 
 
 

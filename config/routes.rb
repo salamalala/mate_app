@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   resources :boats
 
-  resources :journeys
+  #create a route for weather ajax. 
+  resources :journeys do
+    member do
+      get 'weather_at/:location', action: :weather_at
+    end
+  end
 
   resources :bookings
 

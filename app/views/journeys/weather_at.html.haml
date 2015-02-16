@@ -1,0 +1,8 @@
+// current weather at start and end port. 
+
+%p
+  = "Current weather in #{@city}: "
+%p
+  = @journey.weather_temp(@location)
+%p
+  = @journey.weather_main(@location)

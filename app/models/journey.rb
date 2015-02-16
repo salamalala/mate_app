@@ -3,9 +3,10 @@ class Journey < ActiveRecord::Base
   belongs_to :boat
   belongs_to :captain, class_name: 'User'
   has_many :users, through: :bookings
-
+  
   after_save :available_berth
 
+  attr_accessor :current_city, :current_port_latitude, :current_port_longitude
 
   #validations
   validates :start_date, :end_date, :start_city, :end_city, :country, :deal, :berth, presence: true
@@ -20,7 +21,7 @@ class Journey < ActiveRecord::Base
   end
 
 
-  #still available berth, if nil then 0. 
+  #available berth, if nil then 0. 
   def available_berth
     if (self.journey_berth_booked ||=  0) && (self.berth ||=  0)
       berth - journey_berth_booked
@@ -50,18 +51,20 @@ class Journey < ActiveRecord::Base
 
 
   def weather_at_location(location)
+    return @weather_at_location if @weather_at_location
+
     lat = send("#{location}_port_latitude")
     long = send("#{location}_port_longitude")
 
-    response = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&units=metric?id=524901&APPID=#{ENV['APP_WEATHER']}")
+    @weather_at_location = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&units=metric&id=524901&APPID=#{ENV['APP_WEATHER']}")
   end
 
-  def weather_temp
-    weather_at_location("start")["main"]["temp"] 
+  def weather_temp(location)
+    weather_at_location(location)["main"]["temp"] rescue "unknown"
   end
 
-  def weather_main
-    weather_at_location("start")["weather"][0]["main"] 
+  def weather_main(location)
+    weather_at_location(location)["weather"][0]["main"] rescue "unknown"
   end
 
 #ajax: fire off the request to get the view of the weather. 

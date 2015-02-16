@@ -41,6 +41,21 @@ class JourneysController < ApplicationController
     respond_with(@journey)
   end
 
+  def weather_at
+    @location = params[:location]
+
+    if %w(start end).include?(@location)
+      set_journey
+      @city = @journey.send("#{@location}_city")
+    else
+      # go lookup lat and long of current
+      @journey = Journey.new(current_city: @location, current_port_latitude: 51, current_port_latitude: 88)
+      @city = @location
+    end
+
+    render layout: false
+  end
+
   private
     def set_journey
       @journey = Journey.find(params[:id])
