@@ -4,12 +4,13 @@ class Journey < ActiveRecord::Base
   belongs_to :captain, class_name: 'User'
   has_many :users, through: :bookings
 
+  after_save :available_berth
+
 
   #validations
   validates :start_date, :end_date, :start_city, :end_city, :country, :deal, :berth, presence: true
   validates :berth, numericality: { greater_than_or_equal_to: 0 }
-  validates :journey_berth_booked, numericality: { greater_than_or_equal_to: 0 }
-  validate :end_must_be_after_start
+    validate :end_must_be_after_start
 
   scope :journeys_in_past, ->  { where('start_date < ?', Date.today)}
   scope :journeys_in_future, ->  {where('start_date >= ?', Date.today)}
@@ -19,10 +20,10 @@ class Journey < ActiveRecord::Base
   end
 
 
-  #still available berth
+  #still available berth, if nil then 0. 
   def available_berth
-    if (journey_berth_booked ||=  0) && (berth ||=  0)
-      berth -= journey_berth_booked
+    if (self.journey_berth_booked ||=  0) && (self.berth ||=  0)
+      berth - journey_berth_booked
     end
   end
 
