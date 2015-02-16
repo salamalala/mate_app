@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213155602) do
+ActiveRecord::Schema.define(version: 20150216093005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150213155602) do
     t.float    "end_port_longitude"
     t.integer  "boat_id"
     t.integer  "captain_id"
+    t.integer  "journey_berth_booked"
   end
 
   create_table "ratings", force: true do |t|

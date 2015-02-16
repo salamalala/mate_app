@@ -38,28 +38,28 @@
 
 @-webkit-keyframes icon-wobble-horizontal {
   16.65% {
-    -webkit-transform: translateX(6px);
-    transform: translateX(6px);
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
   }
 
   33.3% {
-    -webkit-transform: translateX(-5px);
-    transform: translateX(-5px);
+    -webkit-transform: translateX(-4px);
+    transform: translateX(-4px);
   }
 
   49.95% {
-    -webkit-transform: translateX(4px);
-    transform: translateX(4px);
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
   }
 
   66.6% {
-    -webkit-transform: translateX(-2px);
-    transform: translateX(-2px);
+    -webkit-transform: translateX(-1px);
+    transform: translateX(-1px);
   }
 
   83.25% {
-    -webkit-transform: translateX(1px);
-    transform: translateX(1px);
+    -webkit-transform: translateX(0.5px);
+    transform: translateX(0.5px);
   }
 
   100% {
@@ -70,28 +70,28 @@
 
 @keyframes icon-wobble-horizontal {
   16.65% {
-    -webkit-transform: translateX(6px);
-    transform: translateX(6px);
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
   }
 
   33.3% {
-    -webkit-transform: translateX(-5px);
-    transform: translateX(-5px);
+    -webkit-transform: translateX(-4px);
+    transform: translateX(-4px);
   }
 
   49.95% {
-    -webkit-transform: translateX(4px);
-    transform: translateX(4px);
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
   }
 
   66.6% {
-    -webkit-transform: translateX(-2px);
-    transform: translateX(-2px);
+    -webkit-transform: translateX(-1px);
+    transform: translateX(-1px);
   }
 
   83.25% {
-    -webkit-transform: translateX(1px);
-    transform: translateX(1px);
+    -webkit-transform: translateX(0.5px);
+    transform: translateX(0.5px);
   }
 
   100% {
@@ -103,8 +103,8 @@
 /* Anchor rocking */
 
 @-webkit-keyframes anchor-rotate {
-  from   { transform: rotate(-3deg);}
-  to {transform: rotate(3deg) }
+  from   { transform: rotate(-4deg);}
+  to {transform: rotate(4deg) }
 }
 
 

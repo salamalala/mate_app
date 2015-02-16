@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
     if @booking.save
       @journey = Journey.find(@booking.journey_id)
       @journey.berth -=  @booking.berthbooked
-      @journey.berth
+      @journey.save
       @booking.save
       render :index
     else
