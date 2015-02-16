@@ -25,13 +25,13 @@ myMap.initialize = function(){
 
   var startPortLat = parseFloat($("#start_port_lat").text());
   var startPortLong = parseFloat($("#start_port_long").text());
-  console.log(startPortLong)
   var endPortLat = parseFloat($("#end_port_lat").text());
+  console.log(endPortLat)
   var endPortLong = parseFloat($("#end_port_long").text());
 
   var mapOptions = {
     center: { lat: startPortLat, lng:  startPortLong},
-    zoom: 14,
+    zoom: 8,
   };
 
   var map = new google.maps.Map(myMap.mapElement, mapOptions);
@@ -42,7 +42,16 @@ myMap.initialize = function(){
 
   var markerStart = new google.maps.Marker(markerOptionsStart);
   markerStart.setMap(map);
+
+  var markerOptionsEnd = {
+   position: {lat: endPortLat, lng: endPortLong}
   };
+
+  var markerEnd = new google.maps.Marker(markerOptionsEnd);
+  markerEnd.setMap(map);
+  };
+
+
 
 $(function(){
   myMap.mapElement = $('#map_canvas')[0];
