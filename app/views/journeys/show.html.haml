@@ -21,8 +21,8 @@
 
   %p
   = "Current weather in #{@journey.start_city}: " 
-  = @journey.weather_at_location("start")["main"]["temp"] 
-  = @journey.weather_at_location("start")["weather"][0]["main"] 
+  = @journey.weather_temp
+  = @journey.weather_main
 
   
   %h3 End Address

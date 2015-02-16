@@ -54,8 +54,16 @@ class Journey < ActiveRecord::Base
     long = send("#{location}_port_longitude")
 
     response = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&units=metric?id=524901&APPID=#{ENV['APP_WEATHER']}")
-
   end
+
+  def weather_temp
+    weather_at_location("start")["main"]["temp"] 
+  end
+
+  def weather_main
+    weather_at_location("start")["weather"][0]["main"] 
+  end
+
 #ajax: fire off the request to get the view of the weather. 
 
 
