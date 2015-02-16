@@ -23,7 +23,8 @@
     = "End of the journey: #{journey.end_city}"
     = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
     = "End date: #{journey.end_date.strftime('%d/%m/%Y')}"
-    = "Totally offered amount of berth: #{journey.berth}"
+    = "Total amount of berth offered: #{journey.berth}"
+    = "Total amount of berth booked: #{journey.journey_berth_booked}"
     -if journey.bookings.any? 
       - journey.bookings.each do |booking|
         = "Name of person who booked: #{booking.user.name}"

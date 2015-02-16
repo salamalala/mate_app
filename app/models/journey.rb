@@ -8,6 +8,7 @@ class Journey < ActiveRecord::Base
   #validations
   validates :start_date, :end_date, :start_city, :end_city, :country, :deal, :berth, presence: true
   validates :berth, numericality: { greater_than_or_equal_to: 0 }
+  validates :journey_berth_booked, numericality: { greater_than_or_equal_to: 0 }
   validate :end_must_be_after_start
 
   scope :journeys_in_past, ->  { where('start_date < ?', Date.today)}
@@ -16,6 +17,15 @@ class Journey < ActiveRecord::Base
   def end_must_be_after_start
     errors.add(:end_date, "must be after embarking date") if end_date <= start_date
   end
+
+
+  #still available berth
+  def available_berth
+    if (journey_berth_booked ||=  0) && (berth ||=  0)
+      berth -= journey_berth_booked
+    end
+  end
+
 
 
   before_save :geocode_addresses

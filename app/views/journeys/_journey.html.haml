@@ -5,7 +5,7 @@
   %p= (journey.start_date).strftime("%d | %m | %y - ") if journey.start_date 
   %p= (journey.end_date).strftime("%d | %m | %y") if journey.end_date 
   /Formats date according to the directives in the given format string
-  %p= "#{journey.berth} berth available"
+  %p= "#{journey.available_berth} berth out of total #{journey.berth} berth are still available"
 
   %p= link_to 'More', journey
   %p= link_to 'Edit', edit_journey_path(journey) 

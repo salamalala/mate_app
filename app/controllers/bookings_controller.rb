@@ -22,20 +22,16 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @bookings = Booking.all
     @booking = Booking.new(booking_params)
     @booking.status = "Requested"
     @booking.user_id = current_user.id
     if @booking.save
-      @journey = Journey.find(@booking.journey_id)
-      @journey.berth -=  @booking.berthbooked
-      @journey.save
-      @booking.save
       render :index
     else
       render :new
     end
   end
+
 
   
 
