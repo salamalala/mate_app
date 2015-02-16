@@ -44,7 +44,7 @@
     %strong Deal:
     = @journey.deal
   %p
-    = "#{@journey.berth} berth still available"
+    = "#{@journey.available_berth} berth out of total #{@journey.berth} berth are still available"
 
   %p Share that journey: 
   = social_share_button_tag("Check out the journey on Mate App")
@@ -61,7 +61,7 @@
     = simple_form_for @booking do |b|
       = b.hidden_field :journey_id, value: @journey.id
       = b.label "Select number of berths: "
-      = b.input :berthbooked, collection: 1..(@journey.berth).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
+      = b.input :berthbooked, collection: 1..(@journey.available_berth).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
       = b.label "#{@journey.deal} :"
       = b.input :dealconfirmation,  as: :check_boxes, collection: ['Ok'], label: false
       = b.label "Write a comment: "
