@@ -11,14 +11,31 @@ class Journey < ActiveRecord::Base
   #validations
   validates :start_date, :end_date, :start_city, :end_city, :country, :deal, :berth, presence: true
   validates :berth, numericality: { greater_than_or_equal_to: 0 }
-    validate :end_must_be_after_start
+  validate :end_must_be_after_start
+  validate :start_date_in_future
 
   scope :journeys_in_past, ->  { where('start_date < ?', Date.today)}
   scope :journeys_in_future, ->  {where('start_date >= ?', Date.today)}
 
-  def end_must_be_after_start
-    errors.add(:end_date, "must be after embarking date") if end_date <= start_date
+  def start_date_in_future
+    errors.add(:start_date, "must be in the future") if start_date < Time.zone.now
   end
+
+  def journey_in_future
+    start_date > Date.today
+  end
+
+
+
+
+  def end_must_be_after_start
+    if start_date && end_date
+    errors.add(:end_date, "must be after embarking date") if
+        end_date <= start_date
+    end
+  end
+
+
 
 
   #available berth, if nil then 0. 

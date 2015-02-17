@@ -10,7 +10,7 @@
     = "The status or your booking: '#{booking.status}'"
     = link_to 'Show', booking
     = link_to 'Edit', edit_booking_path(booking)
-    = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' }
+    = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' } if booking.journey.journey_in_future
     %br
 -else
   %p You didn't book any journey yet. 

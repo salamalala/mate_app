@@ -56,9 +56,9 @@
   %p Share that journey: 
   = social_share_button_tag("Check out the journey on Mate App")
 
-  = link_to 'Edit', edit_journey_path(@journey)
+  = link_to 'Edit Journey', edit_journey_path(@journey) if can? :edit, @journey
 
-  = link_to 'Back', journeys_path
+  = link_to 'Show all journeys', journeys_path 
 
 %div
 

@@ -107,7 +107,6 @@ $(function() {
 
 
 
-
 //datepicker from today on. 
 $(function() {
   $('.datepicker').datetimepicker({
