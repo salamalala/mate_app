@@ -83,9 +83,11 @@ myMap.geolocationFail = function(position){
 
 
 $(function(){
-  myMap.mapElement = $('#map_canvas')[0];
-  myMap.initialize();
-
+  if ($('#map_canvas').length > 0 ){
+    
+    myMap.mapElement = $('#map_canvas')[0];
+    myMap.initialize();
+  }
 });
 
 
