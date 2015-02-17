@@ -16,6 +16,12 @@ class User < ActiveRecord::Base
     [first_name, last_name].delete_if(&:blank?).join(' ')
   end
 
+
+  def role?(role_to_check)
+    self.role.to_s == role_to_check.to_s
+  end
+
+
   #if i have boat otherwise I build a boat 
   private
   def populate_boat
@@ -25,6 +31,7 @@ class User < ActiveRecord::Base
   def current_location
     city = request.location.city
   end
+
 
 
 end
