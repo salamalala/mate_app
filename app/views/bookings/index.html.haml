@@ -13,7 +13,7 @@
       = link_to 'Edit', edit_booking_path(booking)
     -if booking.journey.journey_in_future
       = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' } 
-    %br
+  =link_to "Book another journey", root_path 
 -else
   %p You didn't book any journey yet. 
   =link_to "Book a journey", root_path 
@@ -35,13 +35,12 @@
         = "Status of booking: #{booking.status}"
         -if booking.status == "Requested"
           = button_to "Approve", booking_approve_path(booking)
-      %br 
     -else 
       %p You don't have any bookings for that journey yet
       = link_to 'Show', journey
       = link_to 'Edit', edit_journey_path(journey) if journey.journey_in_future   
       = link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' } if journey.journey_in_future   
-    %br
+    =link_to "List another sailing trip", new_journey_path  
 -else
   %p You didn't list any journeys yet.
   =link_to "List a sailing trip", new_journey_path  

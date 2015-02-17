@@ -38,8 +38,8 @@
       = f.label :country
       = f.country_select(:country, {include_blank: 'Choose a country', only: ["GB","FR", "NL", "GR" ]})
     .form_field
-      = f.text_field :start_date, autofocus: true, placeholder: 'Embarking date', class: :datepicker
-      = f.text_field :end_date, autofocus: true, placeholder: 'Check out', class: :datepicker
+      = f.text_field :start_date, autofocus: true, autocomplete: :off, placeholder: 'Embarking date', class: :datepicker
+      = f.text_field :end_date, autofocus: true, autocomplete: :off, placeholder: 'Check out', class: :datepicker
     .form_field
       = f.label :deal
       = f.text_field :deal
