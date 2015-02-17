@@ -68,3 +68,45 @@
   }
 }
 
+//background_image_journey
+.background_image{
+ /* Set rules to fill background */
+ min-height: 100%;
+ min-width: 1024px;
+ 
+ /* Set up proportionate scaling */
+ width: 100%;
+ height: auto;
+ 
+ /* Set up positioning */
+ position: fixed;
+ top: 0;
+ left: 0;
+ z-index: -4;
+
+}
+
+.container_above_image{
+  @include outer-container; 
+
+}
+.journey{
+  @include span-columns(8);
+  @include shift(2);
+  background-color: rgba($background-color, 0.9);
+  z-index:2;     
+  padding: 30px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  .form_field{
+    padding-bottom: 10px;
+
+ label{
+    float: left;
+    text-align: right;
+    margin-right: 15px;
+    width: 200px;
+  }
+}
+}
+
