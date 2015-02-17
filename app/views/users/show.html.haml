@@ -7,11 +7,15 @@
 %h4 About me: 
 = current_user.about_me
 
+= link_to 'Edit Profile', edit_user_registration_path
+
 %h4 My Boat: 
 = current_user.boat.try :description
 
 %h4 Image of the boat: 
 = image_tag current_user.boat.try :boat_image
+
+= link_to 'Edit Boat', edit_boat_path(current_user.boat)
 
 %h4 Journeys in the past:
 -if current_user.journeys_as_captain.journeys_in_past.any?
@@ -38,4 +42,3 @@
 
 
 
-= link_to 'Edit', edit_user_registration_path
