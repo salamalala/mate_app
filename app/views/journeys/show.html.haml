@@ -10,7 +10,9 @@
     = @journey.title
 
   %p= "Captain for this journey: #{@journey.captain.try :name}"
-  = link_to "Profile", profile_path(@journey.captain_id)
+
+  = link_to "Captains profile", profile_path(@journey.try :captain)
+  =mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} "
   
   %p= @journey.start_date.strftime("%d | %m | %y - ") if @journey.start_date 
   %p= (@journey.end_date).strftime("%d | %m | %y") if @journey.end_date
