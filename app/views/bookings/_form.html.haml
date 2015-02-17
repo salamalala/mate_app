@@ -1,4 +1,4 @@
-= form_for(@booking) do |f|
+= simple_form_for @booking do |b|
   - if @booking.errors.any?
     #error_explanation
       %h2
@@ -7,13 +7,12 @@
       %ul
         - @booking.errors.full_messages.each do |message|
           %li= message
-  .field
-    = f.label :comment
-    %br/
-    = f.text_area :comment
-  .field
-    = f.label :status
-    %br/
-    = f.text_field :status
-  .actions
-    = f.submit
+          
+  = b.hidden_field :journey_id, value: @journey.id
+  = b.label "Select number of berths: "
+  = b.input :berthbooked, collection: 1..(@journey.available_berth).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
+  = b.label :dealconfirmation, "Do you agree to the journey deal: '#{@journey.deal}'?"
+  = b.input :dealconfirmation,  as: :check_boxes, collection: ['Yes I agree'], label: false
+  = b.label "Write a comment: "
+  = b.input :comment, as: :text,label: false
+  = b.button :submit, "Request to book"

@@ -115,9 +115,8 @@ $(function() {
     minDate: 0,
     timepicker: false,
     format:'d.m.Y'
-
   });
-})
+});
 
 // $('#inner-editor').click(function(){
 //   $('.datetimepicker').datetimepicker('show'); //support hide,show and destroy command

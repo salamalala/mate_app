@@ -74,8 +74,8 @@
           = b.hidden_field :journey_id, value: @journey.id
           = b.label "Select number of berths: "
           = b.input :berthbooked, collection: 1..(@journey.available_berth).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
-          = b.label "#{@journey.deal} :"
-          = b.input :dealconfirmation,  as: :check_boxes, collection: ['Ok'], label: false
+          = b.label :dealconfirmation, "Do you agree to the journey deal: '#{@journey.deal}'?"
+          = b.input :dealconfirmation,  as: :check_boxes, collection: ['Yes I agree'], label: false
           = b.label "Write a comment: "
           = b.input :comment, as: :text,label: false
           = b.button :submit, "Request to book"

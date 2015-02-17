@@ -4,9 +4,13 @@ class Booking < ActiveRecord::Base
   belongs_to :journey
   has_one :boat, through: :journey
 
-  after_save :sum_up_bookings_of_journey
+  # validates :dealconfirmation, presence: true
 
-#total amount of booked berth per journey
+  #after creating and updating
+  after_save :sum_up_bookings_of_journey
+  after_destroy :sum_up_bookings_of_journey
+
+#total amount of booked berth per journey, 
   def sum_up_bookings_of_journey
     journey.update(journey_berth_booked: Booking.where(journey_id: journey_id).sum(:berthbooked)) if journey
   end
