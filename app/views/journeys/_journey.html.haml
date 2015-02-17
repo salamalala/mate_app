@@ -1,12 +1,13 @@
-%div
-  %p= journey.title
-  %p= journey.start_city
-  %p= journey.end_city
-  %p= (journey.start_date).strftime("%d | %m | %y - ") if journey.start_date 
-  %p= (journey.end_date).strftime("%d | %m | %y") if journey.end_date 
-  /Formats date according to the directives in the given format string
-  %p= "#{journey.available_berth} berth out of total #{journey.berth} berth are still available"
+-if journey.journey_in_future
+  %div
+    %p= journey.title
+    %p= journey.start_city
+    %p= journey.end_city
+    %p= (journey.start_date).strftime("%d | %m | %y - ") if journey.start_date 
+    %p= (journey.end_date).strftime("%d | %m | %y") if journey.end_date 
+    /Formats date according to the directives in the given format string
+    %p= "#{journey.available_berth} berth out of total #{journey.berth} berth are still available"
 
-  %p= link_to 'More', journey
-  %p= link_to 'Edit', edit_journey_path(journey) if can? :edit, journey
-  %p= link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' }if can? :delete, journey
+    %p= link_to 'More', journey
+    %p= lisenk_to 'Edit', edit_journey_path(journey) if can? :edit, journey
+    %p= link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' }if can? :delete, journey

@@ -11,6 +11,7 @@ class Journey < ActiveRecord::Base
   #validations
   validates :start_date, :end_date, :start_city, :end_city, :country, :deal, :berth, presence: true
   validates :berth, numericality: { greater_than_or_equal_to: 0 }
+  validates :available_berth, numericality: { greater_than_or_equal_to: 0 }
   validate :end_must_be_after_start
   validate :start_date_in_future
 
@@ -22,7 +23,7 @@ class Journey < ActiveRecord::Base
   end
 
   def journey_in_future
-    start_date > Date.today
+    start_date >= Date.today
   end
 
 

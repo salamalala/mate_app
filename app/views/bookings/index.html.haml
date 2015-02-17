@@ -9,8 +9,10 @@
     = "Your comment #{booking.comment}"
     = "The status or your booking: '#{booking.status}'"
     = link_to 'Show', booking
-    = link_to 'Edit', edit_booking_path(booking)
-    = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' } if booking.journey.journey_in_future
+    -if booking.journey.journey_in_future
+      = link_to 'Edit', edit_booking_path(booking)
+    -if booking.journey.journey_in_future
+      = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' } 
     %br
 -else
   %p You didn't book any journey yet. 
@@ -34,7 +36,10 @@
           = button_to "Approve", booking_approve_path(booking)
       %br 
     -else 
-      %p You don't have any bookings for that journey yet.   
+      %p You don't have any bookings for that journey yet
+      = link_to 'Show', journey
+      = link_to 'Edit', edit_journey_path(journey) if journey.journey_in_future   
+      = link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' } if journey.journey_in_future   
     %br
 -else
   %p You didn't list any journeys yet. 
