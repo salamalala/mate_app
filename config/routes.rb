@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root to: "journeys#index"
  
   resources :ratings
 
@@ -17,7 +19,8 @@ Rails.application.routes.draw do
   resources :bookings
 
   devise_for :users
-  root to: "journeys#index"
+
+
  
   get "/profile/:id", to: "users#show", as: :profile
 

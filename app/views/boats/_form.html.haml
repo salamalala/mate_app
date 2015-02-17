@@ -9,11 +9,13 @@
           %li= message
   .field
     = f.label :boat_image
-    %br/
+
+    = f.file_field :boat_image, placeholder: "Upload an image", label: false
+
     = f.text_field :remote_boat_image_url
   .field
     = f.label :description
-    %br/
+
     = f.text_field :description
   .actions
     = f.submit "Change boat"

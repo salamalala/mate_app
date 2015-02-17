@@ -117,7 +117,14 @@ $(function() {
     format:'d.m.Y'
 
   });
+})
+
+$('#inner-editor').click(function(){
+  $('.datetimepicker').datetimepicker('show'); //support hide,show and destroy command
 });
+
+
+
 
 
 
