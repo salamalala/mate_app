@@ -70,6 +70,10 @@ class Journey < ActiveRecord::Base
     weather_at_location(location)["weather"][0]["main"] rescue "unknown"
   end
 
+  def weather_icon(location)
+    weather_at_location(location)["weather"][0]["icon"] rescue "unknown"
+  end
+
 #ajax: fire off the request to get the view of the weather. 
 
 

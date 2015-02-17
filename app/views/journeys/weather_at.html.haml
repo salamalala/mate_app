@@ -6,3 +6,5 @@
   = @journey.weather_temp(@location)
 %p
   = @journey.weather_main(@location)
+
+=image_tag "http://openweathermap.org/img/w/#{@journey.weather_icon(@location)}.png"
