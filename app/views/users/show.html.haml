@@ -1,25 +1,32 @@
 %h3 Image: 
-= image_tag current_user.user_image
+= image_tag @user.user_image
 
 %h3 Name:  
-= current_user.first_name
+= @user.first_name
 
 %h4 About me: 
-= current_user.about_me
+= @user.about_me
 
-= link_to 'Edit Profile', edit_user_registration_path
+-if current_user.id == @user.id
+  = link_to 'Edit Profile', edit_user_registration_path
 
 %h4 My Boat: 
-= current_user.boat.try :description
+= @user.boat.try :description
 
 %h4 Image of the boat: 
-= image_tag current_user.boat.try :boat_image
+= image_tag @user.boat.try :boat_image
 
-= link_to 'Edit Boat', edit_boat_path(current_user.boat)
+-if current_user.id == @user.id
+  - if current_user.boat.present?
+    = link_to "Manage boat", edit_boat_path(current_user.boat)
+  - else
+    = link_to "Add a boat to your profile", new_boat_path
+
+
 
 %h4 Journeys in the past:
--if current_user.journeys_as_captain.journeys_in_past.any?
-  - current_user.journeys_as_captain.journeys_in_past.each do |journey|
+-if @user.journeys_as_captain.journeys_in_past.any?
+  - @user.journeys_as_captain.journeys_in_past.each do |journey|
     = "Start of the journey: #{journey.start_city}"
     = "End of the journey: #{journey.end_city}"
     = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
@@ -29,8 +36,8 @@
   no journeys as captain in the past.
 
 %h4 Journeys in the future:
--if current_user.journeys_as_captain.journeys_in_future.any? 
-  - current_user.journeys_as_captain.journeys_in_future.each do |journey|
+-if @user.journeys_as_captain.journeys_in_future.any? 
+  - @user.journeys_as_captain.journeys_in_future.each do |journey|
     = "Start of the journey: #{journey.start_city}"
     = "End of the journey: #{journey.end_city}"
     = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
