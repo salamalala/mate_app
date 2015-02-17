@@ -16,6 +16,7 @@
     %br
 -else
   %p You didn't book any journey yet. 
+  =link_to "Book a journey", root_path 
 
 
 %h1 Journeys where you're the sailor 
@@ -42,6 +43,7 @@
       = link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' } if journey.journey_in_future   
     %br
 -else
-  %p You didn't list any journeys yet. 
+  %p You didn't list any journeys yet.
+  =link_to "List a sailing trip", new_journey_path  
 
 
