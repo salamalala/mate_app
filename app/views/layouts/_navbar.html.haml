@@ -8,12 +8,12 @@
         .profile_link
           %li= link_to "#{current_user.first_name}", profile_path(current_user)      
         .popover   
+          %li= link_to "My Journeys", bookings_path
+          %li= link_to "My Profile", profile_path(current_user)
           - if current_user.boat.present?
             %li= link_to "Manage Boat", edit_boat_path(current_user.boat)
           - else
             %li= link_to "Add a Boat to Profile", new_boat_path
-          %li= link_to "My Journeys", bookings_path
-          %li= link_to "My Profile", profile_path(current_user)
           %li= link_to "Log Out", destroy_user_session_path, method: :delete  
   - else
     %ul
