@@ -119,9 +119,9 @@ $(function() {
   });
 })
 
-$('#inner-editor').click(function(){
-  $('.datetimepicker').datetimepicker('show'); //support hide,show and destroy command
-});
+// $('#inner-editor').click(function(){
+//   $('.datetimepicker').datetimepicker('show'); //support hide,show and destroy command
+// });
 
 
 

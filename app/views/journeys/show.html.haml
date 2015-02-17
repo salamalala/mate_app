@@ -64,29 +64,38 @@
 
 %div
 
-  -if @journey.available_berth >= 1
-    %h2 
-      Book your berth now:
+  -if @journey.captain.id != current_user.id
+    -if @journey.available_berth >= 1
+      %h2 
+        Book your berth now:
 
-    - if current_user
-      = simple_form_for @booking do |b|
-        = b.hidden_field :journey_id, value: @journey.id
-        = b.label "Select number of berths: "
-        = b.input :berthbooked, collection: 1..(@journey.available_berth).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
-        = b.label "#{@journey.deal} :"
-        = b.input :dealconfirmation,  as: :check_boxes, collection: ['Ok'], label: false
-        = b.label "Write a comment: "
-        = b.input :comment, as: :text,label: false
-        = b.button :submit, "Request to book"
-        /Doesnt work yet! 
-        / = b.mail_to @journey.try :captain_id, "Contact the captain"
+      - if current_user
+        = simple_form_for @booking do |b|
+          = b.hidden_field :journey_id, value: @journey.id
+          = b.label "Select number of berths: "
+          = b.input :berthbooked, collection: 1..(@journey.available_berth).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
+          = b.label "#{@journey.deal} :"
+          = b.input :dealconfirmation,  as: :check_boxes, collection: ['Ok'], label: false
+          = b.label "Write a comment: "
+          = b.input :comment, as: :text,label: false
+          = b.button :submit, "Request to book"
+          /Doesnt work yet! 
+          / = b.mail_to @journey.try :captain_id, "Contact the captain"
 
-    - else    
-      = link_to "Log in to book your berth", new_user_session_path
+      - else    
+        = link_to "Log in to book your berth", new_user_session_path
+
+    -else 
+      %h2 
+        There aren't any berths for this journey available anymore. 
 
   -else 
-    %h2 
-      There aren't any berths for this journey available anymore. 
+    %h2
+      You listed that journey 
+    -if @journey.bookings.present? 
+      =link_to "look at the bookings", bookings_path
+    -else
+      %p there are no bookings for this journey yet. 
 
 #map_canvas
 
