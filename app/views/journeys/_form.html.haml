@@ -10,45 +10,23 @@
             %li= message
    
     .form_field
-      = f.label "Title of the journey"
-      = f.text_field :title
-    
+      = f.text_field :title, placeholder: "Journey Title"
     .form_field
-      = f.label "Describe your journey"
-      = f.text_area :description
+      = f.text_field :start_city, placeholder: "Start Port"
     .form_field
-      = f.label :start_port_latitude
-      = f.text_field :start_port_latitude
+      = f.text_field :end_city, placeholder: "End Port"
     .form_field
-      = f.label :end_port_latitude
-      = f.text_field :end_port_latitude
-    .form_field
-      = f.label :start_address
-      = f.text_field :start_address
-    .form_field
-      = f.label :start_city
-      = f.text_field :start_city
-    .form_field
-      = f.label :end_address
-      = f.text_field :end_address
-    .form_field
-      = f.label :end_city
-      = f.text_field :end_city
-    .form_field
-      = f.label :country
       = f.country_select(:country, {include_blank: 'Choose a country', only: ["GB","FR", "NL", "GR" ]})
     .form_field
       = f.text_field :start_date, autocomplete: :off, placeholder: 'Embarking date', class: :datepicker
       = f.text_field :end_date, autocomplete: :off, placeholder: 'Check out', class: :datepicker
     .form_field
-      = f.label :deal
-      = f.text_field :deal, autocomplete: :off
+      = f.text_field :deal, autocomplete: :off, placeholder: "Deal"
     .form_field
-      = f.label :berth
       = f.select :berth, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @journey.berth)
 
 
-    = f.submit "List your journey", class: "btn"
+    = f.submit "List your journey", class: "btn orange"
 
       
 - else
