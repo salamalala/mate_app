@@ -11,10 +11,10 @@
    
     %div
       .journey_information
-        %h2
+        %h1
           = @journey.title
 
-        %p= "#{@journey.start_date.strftime("%d | %m | %y") if @journey.start_date} – #{(@journey.end_date).strftime("%d | %m | %y") if @journey.end_date}"
+        .date= "#{@journey.start_date.strftime("%d | %m | %y") if @journey.start_date} – #{(@journey.end_date).strftime("%d | %m | %y") if @journey.end_date}"
 
         %p= "Captain for this journey: #{@journey.captain.try :name}"
         = link_to "Captains profile", profile_path(@journey.try :captain)
@@ -48,7 +48,9 @@
 
       .images_information
         = image_tag @journey.captain.boat.boat_image, class: "boat_image_journey"
-        = image_tag @journey.captain.user_image, class: "user_image_journey"
+        %a{href: profile_path(@journey.try :captain)}
+          %img{src: @journey.captain.user_image, class: "user_image_journey"} 
+ 
       
       
         %p
