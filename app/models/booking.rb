@@ -6,7 +6,7 @@ class Booking < ActiveRecord::Base
 
   validates :user_id, uniqueness: {scope: :journey_id }
 
-  # validates :dealconfirmation, presence: true
+  validates :dealconfirmation, acceptance: true
 
   #after creating and updating and deleting
   after_save :sum_up_bookings_of_journey

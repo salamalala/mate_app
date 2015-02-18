@@ -19,11 +19,15 @@ class Journey < ActiveRecord::Base
   scope :journeys_in_future, ->  {where('start_date >= ?', Date.today)}
 
   def start_date_in_future
+    if start_date && end_date
     errors.add(:start_date, "must be in the future") if start_date < Time.zone.now
+    end
   end
 
   def journey_in_future
+    if start_date 
     start_date >= Date.today
+    end
   end
 
 

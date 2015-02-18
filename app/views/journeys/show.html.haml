@@ -1,15 +1,5 @@
 %p#notice= notice
 
-- if @booking.errors.any?
-  #error_explanation
-    %h2
-      = pluralize(@booking.errors.count, "error")
-      prohibited this booking from being saved:
-    %ul
-      - @booking.errors.full_messages.each do |message|
-        %li= message
-
-
 #current_weather_partial
   current weather where you are
 
@@ -70,8 +60,21 @@
 
   = link_to 'Show all journeys', journeys_path 
 
-%div
 
+// display error messages
+- if @booking.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@booking.errors.count, "error")
+      prohibited this booking from being saved:
+    %ul
+      - @booking.errors.full_messages.each do |message|
+        %li= message
+
+
+
+%div
+  // if the user is not the captain and there are some berth available
   -if @journey.captain.id != current_user.id
     -if @journey.available_berth >= 1
       %h2 
@@ -83,7 +86,7 @@
           = b.label "Select number of berths: "
           = b.input :berthbooked, collection: 1..(@journey.available_berth).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
           = b.label :dealconfirmation, "Do you agree to the journey deal: '#{@journey.deal}'?"
-          = b.input :dealconfirmation,  as: :check_boxes, collection: ['Yes I agree'], label: false
+          = b.input :dealconfirmation,  as: :check_boxes, collection: ['Yes I agree '], label: false
           = b.label "Write a comment: "
           = b.input :comment, as: :text,label: false
           = b.button :submit, "Request to book"
@@ -103,7 +106,9 @@
     -if @journey.bookings.present? 
       =link_to "Look at the bookings", bookings_path
     -else
-      %p there are no bookings for this journey yet. 
+      %p There are no bookings for this journey yet. 
+
+
 
 #map_canvas
 
