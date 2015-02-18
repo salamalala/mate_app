@@ -41,19 +41,21 @@
           Please wait while we look up the weather here...
 
 
-        %p
+        %h3 
           Deal:
+          
+        %p 
           = @journey.deal
-        %p
+        %h3 
           = "#{@journey.available_berths} berth out of total #{@journey.berth} berth are still available"
 
         
-        %p Share that journey: 
+        %h3 Share that journey: 
         = social_share_button_tag("Check out the journey on Mate App")
 
-        = link_to 'Edit Journey', edit_journey_path(@journey) if can? :edit, @journey
+        = link_to 'Edit Journey', edit_journey_path(@journey), class: "btn b_w" if can? :edit, @journey
 
-        = link_to 'Show all journeys', journeys_path 
+        = link_to 'Show all journeys', journeys_path, class: "btn b_w"
 
 
 
@@ -62,8 +64,9 @@
         %a{href: profile_path(@journey.try :captain)}
           %img{src: @journey.captain.user_image, class: "user_image_journey"} 
 
-        %p= "Captain for this journey: #{@journey.captain.try :name}"
-        = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} ", class: "btn"
+        %h3= "Captain for this journey:"
+        %p=  @journey.captain.try :name
+        = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} ", class: "btn turk"
    
       
       
@@ -89,7 +92,7 @@
           %h2
             You listed that journey 
           -if @journey.bookings.present? 
-            =link_to "Look at the bookings", bookings_path
+            =link_to "Look at the bookings", bookings_path, class: "btn turk"
           -else
             %p There aren't any bookings for this journey yet. 
 
@@ -117,7 +120,7 @@
                   / = b.mail_to @journey.try :captain_id, "Contact the captain"
 
               - else    
-                = link_to "Log in to book your berth", new_user_session_path
+                = link_to "Log in to book your berth", new_user_session_path, class: "btn turk"
 
             -else 
               %h2 

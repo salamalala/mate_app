@@ -5,7 +5,13 @@ body{
   line-height: 1.7;
   a{
     text-decoration: none;
+
+    &:visited{
+
+    }
   }
+  
+
 }
 
 p{
@@ -43,6 +49,7 @@ main{
 
 
 #map_canvas{
+  margin-top: 50px;
   height: 500px;
 
 }

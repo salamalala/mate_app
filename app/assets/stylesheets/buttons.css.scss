@@ -1,9 +1,6 @@
 .btn{
   font-family: $font-heading;
-  background-color: $tertiary-color;
-  margin: 5px 7px 20px 7px;
   border: none; 
-  color: white;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -13,7 +10,24 @@
   border-radius: 5px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  &:hover{
-    background-color: saturate( $tertiary-color, 10% )
+  
+  &.turk{
+    background-color: $tertiary-color;
+    color: white;
+    display: inline-block;
+    &:hover{
+      background-color: saturate( $tertiary-color, 10% )
+    }
+  }
+
+  &.b_w{
+    border: solid 2px $grey;
+    color: $grey;
+    &:hover{
+      background-color: darken($background-color, 2% )
+    }
   }
 }
+
+
+

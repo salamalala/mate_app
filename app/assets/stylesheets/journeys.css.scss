@@ -31,7 +31,7 @@
   @include shift(0);
   background-color: rgba($background-color, 0.9);
   z-index:2;     
-  padding: 30px;
+  padding: 50px 35px;
   border-radius: 5px;
   margin-bottom: 30px;
   .form_field{
@@ -46,10 +46,29 @@
   }
 }
 
-.weather_icon{
+
+.weather_icon_container{
+  height: 30px;
+  width: 40px;
+  overflow: hidden;
+  position: relative;  
   display: inline-block;
-  -webkit-filter: saturate(30%);
-  vertical-align: bottom;
+
+  .weather_icon{
+    -webkit-filter: saturate(30%);
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto; 
+  }
+
+}
+
+#current_weather_partial{
+  color: $background-color;
+  padding-left: 20px;
 }
 
 .journey_information{
@@ -68,15 +87,15 @@
 
   h3{
     display: inline-block;
-    margin: 0;
+    margin: 20px 0 0 0;
   }
   p{
     display: inline-block;
   }
   .btn{
-    display: block;
     margin-left: 0;
     margin-right: 0;
+
   }
 }
 
@@ -92,7 +111,6 @@
 
   .user_image_journey {
     width: 40%;
-    height: 40%;
     border: dotted 1px gray;
     position: absolute; 
     top: -5px;
@@ -106,12 +124,21 @@
     }
   }
 
+  .btn{
+    margin-top: 20px;
+  }
+
+
+
 }
 
 .booking_information{
   @include span-columns(4 of 12);
   // background-color: saturate($background-color, 90% );
-  background-color: blue;
+  background-color: darken($background-color, 20%);  
+  padding: 30px 10px 30px 10px;
+  text-align: center;
+  height: 100%;
 }
 
 #map_canvas{
@@ -124,5 +151,20 @@
   position: absolute !important;
   top: -9999px !important;
   left: -9999px !important;
+}
+
+.social-share-button{
+  -webkit-filter: saturate(30%);
+  margin-bottom: 50px;
+
+
+  .social-share-button-twitter{
+    margin-right: 5px;
+  }
+
+  .social-share-button-facebook{
+    margin-right: 5px;
+  }
+
 }
 
