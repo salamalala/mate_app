@@ -18,7 +18,7 @@
  */
 
  @import "bourbon";
-// $visual-grid: true;
+$visual-grid: true;
  @import "neat";
  @import "variables.css.scss";
  @import "keyframes.css.scss";
@@ -29,3 +29,4 @@
  @import "index.css.scss";
  @import "style.css.scss";
  @import "journeys.css.scss";
+ @import "bookings.css.scss";

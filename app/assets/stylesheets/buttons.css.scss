@@ -20,7 +20,17 @@
     }
   }
 
+  &.orange{
+    background-color: $secondary-color;
+    color: white;
+    display: inline-block;
+    &:hover{
+      background-color: saturate( $secondary-color-color, 10% )
+    }
+  }
+
   &.b_w{
+    padding: 3px 10px;
     border: solid 2px $grey;
     color: $grey;
     &:hover{

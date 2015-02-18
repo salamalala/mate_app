@@ -10,7 +10,6 @@ body{
 
     }
   }
-  
 
 }
 
@@ -45,6 +44,34 @@ h3{
 main{
   clear: both;
 }
+
+.date{
+  font-style: italic; 
+  border-bottom: solid 2px $grey;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+}
+
+.white_container{
+  @include span-columns(12);
+  @include shift(0);
+  background-color: rgba($background-color, 0.9);
+  z-index:2;     
+  padding: 50px 35px;
+  border-radius: 5px;
+  margin: 30px 0 30px 0;
+  .form_field{
+    padding-bottom: 10px;
+
+    label{
+      float: left;
+      text-align: right;
+      margin-right: 15px;
+      width: 200px;
+    }
+  }
+}
+
 
 
 

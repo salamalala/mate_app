@@ -9,7 +9,7 @@
 } 
 
 .above_image{
-  margin-top: -200px;
+  margin-top: -170px;
   z-index: 2;
   text-align: center;
 
@@ -19,6 +19,34 @@
     color: $secondary-color;  
     font-weight: 300;
     margin-bottom: 20px;
+  }
+
+}
+
+.journeys_index_container{
+  @include outer-container;
+
+
+  .journeys_index_item{
+    @include span-columns(4);
+    background-color: darken($background-color, 5%);  
+    padding: 35px 20px 35px 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    .turk {
+      display: block;
+      width: 100%;
+      margin: 20px 0;
+      display: block;
+    }
+    .b_w{
+      display: inline-block;
+      margin-right: 10px;
+    }
+    p {
+      display: inline-block;
+    }
+
   }
 
 }
