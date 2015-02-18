@@ -37,6 +37,7 @@
         = "Name of person who booked: #{booking.user.name}"
         = "Amount of berth booked: #{booking.berthbooked}"
         = "Status of booking: #{booking.status}"
+        = link_to "Profile #{booking.user.first_name}", profile_path(booking.user_id)
         -if booking.status == "Requested"
           = button_to "Approve", booking_approve_path(booking)
     -else 
