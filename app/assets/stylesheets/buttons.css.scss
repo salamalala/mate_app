@@ -58,6 +58,23 @@ input[type=file]::-webkit-file-upload-button  {
   padding: 3px 10px;
   border: solid 2px $grey;
   color: $grey;
+}
+
+#inner_editor{
+  margin-left: 0;
+  padding: 5px 10px;
+  font-family: $font-heading;
+  border: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+  line-height: 40px; 
+  border-radius: 5px;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border: solid 2px $grey;
+  color: $grey;
 
 }
 
