@@ -19,6 +19,8 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @journey = @booking.journey
+
   end
 
   def create

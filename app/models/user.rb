@@ -21,6 +21,11 @@ class User < ActiveRecord::Base
     self.role.to_s == role_to_check.to_s
   end
 
+  def booked_on_journey?(journey)
+    journeys.include?(journey)
+  end
+
+
 
   #if i have boat otherwise I build a boat 
   private

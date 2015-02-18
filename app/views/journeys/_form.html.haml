@@ -42,7 +42,7 @@
       = f.text_field :end_date, autocomplete: :off, placeholder: 'Check out', class: :datepicker
     .form_field
       = f.label :deal
-      = f.text_field :deal
+      = f.text_field :deal, autocomplete: :off
     .form_field
       = f.label :berth
       = f.select :berth, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @journey.berth)

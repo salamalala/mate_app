@@ -14,7 +14,7 @@ class Booking < ActiveRecord::Base
 
 #total amount of booked berth per journey, 
   def sum_up_bookings_of_journey
-    journey.update(journey_berth_booked: Booking.where(journey_id: journey_id).sum(:berthbooked)) if journey
+    journey.update_berths if journey
   end
 
 end

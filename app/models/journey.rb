@@ -4,14 +4,13 @@ class Journey < ActiveRecord::Base
   belongs_to :captain, class_name: 'User'
   has_many :users, through: :bookings
   
-  after_save :available_berth
+  after_save :available_berths
 
   attr_accessor :current_city, :current_port_latitude, :current_port_longitude
 
   #validations
   validates :start_date, :end_date, :start_city, :end_city, :country, :deal, :berth, presence: true
   validates :berth, numericality: { greater_than_or_equal_to: 0 }
-  validates :available_berth, numericality: { greater_than_or_equal_to: 0 }
   validate :end_must_be_after_start
   validate :start_date_in_future
 
@@ -38,26 +37,8 @@ class Journey < ActiveRecord::Base
     end
   end
 
-  # def journey_captain
-  #   journey.try :captain
-  # end
-
-  # def journey_captain_email
-  #   journey_captain.try :email
-  # end
-
-  # def journey_captain_first_name
-  #   journey_captain.try :first_name
-  # end
-
+ 
   #available berth, if nil then 0. 
-  def available_berth
-    if (self.journey_berth_booked ||=  0) && (self.berth ||=  0)
-      berth - journey_berth_booked
-    end
-  end
-
-
 
   before_save :geocode_addresses
   #takes all attributes and turns them into a string for google search
@@ -105,6 +86,19 @@ class Journey < ActiveRecord::Base
 
 #ajax: fire off the request to get the view of the weather. 
 
+def calculate_available_berths
+  if (self.journey_berth_booked ||=  0) && (self.berth ||=  0)
+    berth - journey_berth_booked
+  else
+    0
+  end
+end
+
+
+def update_berths
+  update_column(:journey_berth_booked, bookings.sum(:berthbooked))
+  update_column(:available_berths, calculate_available_berths) 
+end
 
 #give a long and latitude to start full adress and end full adress. 
 # Send: When the method is identified by a string, the string is converted to a symbol. 

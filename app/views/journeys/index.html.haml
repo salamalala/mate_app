@@ -8,7 +8,7 @@
     = f.country_select(:country_eq, {include_blank: 'Choose a country', only: ["GB","FR", "NL", "GR" ]})   
     = f.text_field :start_date_gteq, autocomplete: :off, placeholder: 'Embarking date', class: :datepicker
     = f.text_field :end_date_lteq, autocomplete: :off, placeholder: 'Check out', class: :datepicker
-    = f.select :berth_gteq, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @q.berth_gteq)
+    = f.select :available_berths_gteq, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @q.available_berths_gteq)
     
 
     = f.submit "List journeys", id: "searchbutton"
