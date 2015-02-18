@@ -1,0 +1,138 @@
+nav{
+  background-color: $primary-color; 
+  @include fill-parent();
+  font-family: $font-heading;
+  line-height: 80px; 
+  .anchor{
+    height: 30px;
+    padding-left: 20px;
+    line-height: 80px; 
+    -webkit-animation: anchor-rotate alternate-reverse cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.7s infinite both; 
+    -webkit-transform-origin:top;
+  }
+  a{
+    color: white;
+  }
+  
+  ul {
+    padding-left: 0;
+    margin-top: 0;
+    display: inline-block;
+    float: right;
+    li{
+      list-style: none;
+    }
+  }
+}
+
+.logo{
+  font-size: $heading-1;
+  display: inline-block;
+  padding-left: 20px;
+
+}
+
+.list_sailing{   
+  display: inline-block;
+  float: right;
+  padding-right: 10px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+
+  a{
+    background-color: lighten( $grey, 10% );
+    padding: 5px 40px 5px 10px;
+    border-radius: 5px;
+    &:hover{
+      background-color: $grey;
+    }
+
+    &:before {
+      content: "➞";
+      position: absolute;
+      right: 1.5em;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    &:hover:before, &:focus:before, &:active:before {
+      -webkit-animation: icon-wobble-horizontal 1s ease-in-out 1;
+      animation-name: icon-wobble-horizontal 1s ease-in-out 1;
+    }
+  }
+
+
+}
+
+.list_items {
+  cursor: default;
+  position: relative;
+  display: inline-block;
+
+
+
+  .profile_link a{
+    padding: 35px 60px  60px  60px;
+  }
+
+  .popover {
+    background-color: $secondary-color;
+    border-radius: 5px;
+    top: 70px;
+    left: -10%;
+    color: #fff;
+    display: none;
+    padding: 12px;
+    position: absolute;
+    z-index: 5;
+    line-height:30px;
+    width: 200px;
+
+  // to create the speech bubble at the bottom
+  &:before {
+   border-bottom: 7px solid $secondary-color;
+   border-right: 7px solid transparent;
+   border-left: 7px solid transparent;
+   top: -7px;
+   content: '';
+   display: block;
+   left: 50%;
+   margin-left: -7px;
+   position: absolute;
+   content: "";
+ }
+  a{
+    position: relative;
+  }
+ // to create underscore effect
+   a:before{
+    content: "";
+      position: absolute;
+      width: 100%;
+      height: 1.5px;
+      bottom: -3px;
+      left: 0;
+      background-color: white;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+   }
+   a:hover:before {
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+   }
+}
+&:hover {
+ .popover {
+   display: block;
+   -webkit-animation: fade-in .3s linear 1, move-down .3s linear 1;
+   -moz-animation: fade-in .3s linear 1, move-down .3s linear 1;
+   -ms-animation: fade-in .3s linear 1, move-down .3s linear 1;
+ }
+}
+
+} //end of list_items
