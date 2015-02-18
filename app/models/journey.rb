@@ -95,6 +95,8 @@ def calculate_available_berths
 end
 
 
+
+
 def update_berths
   update_column(:journey_berth_booked, bookings.sum(:berthbooked))
   update_column(:available_berths, calculate_available_berths) 

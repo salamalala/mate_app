@@ -17,4 +17,11 @@ class Booking < ActiveRecord::Base
     journey.update_berths if journey
   end
 
+  def sum_berthbooked_available_berth
+    journey.available_berths + berthbooked
+  end
+
+
+
+
 end
