@@ -1,121 +1,126 @@
+=image_tag("backgroundb_w.jpg", class: "background_image")
+
 %p#notice= notice
 
 #current_weather_partial
   Current weather where you are
 
-%div
-  %h2
-    = @journey.title
+.container_above_image
+  .journey
 
-  %p= "Captain for this journey: #{@journey.captain.try :name}"
+   
 
-  = link_to "Captains profile", profile_path(@journey.try :captain)
-  =mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} "
+    %div
+      %h2
+        = @journey.title
+
+      %p= "Captain for this journey: #{@journey.captain.try :name}"
+
+      = link_to "Captains profile", profile_path(@journey.try :captain)
+      =mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} "
+      
+      %p= @journey.start_date.strftime("%d | %m | %y - ") if @journey.start_date 
+      %p= (@journey.end_date).strftime("%d | %m | %y") if @journey.end_date
+      = @journey.description 
+        
+      %h3 Departure Port:
+      = "#{@journey.start_city}, #{@journey.country}"
+
+
+
+      #start_port_lat= @journey.start_port_latitude if @journey.start_port_latitude
+      #start_port_long= @journey.start_port_longitude if @journey.start_port_longitude
+
+      
+      //current weather at endport: look up the partial.
+      .weather_partial{data: { journey_id: @journey.id, location: :start } }
+        Please wait while we look up the weather here...
+
+      
+      %h3 Arrival Port:
+      = "#{@journey.end_city}, #{@journey.country}"
+
   
-  %p= @journey.start_date.strftime("%d | %m | %y - ") if @journey.start_date 
-  %p= (@journey.end_date).strftime("%d | %m | %y") if @journey.end_date
-  = @journey.description 
-    
-  %h3 Start Address
-  = @journey.start_full_address
-
-  %p Start Port Latitude:
-
-  #start_port_lat= @journey.start_port_latitude if @journey.start_port_latitude
-  %p Start Port Longitude:
-  #start_port_long= @journey.start_port_longitude if @journey.start_port_longitude
-
-  
-  //current weather at endport: look up the partial.
-  .weather_partial{data: { journey_id: @journey.id, location: :start } }
-    Please wait while we look up the weather here...
-
-  
-  %h3 End Address
-  = @journey.end_full_address
-
-  %p End Port Latitude:
-  #end_port_lat= @journey.end_port_latitude if @journey.end_port_latitude
-  %p End Port Longitude:
-  #end_port_long= @journey.end_port_longitude if @journey.end_port_longitude
+      #end_port_lat= @journey.end_port_latitude if @journey.end_port_latitude
+      #end_port_long= @journey.end_port_longitude if @journey.end_port_longitude
 
 
-  //current weather at endport: look up the partial.
-  .weather_partial{data: { journey_id: @journey.id, location: :end } }
-    Please wait while we look up the weather here...
+      //current weather at endport: look up the partial.
+      .weather_partial{data: { journey_id: @journey.id, location: :end } }
+        Please wait while we look up the weather here...
 
-  %p
-    %strong Description:
-    = @journey.description
-  %p
-    %strong Deal:
-    = @journey.deal
-  %p
-    = "#{@journey.available_berths} berth out of total #{@journey.berth} berth are still available"
+      %p
+        %strong Description:
+        = @journey.description
+      %p
+        %strong Deal:
+        = @journey.deal
+      %p
+        = "#{@journey.available_berths} berth out of total #{@journey.berth} berth are still available"
 
-  %p Share that journey: 
-  = social_share_button_tag("Check out the journey on Mate App")
+      %p Share that journey: 
+      = social_share_button_tag("Check out the journey on Mate App")
 
-  = link_to 'Edit Journey', edit_journey_path(@journey) if can? :edit, @journey
+      = link_to 'Edit Journey', edit_journey_path(@journey) if can? :edit, @journey
 
-  = link_to 'Show all journeys', journeys_path 
+      = link_to 'Show all journeys', journeys_path 
 
 
-// display error messages
-- if @booking.errors.any?
-  #error_explanation
-    %h2
-      = pluralize(@booking.errors.count, "error")
-      prohibited this booking from being saved:
-    %ul
-      - @booking.errors.full_messages.each do |message|
-        %li= message
+    // display error messages
+    - if @booking.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@booking.errors.count, "error")
+          prohibited this booking from being saved:
+        %ul
+          - @booking.errors.full_messages.each do |message|
+            %li= message
 
 
 
-%div
-  // if the user is not the captain and there are some berth available
-  -if @journey.captain == current_user
-    %h2
-      You listed that journey 
-    -if @journey.bookings.present? 
-      =link_to "Look at the bookings", bookings_path
-    -else
-      %p There are no bookings for this journey yet. 
+    %div
+      // if the user is not the captain and there are some berth available
+      -if @journey.captain == current_user
+        %h2
+          You listed that journey 
+        -if @journey.bookings.present? 
+          =link_to "Look at the bookings", bookings_path
+        -else
+          %p There are no bookings for this journey yet. 
 
-  - else
-    //if current_user doesn't have any bookings with this journey.id yet then show this, else, say you already have a booking with this journey. 
-    -if current_user.booked_on_journey?(@journey)
-      %p you are booked
-    - else
-      -if @journey.available_berths >= 1
-        %h2 
-          Book your berth now:
+      - else
+        //if current_user doesn't have any bookings with this journey.id yet then show this, else, say you already have a booking with this journey. 
+        -if current_user.booked_on_journey?(@journey)
+          %p you are booked
+        - else
+          -if @journey.available_berths >= 1
+            %h2 
+              Book your berth now:
 
-        - if current_user
-          = simple_form_for @booking do |b|
-            = b.hidden_field :journey_id, value: @journey.id
-            = b.label "Select number of berths: "
-            = b.input :berthbooked, collection: 1..(@journey.available_berths).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
-            = b.label :dealconfirmation, "Do you agree to the journey deal: '#{@journey.deal}'?"
-            = b.hidden_field :dealconfirmation, value: false
-            = b.input :dealconfirmation,  as: :boolean, label: 'Yes I agree '
-            = b.label "Write a comment: "
-            = b.input :comment, as: :text,label: false
-            = b.button :submit, "Request to book"
-            /Doesnt work yet! 
-            / = b.mail_to @journey.try :captain_id, "Contact the captain"
+            - if current_user
+              = simple_form_for @booking do |b|
+                = b.hidden_field :journey_id, value: @journey.id
+                = b.label "Select number of berths: "
+                = b.input :berthbooked, collection: 1..(@journey.available_berths).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
+                = b.label :dealconfirmation, "Do you agree to the journey deal: '#{@journey.deal}'?"
+                = b.hidden_field :dealconfirmation, value: false
+                = b.input :dealconfirmation,  as: :boolean, label: 'Yes I agree '
+                = b.label "Write a comment: "
+                = b.input :comment, as: :text,label: false
+                = b.button :submit, "Request to book"
+                /Doesnt work yet! 
+                / = b.mail_to @journey.try :captain_id, "Contact the captain"
 
-        - else    
-          = link_to "Log in to book your berth", new_user_session_path
+            - else    
+              = link_to "Log in to book your berth", new_user_session_path
 
-      -else 
-        %h2 
-          There aren't any berths for this journey available anymore. 
+          -else 
+            %h2 
+              There aren't any berths for this journey available anymore. 
 
 
 
-#map_canvas
+    #map_canvas
 
 
 

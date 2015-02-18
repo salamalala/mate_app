@@ -7,33 +7,34 @@ body{
   }
 }
 
+p{
+  font-size: 17px;
+}
 
+h1{
+  font-family: $font-heading;
+  font-size: 35px;
+  letter-spacing: 3px;
 
+}
 
+h2{
+  font-family: $font-heading;
+  font-size: 25px;
+  letter-spacing: 1.8px;
+}
 
+h3{
+  font-family: $font-heading;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+
+}
 main{
   clear: both;
 }
 
-.btn{
-  background-color: $tertiary-color;
-  margin: 5px 7px 20px 7px;
-  font-size: $heading-3;
-  border: none; 
-  color: white;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 5px 10px;
-  text-align: center;
-  line-height: 40px; 
-  border-radius: 5px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  &:hover{
-    background-color: saturate( $tertiary-color, 10% )
-  }
-}
+
 
 #map_canvas{
   height: 500px;
@@ -42,26 +43,3 @@ main{
 
 
 // footer
-footer{
-  font-family: $font-heading;
-  width: 100%;
-  position: absolute;
-  height: 80px;
-
-  left: 0;
-  background-color: $grey;
-  color: $secondary-color;
-  padding: 20px;
-  text-align: center;
-  a {
-    color: #fff;
-    text-decoration: none;
-    &:link, &:visited, &:active {
-      color: #fff;
-      text-decoration: none;
-    }
-    &:hover {
-      text-decoration: underline;
-    }
-  } 
-}

@@ -1,0 +1,26 @@
+.front_image{
+  margin-top: -20px;
+  background: image-url("home_page3.jpg") no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 400px;
+  z-index: -1;
+} 
+
+.above_image{
+  margin-top: -200px;
+  z-index: 2;
+  text-align: center;
+
+  h2{
+
+    font-style: italic;
+    color: $secondary-color;
+   
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+}

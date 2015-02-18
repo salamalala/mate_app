@@ -1,0 +1,23 @@
+footer{
+  font-family: $font-heading;
+  width: 100%;
+  position: absolute;
+  height: 80px;
+
+  left: 0;
+  background-color: $grey;
+  color: $secondary-color;
+  padding: 20px;
+  text-align: center;
+  a {
+    color: #fff;
+    text-decoration: none;
+    &:link, &:visited, &:active {
+      color: #fff;
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  } 
+}
