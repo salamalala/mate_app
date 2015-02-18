@@ -11,7 +11,7 @@
     = "Captain for this journey: #{booking.journey.captain.try :first_name}"
 
     = link_to "Captains profile", profile_path(booking.journey.captain)
-    = mail_to "#{booking.journey.captain.email.try :first_name}", "Contact #{booking.journey.captain.try :first_name} "
+    = mail_to "#{booking.journey.captain.email}", "Contact #{booking.journey.captain.try :first_name} "
     = link_to 'Show', booking
     -if booking.journey.journey_in_future
       = link_to 'Edit', edit_booking_path(booking)
@@ -38,6 +38,7 @@
         = "Amount of berth booked: #{booking.berthbooked}"
         = "Status of booking: #{booking.status}"
         = link_to "Profile #{booking.user.first_name}", profile_path(booking.user_id)
+        = mail_to "#{booking.user.email}", "Contact #{booking.user.try :first_name} "
         -if booking.status == "Requested"
           = button_to "Approve", booking_approve_path(booking)
     -else 
