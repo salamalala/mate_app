@@ -9,76 +9,75 @@
   .journey
 
    
-
     %div
-      %h2
-        = @journey.title
-
-      %p= "Captain for this journey: #{@journey.captain.try :name}"
-
-      = link_to "Captains profile", profile_path(@journey.try :captain)
-      =mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} "
-      
-      %p= @journey.start_date.strftime("%d | %m | %y - ") if @journey.start_date 
-      %p= (@journey.end_date).strftime("%d | %m | %y") if @journey.end_date
-      = @journey.description 
-        
-      %h3 Departure Port:
-      = "#{@journey.start_city}, #{@journey.country}"
-
-
-
-      #start_port_lat= @journey.start_port_latitude if @journey.start_port_latitude
-      #start_port_long= @journey.start_port_longitude if @journey.start_port_longitude
-
-      
-      //current weather at endport: look up the partial.
-      .weather_partial{data: { journey_id: @journey.id, location: :start } }
-        Please wait while we look up the weather here...
-
-      
-      %h3 Arrival Port:
-      = "#{@journey.end_city}, #{@journey.country}"
-
-  
-      #end_port_lat= @journey.end_port_latitude if @journey.end_port_latitude
-      #end_port_long= @journey.end_port_longitude if @journey.end_port_longitude
-
-
-      //current weather at endport: look up the partial.
-      .weather_partial{data: { journey_id: @journey.id, location: :end } }
-        Please wait while we look up the weather here...
-
-      %p
-        %strong Description:
-        = @journey.description
-      %p
-        %strong Deal:
-        = @journey.deal
-      %p
-        = "#{@journey.available_berths} berth out of total #{@journey.berth} berth are still available"
-
-      %p Share that journey: 
-      = social_share_button_tag("Check out the journey on Mate App")
-
-      = link_to 'Edit Journey', edit_journey_path(@journey) if can? :edit, @journey
-
-      = link_to 'Show all journeys', journeys_path 
-
-
-    // display error messages
-    - if @booking.errors.any?
-      #error_explanation
+      .journey_information
         %h2
-          = pluralize(@booking.errors.count, "error")
-          prohibited this booking from being saved:
-        %ul
-          - @booking.errors.full_messages.each do |message|
-            %li= message
+          = @journey.title
+
+        %p= "#{@journey.start_date.strftime("%d | %m | %y") if @journey.start_date} – #{(@journey.end_date).strftime("%d | %m | %y") if @journey.end_date}"
+
+        %p= "Captain for this journey: #{@journey.captain.try :name}"
+        = link_to "Captains profile", profile_path(@journey.try :captain)
+        = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} "
+
+        = @journey.description 
+          
+        %h3 Departure Port:
+        = "#{@journey.start_city}, #{@journey.country}"
+
+        #start_port_lat= @journey.start_port_latitude if @journey.start_port_latitude
+        #start_port_long= @journey.start_port_longitude if @journey.start_port_longitude
+
+        
+        //current weather at endport: look up the partial.
+        .weather_partial{data: { journey_id: @journey.id, location: :start } }
+          Please wait while we look up the weather here...
+
+        
+        %h3 Arrival Port:
+        = "#{@journey.end_city}, #{@journey.country}"
+        
+        #end_port_lat= @journey.end_port_latitude if @journey.end_port_latitude
+        #end_port_long= @journey.end_port_longitude if @journey.end_port_longitude
+
+        //current weather at endport: look up the partial.
+        .weather_partial{data: { journey_id: @journey.id, location: :end } }
+          Please wait while we look up the weather here...
 
 
 
-    %div
+      .images_information
+        = image_tag @journey.captain.boat.boat_image, class: "boat_image_journey"
+        = image_tag @journey.captain.user_image, class: "user_image_journey"
+      
+      
+        %p
+          Deal:
+          = @journey.deal
+        %p
+          = "#{@journey.available_berths} berth out of total #{@journey.berth} berth are still available"
+
+        %p Share that journey: 
+        = social_share_button_tag("Check out the journey on Mate App")
+
+        = link_to 'Edit Journey', edit_journey_path(@journey) if can? :edit, @journey
+
+        = link_to 'Show all journeys', journeys_path 
+
+
+
+      .booking_information
+        // display error messages
+      - if @booking.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@booking.errors.count, "error")
+            prohibited this booking from being saved:
+          %ul
+            - @booking.errors.full_messages.each do |message|
+              %li= message
+
+      
       // if the user is not the captain and there are some berth available
       -if @journey.captain == current_user
         %h2
@@ -86,7 +85,7 @@
         -if @journey.bookings.present? 
           =link_to "Look at the bookings", bookings_path
         -else
-          %p There are no bookings for this journey yet. 
+          %p There aren't any bookings for this journey yet. 
 
       - else
         //if current_user doesn't have any bookings with this journey.id yet then show this, else, say you already have a booking with this journey. 

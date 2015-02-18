@@ -27,8 +27,8 @@
 
 }
 .journey{
-  @include span-columns(8);
-  @include shift(2);
+  @include span-columns(12);
+  @include shift(0);
   background-color: rgba($background-color, 0.9);
   z-index:2;     
   padding: 30px;
@@ -50,6 +50,42 @@
   display: inline-block;
   -webkit-filter: saturate(30%);
 }
+
+.journey_information{
+  @include span-columns(5 of 12);
+}
+
+.images_information{
+  @include span-columns(3 of 12);
+  position: relative;
+  
+  .boat_image_journey{
+    width: 100%;
+    border: solid 1px gray;
+    z-index: 1;
+  }
+
+  .user_image_journey{
+    width: 40%;
+    border: dotted 1px gray;
+    position: absolute; 
+    top: -5px;
+    right: -5px;
+    z-index: 2;
+    border-radius: 100%;
+  }
+
+}
+
+.booking_information{
+  @include span-columns(4 of 12);
+}
+
+#map_canvas{
+  @include span-columns(12 of 12);
+  
+}
+
 
 #start_port_lat, #start_port_long, #end_port_lat, #end_port_long{
   position: absolute !important;

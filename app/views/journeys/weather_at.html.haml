@@ -1,7 +1,7 @@
 // current weather at start and end port. 
 
 %p
-  = "Current weather in #{@city}: #{@journey.weather_main(@location)}, #{@journey.weather_temp(@location).round}°."
+  = "Current weather: #{@journey.weather_main(@location)}, #{@journey.weather_temp(@location).round}°."
 
 
 =image_tag "http://openweathermap.org/img/w/#{@journey.weather_icon(@location)}.png", class: "weather_icon"
