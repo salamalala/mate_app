@@ -72,7 +72,7 @@
     z-index: 1;
   }
 
-  .user_image_journey{
+  .user_image_journey {
     width: 40%;
     border: dotted 1px gray;
     position: absolute; 
@@ -80,12 +80,19 @@
     right: -5px;
     z-index: 2;
     border-radius: 100%;
+    transition: width 0.5s ease;
+    &:hover{
+      width: 43%;
+
+    }
   }
 
 }
 
 .booking_information{
   @include span-columns(4 of 12);
+  // background-color: saturate($background-color, 90% );
+  background-color: blue;
 }
 
 #map_canvas{
