@@ -18,6 +18,7 @@ gem 'ransack'
 gem 'barometer', '~> 0.9.7'
 gem 'httparty'
 gem 'jquery-turbolinks'
+gem 'fog', '~> 1.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
