@@ -3,7 +3,7 @@
 %p
   = "Current weather in #{@city}: "
 %p
-  = @journey.weather_temp(@location)
+  = "#{@journey.weather_temp(@location).round}°"
 %p
   = @journey.weather_main(@location)
 
