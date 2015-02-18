@@ -26,9 +26,10 @@ class BookingsController < ApplicationController
     @booking.status = "Requested"
     @booking.user_id = current_user.id
     if @booking.save
-      render :index
+      redirect_to bookings_path
     else
-      render :new
+      @journey = @booking.journey
+      render 'journeys/show'
     end
   end
 

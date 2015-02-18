@@ -8,11 +8,15 @@
     = "You booked #{booking.berthbooked} out of totally #{booking.journey.berth} berth"
     = "Your comment #{booking.comment}"
     = "The status or your booking: '#{booking.status}'"
+    = "Captain for this journey: #{booking.journey.captain.try :first_name}"
+
+    = link_to "Captains profile", profile_path(booking.journey.captain)
+    = mail_to "#{booking.journey.captain.email.try :first_name}", "Contact #{booking.journey.captain.try :first_name} "
     = link_to 'Show', booking
     -if booking.journey.journey_in_future
       = link_to 'Edit', edit_booking_path(booking)
     -if booking.journey.journey_in_future
-      = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' } 
+      = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Do you really want to cancel that booking?' } 
   =link_to "Book another journey", root_path 
 -else
   %p You didn't book any journey yet. 

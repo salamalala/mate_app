@@ -4,9 +4,11 @@ class Booking < ActiveRecord::Base
   belongs_to :journey
   has_one :boat, through: :journey
 
+  validates :user_id, uniqueness: {scope: :journey_id }
+
   # validates :dealconfirmation, presence: true
 
-  #after creating and updating
+  #after creating and updating and deleting
   after_save :sum_up_bookings_of_journey
   after_destroy :sum_up_bookings_of_journey
 

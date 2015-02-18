@@ -27,8 +27,6 @@ class Journey < ActiveRecord::Base
   end
 
 
-
-
   def end_must_be_after_start
     if start_date && end_date
     errors.add(:end_date, "must be after embarking date") if
@@ -36,8 +34,17 @@ class Journey < ActiveRecord::Base
     end
   end
 
+  # def journey_captain
+  #   journey.try :captain
+  # end
 
+  # def journey_captain_email
+  #   journey_captain.try :email
+  # end
 
+  # def journey_captain_first_name
+  #   journey_captain.try :first_name
+  # end
 
   #available berth, if nil then 0. 
   def available_berth
