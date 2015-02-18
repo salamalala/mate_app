@@ -4,7 +4,7 @@ class Journey < ActiveRecord::Base
   belongs_to :captain, class_name: 'User'
   has_many :users, through: :bookings
   
-  after_save :available_berths
+  after_save :update_berths
 
   attr_accessor :current_city, :current_port_latitude, :current_port_longitude
 

@@ -98,7 +98,8 @@
             = b.label "Select number of berths: "
             = b.input :berthbooked, collection: 1..(@journey.available_berths).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
             = b.label :dealconfirmation, "Do you agree to the journey deal: '#{@journey.deal}'?"
-            = b.input :dealconfirmation,  as: :check_boxes, collection: ['Yes I agree '], label: false
+            = b.hidden_field :dealconfirmation, value: false
+            = b.input :dealconfirmation,  as: :boolean, label: 'Yes I agree '
             = b.label "Write a comment: "
             = b.input :comment, as: :text,label: false
             = b.button :submit, "Request to book"
