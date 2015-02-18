@@ -1,9 +1,22 @@
 .booking_index{
-  background-color: darken($background-color, 5%);
 
   h2{
     border-bottom: solid 2px $grey;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  .btn.orange{
+    margin-top: 30px;
+    width: 100%;
+  }
+  .date{
+    border: none;
+  }
+
+  .booking_item{
+    background-color: darken($background-color, 10%);  
+    padding: 35px 20px 35px 20px;
+    margin-top: 20px;
   }
 
 }
@@ -17,3 +30,4 @@
   @include span-columns(5);
   @include shift(1);
 }
+

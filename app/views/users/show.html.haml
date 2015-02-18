@@ -1,50 +1,56 @@
-%h3 Image: 
-= image_tag @user.user_image
+=image_tag("backgroundb_w.jpg", class: "background_image")
 
-%h3 Name:  
-= @user.first_name
+.container_above_image
 
-%h4 About me: 
-= @user.about_me
+  .white_container.users_show
 
--if current_user.id == @user.id
-  = link_to 'Edit Profile', edit_user_registration_path
+    %h1 
+      ="#{@user.first_name}s Profile"
 
-%h4 My Boat: 
-= @user.boat.try :description
+    = image_tag @user.user_image, class: "img_user"
 
-%h4 Image of the boat: 
-= image_tag @user.boat.try :boat_image
+   
 
--if current_user.id == @user.id
-  - if current_user.boat.present?
-    = link_to "Manage boat", edit_boat_path(current_user.boat)
-  - else
-    = link_to "Add a boat to your profile", new_boat_path
+    %h4 About me: 
+    = @user.about_me
+
+    -if current_user.id == @user.id
+      = link_to 'Edit Profile', edit_user_registration_path, class: "btn turk"
+
+    %h4 My Boat: 
+    = @user.boat.try :description
+
+    = image_tag(@user.boat.try :boat_image, class: "img_user")
+
+    -if current_user.id == @user.id
+      - if current_user.boat.present?
+        = link_to "Manage boat", edit_boat_path(current_user.boat), class: "btn turk"
+      - else
+        = link_to "Add a boat to your profile", new_boat_path, class: "btn turk"
 
 
 
-%h4 Journeys in the past:
--if @user.journeys_as_captain.journeys_in_past.any?
-  - @user.journeys_as_captain.journeys_in_past.each do |journey|
-    = "Start of the journey: #{journey.start_city}"
-    = "End of the journey: #{journey.end_city}"
-    = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
-    = "End date: #{journey.end_date.strftime('%d/%m/%Y')}"
-    = link_to 'Show', journey
-- else 
-  no journeys as captain in the past.
+    %h3 Journeys in the past:
+    -if @user.journeys_as_captain.journeys_in_past.any?
+      - @user.journeys_as_captain.journeys_in_past.each do |journey|
+        = "Start of the journey: #{journey.start_city}"
+        = "End of the journey: #{journey.end_city}"
+        = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
+        = "End date: #{journey.end_date.strftime('%d/%m/%Y')}"
+        = link_to 'Show', journey
+    - else 
+      No journeys as captain in the past yet.
 
-%h4 Journeys in the future:
--if @user.journeys_as_captain.journeys_in_future.any? 
-  - @user.journeys_as_captain.journeys_in_future.each do |journey|
-    = "Start of the journey: #{journey.start_city}"
-    = "End of the journey: #{journey.end_city}"
-    = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
-    = "End date: #{journey.end_date.strftime('%d/%m/%Y')}"
-    = link_to 'Show', journey
-- else 
-  no journeys as captain in the future.
+    %h3 Journeys in the future:
+    -if @user.journeys_as_captain.journeys_in_future.any? 
+      - @user.journeys_as_captain.journeys_in_future.each do |journey|
+        = "Start of the journey: #{journey.start_city}"
+        = "End of the journey: #{journey.end_city}"
+        = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
+        = "End date: #{journey.end_date.strftime('%d/%m/%Y')}"
+        = link_to 'Show', journey
+    - else 
+      No journeys as captain in the future.
 
 
 

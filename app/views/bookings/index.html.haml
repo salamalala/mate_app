@@ -4,7 +4,7 @@
 
   .white_container.booking_index
     .journeys_you_booked
-      %h2 Journeys you booked
+      %h2 Journeys as passenger
       -if current_user.bookings.present?
         - current_user.bookings.each do |booking|
           = "Start of the journey: #{booking.journey.start_city}"
@@ -23,36 +23,44 @@
             = link_to 'Edit', edit_booking_path(booking)
           -if booking.journey.journey_in_future
             = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Do you really want to cancel that booking?' } 
-        =link_to "Book another journey", root_path 
+        =link_to "Book another journey", root_path, class: "btn orange" 
       -else
         %p You didn't book any journey yet. 
-        =link_to "Book a journey", root_path 
+        =link_to "Book a journey", root_path, class: "btn orange"  
 
     .journeys_you_sail.booking_index
-      %h2 Journeys where you're the sailor 
+      %h2 Journeys as sailor
       -if current_user.journeys_as_captain.any?
         - current_user.journeys_as_captain.each do |journey|
-          = "Start of the journey: #{journey.start_city}"
-          = "End of the journey: #{journey.end_city}"
-          = "Start date: #{journey.start_date.strftime('%d/%m/%Y')}"
-          = "End date: #{journey.end_date.strftime('%d/%m/%Y')}"
-          = "Total amount of berth offered: #{journey.berth}"
-          = "Total amount of berth booked: #{journey.journey_berth_booked}"
+          %h3
+            = "From #{journey.start_city} to #{journey.end_city}"
+          .date
+            = "#{journey.start_date.strftime('%d/%m/%Y')} - #{journey.end_date.strftime('%d/%m/%Y')}"
+          %p
+            = "Total amount of berth offered: #{journey.berth}"
+          %p
+            = "Total amount of berth booked: #{journey.journey_berth_booked}"
+
           -if journey.bookings.any? 
             - journey.bookings.each do |booking|
-              = "Name of person who booked: #{booking.user.name}"
-              = "Amount of berth booked: #{booking.berthbooked}"
-              = "Status of booking: #{booking.status}"
-              = link_to "Profile #{booking.user.first_name}", profile_path(booking.user_id)
-              = mail_to "#{booking.user.email}", "Contact #{booking.user.try :first_name} "
-              -if booking.status == "Requested"
-                = button_to "Approve", booking_approve_path(booking)
+              .booking_item
+                %h3
+                  = "Booked by: #{booking.user.name}"
+                %p
+                  = "Amount of berth booked: #{booking.berthbooked}"
+                %p
+                  = "Status: #{booking.status}"
+                -if booking.status == "Requested"
+                  = button_to "Approve", booking_approve_path(booking)
+                %br
+                = link_to "Profile #{booking.user.first_name}", profile_path(booking.user_id), class: "btn b_w"
+                = mail_to "#{booking.user.email}", "Contact #{booking.user.try :first_name} ", class: "btn b_w"
           -else 
             %p You don't have any bookings for that journey yet
             = link_to 'Show', journey
             = link_to 'Edit', edit_journey_path(journey) if journey.journey_in_future   
             = link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' } if journey.journey_in_future   
-          =link_to "List another sailing trip", new_journey_path  
+          =link_to "List another sailing trip", new_journey_path, class: "btn orange"  
       -else
         %p You didn't list any journeys yet.
         =link_to "List a sailing trip", new_journey_path  
