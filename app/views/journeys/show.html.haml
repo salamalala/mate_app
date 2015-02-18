@@ -14,10 +14,7 @@
         %h1
           = @journey.title
 
-        .date= "#{@journey.start_date.strftime("%d | %m | %y") if @journey.start_date} – #{(@journey.end_date).strftime("%d | %m | %y") if @journey.end_date}"
-
-        %p= "Captain for this journey: #{@journey.captain.try :name}"
-        = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} "
+        .date= "#{@journey.start_date.strftime("%d | %m | %y") if @journey.start_date} – #{(@journey.end_date).strftime("%d | %m | %y") if @journey.end_date}"       
 
         = @journey.description 
           
@@ -44,20 +41,13 @@
           Please wait while we look up the weather here...
 
 
-
-      .images_information
-        = image_tag @journey.captain.boat.boat_image, class: "boat_image_journey"
-        %a{href: profile_path(@journey.try :captain)}
-          %img{src: @journey.captain.user_image, class: "user_image_journey"} 
- 
-      
-      
         %p
           Deal:
           = @journey.deal
         %p
           = "#{@journey.available_berths} berth out of total #{@journey.berth} berth are still available"
 
+        
         %p Share that journey: 
         = social_share_button_tag("Check out the journey on Mate App")
 
@@ -67,56 +57,71 @@
 
 
 
+      .images_information
+        = image_tag @journey.captain.boat.boat_image, class: "boat_image_journey"
+        %a{href: profile_path(@journey.try :captain)}
+          %img{src: @journey.captain.user_image, class: "user_image_journey"} 
+
+        %p= "Captain for this journey: #{@journey.captain.try :name}"
+        = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} ", class: "btn"
+   
+      
+      
+        
+
+        
+
+
       .booking_information
         // display error messages
-      - if @booking.errors.any?
-        #error_explanation
+        - if @booking.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@booking.errors.count, "error")
+              prohibited this booking from being saved:
+            %ul
+              - @booking.errors.full_messages.each do |message|
+                %li= message
+
+        
+        // if the user is not the captain and there are some berth available
+        -if @journey.captain == current_user
           %h2
-            = pluralize(@booking.errors.count, "error")
-            prohibited this booking from being saved:
-          %ul
-            - @booking.errors.full_messages.each do |message|
-              %li= message
+            You listed that journey 
+          -if @journey.bookings.present? 
+            =link_to "Look at the bookings", bookings_path
+          -else
+            %p There aren't any bookings for this journey yet. 
 
-      
-      // if the user is not the captain and there are some berth available
-      -if @journey.captain == current_user
-        %h2
-          You listed that journey 
-        -if @journey.bookings.present? 
-          =link_to "Look at the bookings", bookings_path
-        -else
-          %p There aren't any bookings for this journey yet. 
-
-      - else
-        //if current_user doesn't have any bookings with this journey.id yet then show this, else, say you already have a booking with this journey. 
-        -if current_user.booked_on_journey?(@journey)
-          %p you are booked
         - else
-          -if @journey.available_berths >= 1
-            %h2 
-              Book your berth now:
+          //if current_user doesn't have any bookings with this journey.id yet then show this, else, say you already have a booking with this journey. 
+          -if current_user.booked_on_journey?(@journey)
+            %p you are booked
+          - else
+            -if @journey.available_berths >= 1
+              %h2 
+                Book your berth now:
 
-            - if current_user
-              = simple_form_for @booking do |b|
-                = b.hidden_field :journey_id, value: @journey.id
-                = b.label "Select number of berths: "
-                = b.input :berthbooked, collection: 1..(@journey.available_berths).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
-                = b.label :dealconfirmation, "Do you agree to the journey deal: '#{@journey.deal}'?"
-                = b.hidden_field :dealconfirmation, value: false
-                = b.input :dealconfirmation,  as: :boolean, label: 'Yes I agree '
-                = b.label "Write a comment: "
-                = b.input :comment, as: :text,label: false
-                = b.button :submit, "Request to book"
-                /Doesnt work yet! 
-                / = b.mail_to @journey.try :captain_id, "Contact the captain"
+              - if current_user
+                = simple_form_for @booking do |b|
+                  = b.hidden_field :journey_id, value: @journey.id
+                  = b.label "Select number of berths: "
+                  = b.input :berthbooked, collection: 1..(@journey.available_berths).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
+                  = b.label :dealconfirmation, "Do you agree to the journey deal: '#{@journey.deal}'?"
+                  = b.hidden_field :dealconfirmation, value: false
+                  = b.input :dealconfirmation,  as: :boolean, label: 'Yes I agree '
+                  = b.label "Write a comment: "
+                  = b.input :comment, as: :text,label: false
+                  = b.button :submit, "Request to book"
+                  /Doesnt work yet! 
+                  / = b.mail_to @journey.try :captain_id, "Contact the captain"
 
-            - else    
-              = link_to "Log in to book your berth", new_user_session_path
+              - else    
+                = link_to "Log in to book your berth", new_user_session_path
 
-          -else 
-            %h2 
-              There aren't any berths for this journey available anymore. 
+            -else 
+              %h2 
+                There aren't any berths for this journey available anymore. 
 
 
 

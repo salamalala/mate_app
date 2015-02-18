@@ -49,6 +49,7 @@
 .weather_icon{
   display: inline-block;
   -webkit-filter: saturate(30%);
+  vertical-align: bottom;
 }
 
 .journey_information{
@@ -56,9 +57,26 @@
 
   h1{
     margin: 0;
+
   }
   .date{
     font-style: italic; 
+    border-bottom: solid 2px $grey;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+  }
+
+  h3{
+    display: inline-block;
+    margin: 0;
+  }
+  p{
+    display: inline-block;
+  }
+  .btn{
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -74,6 +92,7 @@
 
   .user_image_journey {
     width: 40%;
+    height: 40%;
     border: dotted 1px gray;
     position: absolute; 
     top: -5px;
