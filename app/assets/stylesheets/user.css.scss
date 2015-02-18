@@ -1,7 +1,32 @@
 .users_show{
-  
+
   .img_user{
-    border-radius: 100%;
+    width: 200px;
   }
+  .date{
+    border: none;
+    margin-bottom: 0;
+  }
+
+  h3{
+    margin: 25px 0 15px 0;
+
+
+  }
+
+}
+
+.user_column{
+  @include span-columns(5 of 12);
+}
+
+.boat_column{
+  @include span-columns(5 of 12);
+}
+
+.journey_history_column{
+  @include span-columns(12);
+  border-top: solid 2px $grey;
+  margin-top: 40px;
 
 }

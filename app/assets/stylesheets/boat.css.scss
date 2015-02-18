@@ -1,0 +1,59 @@
+.boat_index{
+  .btn{
+    margin: 30px 0  10px 0;
+  }
+
+  h3{
+    margin-top: 30px;
+
+  }
+
+}
+
+
+
+#boat_boat_image{
+  margin: 10px 0 10px 0;
+  padding-left: 0;
+}
+
+#boat_remote_boat_image_url{
+  margin: 10px 0 10px 0;
+  padding-left: 0;
+  margin-left: 0;
+  padding: 5px 10px;
+  font-family: $font-heading;
+  border: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+  line-height: 40px; 
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border: solid 2px $grey;
+  color: $grey;
+}
+
+#boat_description{
+  margin: 10px 0 10px 0;
+  padding-left: 0;
+  margin-left: 0;
+  padding: 5px 10px;
+  font-family: $font-heading;
+  border: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+  line-height: 40px; 
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border: solid 2px $grey;
+  color: $grey;
+
+}
