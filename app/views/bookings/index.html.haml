@@ -19,7 +19,6 @@
 
           = link_to "Captains profile", profile_path(booking.journey.captain), class: "btn turk"
           = mail_to "#{booking.journey.captain.email}", "Contact #{booking.journey.captain.try :first_name} ", class: "btn turk"
-          = link_to 'Show', booking, class: "btn b_w"
           -if booking.journey.journey_in_future
             = link_to 'Edit', edit_booking_path(booking), class: "btn b_w"
           -if booking.journey.journey_in_future
