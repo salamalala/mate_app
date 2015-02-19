@@ -94,6 +94,10 @@
   }
 
   .user_image_journey {
+    width: auto;
+    max-width: 30%;
+      height: auto;
+  max-height: 30%;
     width: 30%;
     position: absolute; 
     top: -8px;
