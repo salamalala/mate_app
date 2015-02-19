@@ -7,22 +7,23 @@
       %h2 Journeys as passenger
       -if current_user.bookings.present?
         - current_user.bookings.each do |booking|
-          = "Start of the journey: #{booking.journey.start_city}"
-          = "End of the journey: #{booking.journey.end_city}"
-          = "Start date: #{booking.journey.start_date.strftime('%d/%m/%Y')}"
-          = "End date: #{booking.journey.end_date.strftime('%d/%m/%Y')}"
+          = "From #{booking.journey.start_city} to #{booking.journey.end_city}"
+          .date
+            = "#{booking.journey.start_date.strftime('%d/%m/%Y')} - #{booking.journey.end_date.strftime('%d/%m/%Y')}"
           = "You booked #{booking.berthbooked} out of totally #{booking.journey.berth} berth"
-          = "Your comment #{booking.comment}"
+          %p
+            = "Your comment: #{booking.comment}"
           = "The status or your booking: '#{booking.status}'"
-          = "Captain for this journey: #{booking.journey.captain.try :first_name}"
+          %p
+            = "Captain for this journey: #{booking.journey.captain.try :first_name}"
 
-          = link_to "Captains profile", profile_path(booking.journey.captain)
-          = mail_to "#{booking.journey.captain.email}", "Contact #{booking.journey.captain.try :first_name} "
-          = link_to 'Show', booking
+          = link_to "Captains profile", profile_path(booking.journey.captain), class: "btn turk"
+          = mail_to "#{booking.journey.captain.email}", "Contact #{booking.journey.captain.try :first_name} ", class: "btn turk"
+          = link_to 'Show', booking, class: "btn b_w"
           -if booking.journey.journey_in_future
-            = link_to 'Edit', edit_booking_path(booking)
+            = link_to 'Edit', edit_booking_path(booking), class: "btn b_w"
           -if booking.journey.journey_in_future
-            = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Do you really want to cancel that booking?' } 
+            = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Do you really want to cancel that booking?' }, class: "btn b_w"
         =link_to "Book another journey", root_path, class: "btn orange" 
       -else
         %p You didn't book any journey yet. 
@@ -63,6 +64,6 @@
           =link_to "List another sailing trip", new_journey_path, class: "btn orange"  
       -else
         %p You didn't list any journeys yet.
-        =link_to "List a sailing trip", new_journey_path  
+        =link_to "List a sailing trip", new_journey_path, class: "btn orange"   
 
 

@@ -23,6 +23,10 @@
 
 .journeys_you_booked{
   @include span-columns(5);
+
+  .btn{
+    margin: 20px 0;
+  }
     
 }
 
