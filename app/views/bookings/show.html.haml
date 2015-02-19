@@ -1,17 +1,22 @@
-%p#notice= notice
+=image_tag("backgroundb_w.jpg", class: "background_image")
 
-%p User who booked that journey
-= current_user.first_name
+.container_above_image
+  .white_container
 
-%p How many berth did you book?
-= @booking.berthbooked
+    %p#notice= notice
 
-%p Comment:
-= @booking.comment
+    %h1 User who booked that journey
+    = current_user.first_name
 
-%p Status:
-= @booking.status
+    %h3 How many berth did you book?
+    = @booking.berthbooked
 
-= link_to 'Edit', edit_booking_path(@booking)
-|
-= link_to 'Back', bookings_path
+    %h3 Comment:
+    = @booking.comment
+
+    %h3 Status:
+    = @booking.status
+
+    %br
+    = link_to 'Edit', edit_booking_path(@booking), class: "btn orange"
+ 
