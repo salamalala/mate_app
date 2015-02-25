@@ -19,26 +19,24 @@ class Journey < ActiveRecord::Base
 
   def start_date_in_future
     if start_date && end_date
-    errors.add(:start_date, "must be in the future") if start_date < Time.zone.now
+      errors.add(:start_date, "must be in the future") if start_date < Time.zone.now
     end
   end
 
   def journey_in_future
     if start_date 
-    start_date >= Date.today
+      start_date >= Date.today
     end
   end
 
 
   def end_must_be_after_start
     if start_date && end_date
-    errors.add(:end_date, "must be after embarking date") if
-        end_date <= start_date
+      errors.add(:end_date, "must be after embarking date") if
+      end_date <= start_date
     end
   end
 
- 
-  #available berth, if nil then 0. 
 
   before_save :geocode_addresses
   #takes all attributes and turns them into a string for google search
@@ -98,8 +96,6 @@ def calculate_available_berths
 end
 
 
-
-
 def update_berths
   update_column(:journey_berth_booked, bookings.sum(:berthbooked))
   update_column(:available_berths, calculate_available_berths) 
@@ -108,29 +104,15 @@ end
 #give a long and latitude to start full adress and end full adress. 
 # Send: When the method is identified by a string, the string is converted to a symbol. 
 
-private
+# private
 def geocode_addresses
   %w(start end).each do |port|
-    if send("#{port}_address_changed?")
+    # if send("#{port}_address_changed?")
       coords = Geocoder.coordinates(send("#{port}_full_address"))
       send("#{port}_port_latitude=", coords[0])
       send("#{port}_port_longitude=", coords[1])
-    end
+    # end
   end
 end
 
-    # if start_address_changed?
-      # coords = Geocoder.coordinates(self.start_full_address)
-      # self.start_port_latitude = coords[0]
-      # self.start_port_longitude = coords[1]
-    # end
-
-    # if end_address_changed?
-    #   coords = Geocoder.coordinates(self.end_full_address)
-    #   self.end_port_latitude = coords[0]
-    #   self.end_port_longitude = coords[1]
-    # end
-
-
-
-  end
+end
