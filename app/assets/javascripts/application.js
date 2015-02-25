@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require typekit
 //= require social-share-button
 //= require jquery.datetimepicker
 //= require turbolinks
