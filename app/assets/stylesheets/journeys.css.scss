@@ -137,11 +137,11 @@
 }
 
 
-// #start_port_lat, #start_port_long, #end_port_lat, #end_port_long{
-//   position: absolute !important;
-//   top: -9999px !important;
-//   left: -9999px !important;
-// }
+#start_port_lat, #start_port_long, #end_port_lat, #end_port_long{
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
 
 .social-share-button{
   -webkit-filter: saturate(30%);
