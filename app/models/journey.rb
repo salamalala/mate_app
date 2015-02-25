@@ -63,20 +63,24 @@ class Journey < ActiveRecord::Base
   def weather_at_location(location)
     # first , try without the return
     # second puts the url in the logs using "puts" and check what url is generated
-    
+
     # return @weather_at_location if @weather_at_location
 
     lat = send("#{location}_port_latitude")
     long = send("#{location}_port_longitude")
 
-    url = "http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&units=metric&APPID=#{ENV['APP_WEATHER']}"
+    # url = "http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&units=metric&APPID=#{ENV['APP_WEATHER']}"
 
-    @weather_at_location = HTTParty.get(url)
+    url = "http://api.worldweatheronline.com/free/v1/marine.ashx?q=45%2C-2&format=xml&key=6625bc05136e4b14eccbf6dbc9c19"
 
+    # @weather_at_location = HTTParty.get(url)
+
+    # puts  "********#{url}**********************"  
   end
 
   def weather_temp(location)
-    weather_at_location(location)["main"]["temp"] rescue "unknown"
+    weather_at_location(location)["data"]["weather"][0]["maxtempC"] rescue "unknown"
+    
   end
 
   def weather_main(location)
