@@ -61,7 +61,10 @@ class Journey < ActiveRecord::Base
 
 
   def weather_at_location(location)
-    return @weather_at_location if @weather_at_location
+    # first , try without the return
+    # second puts the url in the logs using "puts" and check what url is generated
+    
+    # return @weather_at_location if @weather_at_location
 
     lat = send("#{location}_port_latitude")
     long = send("#{location}_port_longitude")
