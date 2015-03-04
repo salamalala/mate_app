@@ -1,5 +1,5 @@
 class Journey < ActiveRecord::Base
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   belongs_to :boat
   belongs_to :captain, class_name: 'User'
   has_many :users, through: :bookings
