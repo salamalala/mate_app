@@ -31,19 +31,22 @@ myMap.initialize = function(){
   var mapOptions = {
     center: { lat: startPortLat, lng:  startPortLong},
     zoom: 8,
+
   };
 
   var map = new google.maps.Map(myMap.mapElement, mapOptions);
 
   var markerOptionsStart = {
-   position: {lat: startPortLat, lng: startPortLong}
+   position: {lat: startPortLat, lng: startPortLong},
+   icon: "/assets/harbor_marker.png"
  };
 
  var markerStart = new google.maps.Marker(markerOptionsStart);
  markerStart.setMap(map);
 
  var markerOptionsEnd = {
-   position: {lat: endPortLat, lng: endPortLong}
+   position: {lat: endPortLat, lng: endPortLong},
+   icon: "/assets/harbor_marker.png"
  };
 
  var markerEnd = new google.maps.Marker(markerOptionsEnd);
