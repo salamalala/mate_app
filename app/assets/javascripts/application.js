@@ -38,19 +38,42 @@ myMap.initialize = function(){
 
   var markerOptionsStart = {
    position: {lat: startPortLat, lng: startPortLong},
-   icon: "/assets/harbor_marker.png"
+   icon: "/assets/harbor_marker.png", 
  };
 
  var markerStart = new google.maps.Marker(markerOptionsStart);
  markerStart.setMap(map);
 
+ var popupStartContent = {
+   content: '<strong>Start Port</strong>',
+ };
+
+ var popupStart = new google.maps.InfoWindow(popupStartContent);
+
+
+ setTimeout(function(){
+   popupStart.open(map, markerStart);
+ }, 2500);
+
  var markerOptionsEnd = {
    position: {lat: endPortLat, lng: endPortLong},
-   icon: "/assets/harbor_marker.png"
+   icon: "/assets/harbor_marker.png",
  };
 
  var markerEnd = new google.maps.Marker(markerOptionsEnd);
  markerEnd.setMap(map);
+
+ var popupEndContent = {
+   content: '<strong>End Port</strong>',
+ };
+
+ var popupEnd = new google.maps.InfoWindow(popupEndContent);
+
+ setTimeout(function(){
+   popupEnd.open(map, markerEnd);
+ }, 3500);
+
+
 
  myMap.getPosition();
 
