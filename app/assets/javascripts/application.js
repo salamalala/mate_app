@@ -35,7 +35,7 @@ myMap.initialize = function(){
 
   var mapOptions = {
     center: { lat: startPortLat, lng:  startPortLong},
-    maxZoom: 9,
+    maxZoom: 11,
  
   };
 
