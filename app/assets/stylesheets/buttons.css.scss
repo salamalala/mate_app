@@ -5,13 +5,13 @@
   -moz-appearance: none;
   appearance: none;
   padding: 5px 10px;
-  text-align: center;
   line-height: 40px; 
   border-radius: 5px;
-  text-transform: uppercase;
   letter-spacing: 1px;
   
   &.turk{
+    text-align: center;
+    text-transform: uppercase;
     background-color: $tertiary-color;
     color: white;
     display: inline-block;
@@ -21,6 +21,8 @@
   }
 
   &.orange{
+    text-align: center;
+    text-transform: uppercase;
     background-color: $secondary-color;
     color: white;
     display: inline-block;
@@ -30,6 +32,8 @@
   }
 
   &.b_w{
+    text-align: center;
+    text-transform: uppercase;
     padding: 3px 10px;
     border: solid 2px $grey;
     color: $grey;
