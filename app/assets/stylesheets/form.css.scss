@@ -15,8 +15,6 @@ select{
   cursor:pointer;
 }
 
-
-
 label {
   position:relative;
 }
@@ -44,6 +42,7 @@ input{
   line-height: 40px;
   border-radius: 5px;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 #searchbutton{
