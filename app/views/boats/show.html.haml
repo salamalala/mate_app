@@ -1,10 +1,15 @@
-%p#notice= notice
-%p
-  %strong Boat image:
-  = image_tag(@boat.boat_image)
-%p
-  %strong Description:
-  = @boat.description
-= link_to 'Edit', edit_boat_path(@boat)
-|
-= link_to 'Back to your profile', profile_path(current_user)      
+=image_tag("backgroundb_w.jpg", class: "background_image")
+
+.container_above_image
+  .white_container
+
+    %p#notice= notice
+
+    = image_tag @boat.boat_image, class: "img_user"
+    %h3
+      Description of my boat:
+    %p
+      = @boat.description
+    = link_to 'Edit', edit_boat_path(@boat), class: "btn turk"
+    
+    = link_to 'Back to your profile', profile_path(current_user),class: "btn turk"      
