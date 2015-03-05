@@ -81,6 +81,10 @@ class Journey < ActiveRecord::Base
     weather_at_location(location)["weather"][0]["main"] rescue "unknown"
   end
 
+  def weather_wind(location)
+    (weather_at_location(location)["wind"]["speed"])*1.943844492 rescue "unknown"
+  end
+
   def weather_icon(location)
     weather_at_location(location)["weather"][0]["icon"] rescue "unknown"
   end

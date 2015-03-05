@@ -27,25 +27,20 @@
 
 }
 
+.weather_box{
 
-.weather_icon_container{
-  height: 30px;
-  width: 40px;
-  overflow: hidden;
-  position: relative;  
-  display: inline-block;
+    .weather_icon{
+      -webkit-filter: saturate(65%);
+      margin-left: 0px;
+      margin-bottom: -20px;
+      height: 30px;
+      width: 40px;
 
-  .weather_icon{
-    -webkit-filter: saturate(30%);
-    position: absolute;
-    top: -9999px;
-    bottom: -9999px;
-    left: -9999px;
-    right: -9999px;
-    margin: auto; 
   }
 
 }
+
+
 
 #current_weather_partial{
   color: $background-color;
