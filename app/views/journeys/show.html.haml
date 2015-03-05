@@ -94,14 +94,16 @@
 
         - else
           //if current_user doesn't have any bookings with this journey.id yet then show this, else, say you already have a booking with this journey. 
-          -if current_user.booked_on_journey?(@journey)
-            %p you are booked
-          - else
-            -if @journey.available_berths >= 1
-              %h2 
-                Book your berth now:
 
-              - if current_user
+          -if @journey.available_berths >= 1
+
+            -if current_user
+              -if current_user.booked_on_journey?(@journey) 
+                %p You are already booked on that journey!
+
+              -else
+                %h2 
+                  Book your berth now:
                 = simple_form_for @booking do |b|
                   = b.hidden_field :journey_id, value: @journey.id
                   = b.label "Select number of berths: "
@@ -115,12 +117,12 @@
                   /Doesnt work yet! 
                   / = b.mail_to @journey.try :captain_id, "Contact the captain"
 
-              - else    
-                = link_to "Log in to book your berth", new_user_session_path, class: "btn turk"
+            - else    
+              = link_to "Log in to book your berth", new_user_session_path, class: "btn turk"
 
-            -else 
-              %h2 
-                There aren't any berths for this journey available anymore. 
+          -else 
+            %h2 
+              There aren't any available berths for this journey anymore. 
 
 
 
