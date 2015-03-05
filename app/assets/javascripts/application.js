@@ -28,17 +28,23 @@ myMap.initialize = function(){
   var endPortLat = parseFloat($("#end_port_lat").text());
   var endPortLong = parseFloat($("#end_port_long").text());
 
+
+  var startPortLatLong = new google.maps.LatLng(startPortLat, startPortLong);
+
+  var endPortLatLong = new google.maps.LatLng(endPortLat, endPortLong);
+
   var mapOptions = {
     center: { lat: startPortLat, lng:  startPortLong},
-    zoom: 8,
-
+    maxZoom: 9,
+ 
   };
 
   var map = new google.maps.Map(myMap.mapElement, mapOptions);
 
   var markerOptionsStart = {
    position: {lat: startPortLat, lng: startPortLong},
-   icon: "/assets/harbor_marker.png", 
+   map: map,
+   icon: "/assets/harbor_marker.png" 
  };
 
  var markerStart = new google.maps.Marker(markerOptionsStart);
@@ -73,6 +79,12 @@ myMap.initialize = function(){
    popupEnd.open(map, markerEnd);
  }, 3500);
 
+
+ var bounds = new google.maps.LatLngBounds();
+
+ bounds.extend(startPortLatLong);
+ bounds.extend(endPortLatLong);
+ map.fitBounds(bounds);
 
 
  myMap.getPosition();
