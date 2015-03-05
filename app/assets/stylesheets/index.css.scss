@@ -1,3 +1,4 @@
+
 .front_image{
   background: image-url("home_page3.jpg") no-repeat center center; 
   -webkit-background-size: cover;
@@ -6,7 +7,29 @@
   background-size: cover;
   height: 400px;
   z-index: -1;
+  position: relative;
 } 
+
+.notice{
+  position: absolute;
+  font-size: 0.8em;
+  z-index: 2;
+  top: 4%;
+  left: 20px;
+  color: $background-color;
+  letter-spacing: 0.2em;
+
+}
+
+.alert{
+  position: absolute;
+  font-size: 0.8em;
+  z-index: 2;
+  top: 4%;
+  left: 20px;
+  color: $background-color;
+  letter-spacing: 0.2em;
+}
 
 .above_image{
   margin-top: -170px;
