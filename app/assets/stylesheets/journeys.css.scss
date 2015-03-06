@@ -188,3 +188,29 @@
 
 }
 
+
+.journey_form{
+  @include outer-container; 
+  .white_container{
+    @include span-columns(6 of 12);
+    @include shift(3);
+  }
+
+  input{
+    @include span-columns(3 of 6);
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #journey_title{
+    @include span-columns(6 of 6);
+  }
+
+  #journey_deal{
+    @include span-columns(6 of 6);
+  }
+  .btn{
+    @include span-columns(6 of 6);
+  }
+}
+

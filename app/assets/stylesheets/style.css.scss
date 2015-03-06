@@ -79,14 +79,29 @@ main{
   }
 }
 
-
-
-
 #map_canvas{
   margin-top: 50px;
   height: 500px;
 
 }
+
+.css-typing{
+    width: 432px;
+    white-space:nowrap;
+    overflow:hidden;
+    -webkit-animation: type 3s steps(28, end);
+    animation: type 3s steps(28, end);
+}
+
+@-webkit-keyframes type{
+    from { width: 0; }
+}
+
+@keyframes type{
+    from { width: 0; }
+}
+
+
 
 
 // footer

@@ -9,21 +9,21 @@
           - @journey.errors.full_messages.each do |message|
             %li= message
    
-    .form_field
-      = f.text_field :title, placeholder: "Journey Title"
-    .form_field
-      = f.text_field :start_city, placeholder: "Start Port"
-    .form_field
-      = f.text_field :end_city, placeholder: "End Port"
-    .form_field
-      = f.country_select(:country, {include_blank: 'Choose a country', only: ["GB","FR", "NL", "GR" ]})
-    .form_field
-      = f.text_field :start_date, autocomplete: :off, placeholder: 'Embarking date', class: :datepicker
-      = f.text_field :end_date, autocomplete: :off, placeholder: 'Check out', class: :datepicker
-    .form_field
-      = f.text_field :deal, autocomplete: :off, placeholder: "Deal"
-    .form_field
-      = f.select :berth, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @journey.berth)
+    
+    = f.text_field :title, placeholder: "Your Journey Title"
+  
+    = f.text_field :start_city, placeholder: "Start Port"
+  
+    = f.text_field :end_city, placeholder: "End Port"
+  
+    = f.country_select(:country, {include_blank: 'Choose a country', only: ["GB","FR", "NL", "GR" ]})
+  
+    = f.text_field :start_date, autocomplete: :off, placeholder: 'Embarking date', class: :datepicker
+    = f.text_field :end_date, autocomplete: :off, placeholder: 'Check out', class: :datepicker
+  
+    = f.text_field :deal, autocomplete: :off, placeholder: "With what do you need help (f.ex. sails, cooking)?"
+  
+    = f.select :berth, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @journey.berth)
 
 
     = f.submit "List your journey", class: "btn orange"
