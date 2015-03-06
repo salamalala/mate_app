@@ -196,21 +196,48 @@
     @include shift(3);
   }
 
+  h1{
+    margin-bottom: 20px;
+  }
+
   input{
     @include span-columns(3 of 6);
     margin-left: 0;
-    margin-right: 0;
   }
 
   #journey_title{
-    @include span-columns(6 of 6);
+    width: 97%
   }
 
   #journey_deal{
-    @include span-columns(6 of 6);
+    width: 97%
   }
   .btn{
-    @include span-columns(6 of 6);
+    width: 97%
   }
+
+  select{
+    width: 97%;
+    margin-left: 0;
+  }
+
+  label {
+    position:relative;
+  }
+
+  label:after {
+      content:'⌵';
+      font-size: 1.2em; 
+      right:20px;
+      line-height: 50px;
+      padding:0 0 10px;
+      position:absolute;
+      pointer-events:none;
+  }
+
+
+  
+
+
 }
 

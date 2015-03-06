@@ -11,19 +11,23 @@
    
     
     = f.text_field :title, placeholder: "Your Journey Title"
+
+    %label
+      = f.country_select(:country, {include_blank: 'Choose a country', only: ["GB","FR", "NL", "GR" ]})
+
   
     = f.text_field :start_city, placeholder: "Start Port"
   
     = f.text_field :end_city, placeholder: "End Port"
   
-    = f.country_select(:country, {include_blank: 'Choose a country', only: ["GB","FR", "NL", "GR" ]})
-  
+      
     = f.text_field :start_date, autocomplete: :off, placeholder: 'Embarking date', class: :datepicker
     = f.text_field :end_date, autocomplete: :off, placeholder: 'Check out', class: :datepicker
   
     = f.text_field :deal, autocomplete: :off, placeholder: "With what do you need help (f.ex. sails, cooking)?"
   
-    = f.select :berth, options_for_select((1..15).map{|x| ["#{x} berth", x]}, @journey.berth)
+    %label
+      = f.select :berth, options_for_select((1..15).map{|x| ["#{x} berth to offer", x]}, @journey.berth)
 
 
     = f.submit "List your journey", class: "btn orange"
