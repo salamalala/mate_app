@@ -36,7 +36,6 @@ myMap.initialize = function(){
   var mapOptions = {
     center: { lat: startPortLat, lng:  startPortLong},
     maxZoom: 11,
- 
   };
 
   var map = new google.maps.Map(myMap.mapElement, mapOptions);
@@ -106,10 +105,12 @@ myMap.geolocationSuccess = function(position){
   var longitude = position.coords.longitude;
   var url = '/journeys/weather_at/current/';
   var data = {'lat': latitude, 'long': longitude };
-
   $.get(url, data).success(function(data) {
     $('#current_weather_partial').html(data);
+
   });
+
+
 
   
 };
