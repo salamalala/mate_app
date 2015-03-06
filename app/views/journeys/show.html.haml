@@ -40,18 +40,21 @@
         .weather_partial{data: { journey_id: @journey.id, location: :end } }
           Please wait while we look up the weather...
 
+       
+        %h3 
+          = "#{@journey.available_berths} berth out of total #{@journey.berth} berth are still available"
 
         %h3 
           Deal:
           
         %p 
           = @journey.deal
-        %h3 
-          = "#{@journey.available_berths} berth out of total #{@journey.berth} berth are still available"
 
         
-        %h3 Share that journey: 
-        = social_share_button_tag("Check out the journey on Mate App")
+        .social_box
+          %h3 
+            Share that journey 
+            = social_share_button_tag("Check out the journey on Mate App")
 
         = link_to 'Edit Journey', edit_journey_path(@journey), class: "btn b_w" if can? :edit, @journey
 

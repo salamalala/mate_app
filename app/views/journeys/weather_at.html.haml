@@ -2,9 +2,10 @@
 
 .weatherbox
   %p
-    Currently: 
+    Current weather: 
   %p
-    = "#{@journey.weather_main(@location)}, #{@journey.weather_temp(@location).round}°,"
-    = "Windspeed: #{@journey.weather_wind(@location).round} kn"
+   
 
   =image_tag "http://openweathermap.org/img/w/#{@journey.weather_icon(@location)}.png", class: "weather_icon"
+  = "#{@journey.weather_temp(@location).round}°C,"
+  = "Windspeed: #{@journey.weather_wind(@location).round} kn."
