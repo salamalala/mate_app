@@ -49,6 +49,20 @@
     margin-bottom: 8px;
   }
 
+  label {
+    position:relative;
+  }
+
+  label:after {
+      content:'⌵';
+      font-size: 1.2em; 
+      right:20px;
+      line-height: 50px;
+      padding:0 0 10px;
+      position:absolute;
+      pointer-events:none;
+  }
+
 }
 
 .journeys_index_container{

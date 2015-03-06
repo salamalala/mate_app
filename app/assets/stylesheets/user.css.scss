@@ -18,6 +18,7 @@
 
 }
 
+
 .user_column{
   @include span-columns(5 of 12);
 }
@@ -31,4 +32,42 @@
   border-top: solid 2px $grey;
   margin-top: 40px;
 
+}
+
+
+// users sign in
+.users_sign_in{
+  @include outer-container; 
+  .white_container{
+    @include span-columns(6 of 12);
+    @include shift(3);
+  }
+
+  h1{
+    margin-bottom: 20px;
+  }
+  input{
+    margin-left: 0;
+    width: 100%;
+    text-align: left;
+  }
+  .btn{
+    width: 100%;
+  }
+
+  .sign_up{
+    border: 2px solid $tertiary-color;
+    background: $background-color;
+    color: $tertiary-color;
+    margin-bottom: 20px;
+  }
+
+  .sign_up:hover{
+    background-color: darken($background-color, 2% )
+
+  }
+
+  .password{
+
+  }
 }
