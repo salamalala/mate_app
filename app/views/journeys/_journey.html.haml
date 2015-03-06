@@ -5,8 +5,11 @@
     .date= "#{(journey.start_date).strftime("%d | %m | %y - ") if journey.start_date } #{(journey.end_date).strftime("%d | %m | %y") if journey.end_date }"
     %h3= "From #{journey.start_city} to #{journey.end_city}"
 
-    /Formats date according to the directives in the given format string
-    %p= "#{journey.available_berths} berth out of total #{journey.berth} berth are still available"
+    .available_berths
+      -if journey.available_berths > 0
+        %p= "#{journey.available_berths} berth out of total #{journey.berth} berth are still available."
+      -else
+        %p= "No berths available anymore."
 
     %p.turk= link_to 'More', journey, class: "btn turk"
     %p= link_to 'Edit', edit_journey_path(journey), class: "btn b_w" if can? :edit, journey
