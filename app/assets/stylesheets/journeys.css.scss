@@ -151,7 +151,8 @@
     -webkit-filter: saturate(50%);
     margin-right: 5px;
     &:hover{
-      -webkit-filter: saturate(100%)
+      -webkit-filter: saturate(100%);
+      transform: translateY(-3px);
 
     }
   }
@@ -165,20 +166,22 @@
     -webkit-filter: saturate(50%);
     margin-right: 5px;
     &:hover{
-      -webkit-filter: saturate(100%)
+      -webkit-filter: saturate(100%);
+      transform: translateY(-3px);
 
     }
   }
 
-    .social-share-button-google_plus{
+    .social-share-button-pinterest{
       margin-right: 5px;
       width: 30px;
       height: 30px;
-      background: url("/assets/google.png") no-repeat;
+      background: url("/assets/pinterest.png") no-repeat;
       -webkit-filter: saturate(50%);
       margin-right: 5px;
       &:hover{
-        -webkit-filter: saturate(100%)
+        -webkit-filter: saturate(100%);
+        transform: translateY(-3px);
 
       }
     }
