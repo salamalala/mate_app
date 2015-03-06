@@ -1,5 +1,6 @@
 -if journey.journey_in_future
   .journeys_index_item
+    = image_tag journey.captain.boat.boat_image, class: "boat_image_journey"
     %h2= journey.title
     .date= "#{(journey.start_date).strftime("%d | %m | %y - ") if journey.start_date } #{(journey.end_date).strftime("%d | %m | %y") if journey.end_date }"
     %h3= "From #{journey.start_city} to #{journey.end_city}"
