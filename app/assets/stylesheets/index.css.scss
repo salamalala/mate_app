@@ -59,10 +59,14 @@
   .journeys_index_item{
     @include span-columns(4);
     background-color: darken($background-color, 5%);  
-    padding: 35px 20px 35px 20px;
+    padding: 35px 20px 10px 20px;
     margin-top: 80px;
     margin-bottom: 80px;
     position: relative;
+
+    h2{
+      max-width: 80%;
+    }
     .boat_image_journey{
       position: absolute;
       top: -10px;
@@ -70,11 +74,10 @@
       border-radius: 5%;
       height: 85px;
       width: 85px;
-      border: solid black
     }
+
     .available_berths{
       min-height: 54px;
-
     }
 
     .turk {
@@ -85,8 +88,7 @@
     }
     .b_w{
       display: inline-block;
-      margin-right: 15px;
-      margin-top: 20px;
+      margin: 20px 15px 20px 0;
     }
     p {
       display: inline-block;
