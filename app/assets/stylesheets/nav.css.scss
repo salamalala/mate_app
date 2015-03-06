@@ -59,6 +59,7 @@ nav{
     background-color: lighten( $grey, 10% );
     padding: 5px 40px 5px 10px;
     border-radius: 5px;
+    margin-right: 10px;
     &:hover{
       background-color: $grey;
     }
@@ -66,7 +67,7 @@ nav{
     &:before {
       content: "➞";
       position: absolute;
-      right: 1.5em;
+      right: 2em;
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
     }
@@ -94,7 +95,7 @@ nav{
     background-color: $secondary-color;
     border-radius: 5px;
     top: 70px;
-    left: -10%;
+    left: -13%;
     color: #fff;
     display: none;
     padding: 12px;

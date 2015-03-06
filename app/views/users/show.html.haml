@@ -40,10 +40,9 @@
       %h3 Journey as captain in the past:
       -if @user.journeys_as_captain.journeys_in_past.any?
         - @user.journeys_as_captain.journeys_in_past.each do |journey|
-          .date
-            = "#{journey.start_date.strftime('%d/%m/%Y')} - #{journey.end_date.strftime('%d/%m/%Y')} "
           = "From #{journey.start_city} to #{journey.end_city}"
-
+          .date
+            = "#{journey.start_date.strftime('%d/%m/%Y')} - #{journey.end_date.strftime('%d/%m/%Y')} "  
           = link_to 'Show', journey, class: "btn turk"
       - else 
         No journeys yet.
@@ -51,10 +50,10 @@
       %h3 Journeys as a captain in the future:
       -if @user.journeys_as_captain.journeys_in_future.any? 
         - @user.journeys_as_captain.journeys_in_future.each do |journey|
+          = "From #{journey.start_city} to #{journey.end_city}"
           .date
             = "#{journey.start_date.strftime('%d/%m/%Y')} - #{journey.end_date.strftime('%d/%m/%Y')} "
-          = "From #{journey.start_city} to #{journey.end_city}"
-          = link_to 'Show', journey, class: "btn b_w"
+          = link_to 'Show', journey, class: "btn turk"
       - else 
         No journeys as captain in the future.
 

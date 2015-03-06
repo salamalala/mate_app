@@ -4,63 +4,68 @@
 
   .white_container.booking_index
     .journeys_you_booked
-      %h2 Journeys as passenger
+      %h2 Journeys you booked as passenger
       -if current_user.bookings.present?
         - current_user.bookings.each do |booking|
-          = "From #{booking.journey.start_city} to #{booking.journey.end_city}"
-          .date
-            = "#{booking.journey.start_date.strftime('%d/%m/%Y')} - #{booking.journey.end_date.strftime('%d/%m/%Y')}"
-          = "You booked #{booking.berthbooked} out of totally #{booking.journey.berth} berth"
-          %p
-            = "Your comment: #{booking.comment}"
-          = "The status or your booking: '#{booking.status}'"
-          %p
-            = "Captain for this journey: #{booking.journey.captain.try :first_name}"
+          .journey_item
+            = image_tag booking.journey.captain.boat.boat_image, class: "boat_image_journey"
+            %h3
+              = "From #{booking.journey.start_city} to #{booking.journey.end_city}"
+            .date
+              = "#{booking.journey.start_date.strftime('%d/%m/%Y')} - #{booking.journey.end_date.strftime('%d/%m/%Y')}"
+            = "You booked #{booking.berthbooked} out of totally #{booking.journey.berth} berth"
+            %p
+              = "Your comment: #{booking.comment}"
+            = "The status or your booking: '#{booking.status}'"
+            %p
+              = "Captain for this journey: #{booking.journey.captain.try :first_name}"
 
-          = link_to "Captains profile", profile_path(booking.journey.captain), class: "btn turk"
-          = mail_to "#{booking.journey.captain.email}", "Contact #{booking.journey.captain.try :first_name} ", class: "btn turk"
-          -if booking.journey.journey_in_future
-            = link_to 'Edit', edit_booking_path(booking), class: "btn b_w"
-          -if booking.journey.journey_in_future
-            = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Do you really want to cancel that booking?' }, class: "btn b_w"
+            = link_to "Captains profile", profile_path(booking.journey.captain), class: "btn turk"
+            = mail_to "#{booking.journey.captain.email}", "Contact #{booking.journey.captain.try :first_name} ", class: "btn turk"
+            -if booking.journey.journey_in_future
+              = link_to 'Edit', edit_booking_path(booking), class: "btn b_w"
+            -if booking.journey.journey_in_future
+              = link_to 'Cancel', booking, method: :delete, data: { confirm: 'Do you really want to cancel that booking?' }, class: "btn b_w"
         =link_to "Book another journey", root_path, class: "btn orange" 
       -else
         %p You didn't book any journey yet. 
         =link_to "Book a journey", root_path, class: "btn orange"  
 
     .journeys_you_sail.booking_index
-      %h2 Journeys as sailor
+      %h2 Journeys you're the sailor
       -if current_user.journeys_as_captain.any?
         - current_user.journeys_as_captain.each do |journey|
-          %h3
-            = "From #{journey.start_city} to #{journey.end_city}"
-          .date
-            = "#{journey.start_date.strftime('%d/%m/%Y')} - #{journey.end_date.strftime('%d/%m/%Y')}"
-          %p
-            = "Total amount of berth offered: #{journey.berth}"
-          %p
-            = "Total amount of berth booked: #{journey.journey_berth_booked}"
+          .journey_item
+            %h3
+              = "From #{journey.start_city} to #{journey.end_city}"
+            .date
+              = "#{journey.start_date.strftime('%d/%m/%Y')} - #{journey.end_date.strftime('%d/%m/%Y')}"
+            %p
+              = "Total amount of berth offered: #{journey.berth}"
+            %p
+              = "Total amount of berth booked: #{journey.journey_berth_booked}"
 
-          -if journey.bookings.any? 
-            - journey.bookings.each do |booking|
-              .booking_item
-                %h3
-                  = "Booked by: #{booking.user.name}"
-                %p
-                  = "Amount of berth booked: #{booking.berthbooked}"
-                %p
-                  = "Status: #{booking.status}"
-                -if booking.status == "Requested"
-                  = button_to "Approve", booking_approve_path(booking)
-                %br
-                = link_to "Profile #{booking.user.first_name}", profile_path(booking.user_id), class: "btn b_w"
-                = mail_to "#{booking.user.email}", "Contact #{booking.user.try :first_name} ", class: "btn b_w"
-          -else 
-            %p You don't have any bookings for that journey yet
-            = link_to 'Show', journey
-            = link_to 'Edit', edit_journey_path(journey) if journey.journey_in_future   
-            = link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' } if journey.journey_in_future   
-          =link_to "List another sailing trip", new_journey_path, class: "btn orange"  
+            -if journey.bookings.any? 
+              - journey.bookings.each do |booking|
+                .booking_item
+                  = image_tag booking.user.user_image, class: "user_image_journey"
+                  %h3
+                    = "Booked by: #{booking.user.name}"
+                  %p
+                    = "Amount of berth booked: #{booking.berthbooked}"
+                  %p
+                    = "Status: #{booking.status}"
+                  -if booking.status == "Requested"
+                    = button_to "Approve ?", booking_approve_path(booking), class: "btn turk"
+                  %br
+                  = link_to "Profile #{booking.user.first_name}", profile_path(booking.user_id), class: "btn b_w"
+                  = mail_to "#{booking.user.email}", "Contact #{booking.user.try :first_name} ", class: "btn b_w"
+            -else 
+              %p You don't have any bookings for that journey yet
+              = link_to 'Show', journey, class: "btn turk"
+              = link_to 'Edit', edit_journey_path(journey), class: "btn b_w" if journey.journey_in_future
+              = link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn b_w" if journey.journey_in_future 
+        =link_to "List another sailing trip", new_journey_path, class: "btn orange"  
       -else
         %p You didn't list any journeys yet.
         =link_to "List a sailing trip", new_journey_path, class: "btn orange"   
