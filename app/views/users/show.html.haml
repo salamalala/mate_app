@@ -6,7 +6,7 @@
     .white_container.users_show 
 
       %h1 
-        ="#{@user.first_name}s Profile"
+        ="#{@user.name}"
 
       = image_tag @user.user_image, class: "img_user"
 
@@ -36,7 +36,6 @@
           = "From #{journey.start_city} to #{journey.end_city}"
           .date
             = "#{journey.start_date.strftime('%d/%m/%Y')} - #{journey.end_date.strftime('%d/%m/%Y')} "  
-          = link_to 'Show', journey, class: "btn turk"
       - else 
         No journeys yet.
 
