@@ -126,9 +126,9 @@
         %a{href: profile_path(@journey.try :captain)}
           %img{src: @journey.captain.user_image, class: "user_image_journey"} 
 
-        %h3= "Captain for this journey:"
+        %h3= "Journey captain:"
         %p=  @journey.captain.try :name
-        = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} ", class: "btn turk"
+        = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :first_name} ", class: "btn turk"
               
 
 
