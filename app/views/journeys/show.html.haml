@@ -104,7 +104,7 @@
                   = b.label :dealconfirmation, "Do you agree to the journey deal: '#{@journey.deal}'?"
                   = b.hidden_field :dealconfirmation, value: false
                   = b.input :dealconfirmation,  as: :boolean, label: 'Yes I agree '
-                  = b.label "Write a comment: "
+                  = b.label "Leave a comment: "
                   = b.input :comment, as: :text,label: false
                   = b.button :submit, "Request to book", class: "btn turk"
                   /Doesnt work yet! 

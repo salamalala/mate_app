@@ -9,6 +9,7 @@ body{
   color: $grey;
   letter-spacing: 1px;
   line-height: 1.7;
+  background-color: darken($background-color, 8%);
   a{
     text-decoration: none;
 

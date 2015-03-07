@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   devise_for :users
 
 
- 
   get "/profile/:id", to: "users#show", as: :profile
 
   get "/edit_my_profile", to: "users#edit", as: :edit_my_profile

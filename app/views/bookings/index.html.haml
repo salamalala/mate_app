@@ -1,10 +1,9 @@
 =image_tag("backgroundb_w.jpg", class: "background_image")
 
 .container_above_image
-
-  .white_container.booking_index
-    .journeys_you_booked
-      %h2 Journeys you booked as passenger
+  .journeys_you_booked
+    .white_container.booking_index
+      %h2 Journeys you booked as a Passenger
       -if current_user.bookings.present?
         - current_user.bookings.each do |booking|
           .journey_item
@@ -30,9 +29,10 @@
       -else
         %p You didn't book any journey yet. 
         =link_to "Book a journey", root_path, class: "btn orange"  
-
-    .journeys_you_sail.booking_index
-      %h2 Journeys you're the sailor
+  
+  .journeys_you_sail
+    .white_container.booking_index
+      %h2 Journeys as a Captain
       -if current_user.journeys_as_captain.any?
         - current_user.journeys_as_captain.each do |journey|
           .journey_item
@@ -48,11 +48,10 @@
             -if journey.bookings.any? 
               - journey.bookings.each do |booking|
                 .booking_item
-                  = image_tag booking.user.user_image, class: "user_image_journey"
                   %h3
-                    = "Booked by: #{booking.user.name}"
+                    = "#{booking.user.name}"
                   %p
-                    = "Amount of berth booked: #{booking.berthbooked}"
+                    = "#{booking.berthbooked} berth booked."
                   %p
                     = "Status: #{booking.status}"
                   -if booking.status == "Requested"
@@ -61,7 +60,7 @@
                   = link_to "Profile #{booking.user.first_name}", profile_path(booking.user_id), class: "btn b_w"
                   = mail_to "#{booking.user.email}", "Contact #{booking.user.try :first_name} ", class: "btn b_w"
             -else 
-              %p You don't have any bookings for that journey yet
+              %h4 You don't have any bookings for that journey yet
               = link_to 'Show', journey, class: "btn turk"
               = link_to 'Edit', edit_journey_path(journey), class: "btn b_w" if journey.journey_in_future
               = link_to 'Cancel', journey, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn b_w" if journey.journey_in_future 

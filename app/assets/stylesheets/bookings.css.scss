@@ -6,14 +6,16 @@
   }
 
   .btn.orange{
+    @include span-columns(6);
+    @include shift(3);
     margin-top: 30px;
-    width: 100%;
-  }
-  .date{
-    border: none;
+   
+
   }
 
   .journey_item{
+    @include span-columns(6);
+      @include omega(3n);
     background-color: darken($background-color, 10%);  
     padding: 30px 20px;
     margin-top: 20px;
@@ -29,33 +31,45 @@
       border: 1px solid black;
     }
 
-
-  }
+  
 
   .booking_item{
+    @include span-columns(3 of 6);
     background-color: darken($background-color, 15%);  
-    padding: 30px 20px;
+    padding: 20px 13px;
     margin-top: 20px;
     position: relative;
 
-  .user_image_journey{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border-radius: 5%;
-    height: 85px;
-    width: 85px;
-    border: 1px solid black;
-  }
+    .btn.turk{
+      margin-bottom: 0;
+    }
 
-
+    .btn.b_w{
+      display:block;
+      margin-right: 0;
+   
+      &:nth-of-type(2){
+        margin-top: 10px;
+      }
+    }
 
   }
 
 }
 
 .journeys_you_booked{
-  @include span-columns(6);
+ @include span-columns(12);
+ @include shift(0);
+
+  .white_container{
+    margin-bottom: 40px;
+  }
+
+
+
+
+
+  }
 
   .btn{
     margin: 20px 0;
@@ -79,10 +93,12 @@
 }
 
 .journeys_you_sail{
-  @include span-columns(6);
+  @include span-columns(12);
   // @include shift(1);
 
-  
+  .white_container{
+    margin-top: 0;
+  }
 
   .btn.turk{
   width: 100%;

@@ -114,6 +114,9 @@
       pointer-events:none;
   }
   
+  select{
+    margin-left: 0;
+  }
 
   #error_explanation{
     background-color: darken($background-color, 30%);
@@ -163,15 +166,28 @@
   input[type="checkbox"]:hover:before {
    background:rgba(255,255,255,0.3);
   }
+  
+  .booking_dealconfirmation{
+    margin: 10px 0 20px 0;
+  }
 
+  #booking_dealconfirmation{
+    margin-bottom: -5px;
+  }
 
   textarea{
     width: 100%;
+    margin-left: 0;
   }
 
   .btn{
     margin-top: 20px;
     width: 100%;
+    margin-left: 0;
+  }
+
+  .btn.turk{
+    margin: 0;
   }
 
 
