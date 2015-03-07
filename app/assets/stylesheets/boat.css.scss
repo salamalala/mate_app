@@ -10,6 +10,34 @@
 
 }
 
+.edit_boat{
+  @include outer-container; 
+  .white_container{
+    @include span-columns(6 of 12);
+    @include shift(3);
+  }
+
+  .btn{
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  select{
+    margin-left:0;
+  }
+
+
+  input{
+    margin-left: 0;
+  }
+
+#boat_boat_image{
+  padding-left: 0;
+}
+
+}
+
 
 .img_boat{
   width: 200px;

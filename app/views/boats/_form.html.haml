@@ -8,14 +8,17 @@
         - @boat.errors.full_messages.each do |message|
           %li= message
   %h3
-    = f.label :boat_image
+    = f.label :boat_image, "Image of your boat"
 
+  %p
     = f.file_field :boat_image, placeholder: "Upload an image", label: false
 
     = f.text_field :remote_boat_image_url, placeholder: "Remote url"
   %h3
-    = f.label :description
+    = f.label :description, "Descripe your boat"
 
-    = f.text_field :description
+  %p
+
+    = f.text_area :description
   .actions
     = f.submit "Save boat", class: "btn orange"

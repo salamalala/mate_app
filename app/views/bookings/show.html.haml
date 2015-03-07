@@ -1,22 +1,23 @@
 =image_tag("backgroundb_w.jpg", class: "background_image")
 
 .container_above_image
-  .white_container
+  .edit_booking
+    .white_container
+      %p#notice= notice
 
-    %p#notice= notice
+      %h1 
+        = "#{current_user.first_name} booked that journey"
 
-    %h1 User who booked that journey
-    = current_user.first_name
 
-    %h3 How many berth did you book?
-    = @booking.berthbooked
+      %h3 How many berth did you book?
+      = @booking.berthbooked
 
-    %h3 Comment:
-    = @booking.comment
+      %h3 Comment:
+      = @booking.comment
 
-    %h3 Status:
-    = @booking.status
+      %h3 Status:
+      = @booking.status
 
-    %br
-    = link_to 'Edit', edit_booking_path(@booking), class: "btn orange"
+      %br
+      = link_to 'Edit', edit_booking_path(@booking), class: "btn orange"
  

@@ -2,26 +2,18 @@
 
 .container_above_image
 
-  .white_container.users_show
-
-    .user_column
+  .user_column
+    .white_container.users_show 
 
       %h1 
         ="#{@user.first_name}s Profile"
 
       = image_tag @user.user_image, class: "img_user"
 
-     
 
-      %h3 About me: 
-      = @user.about_me
 
-      -if current_user.id == @user.id
-        = link_to 'Edit Profile', edit_user_registration_path, class: "btn turk"
 
-    .boat_column
-
-      %h1 My Boat: 
+      %h2 My Boat: 
            
       = image_tag @user.boat.try(:boat_image), class: "img_user"
       
@@ -36,8 +28,9 @@
           = link_to "Add a boat to your profile", new_boat_path, class: "btn turk"
 
 
-    .journey_history_column
-      %h3 Journey as captain in the past:
+  .journey_history_column
+    .white_container.users_show
+      %h2 Journey as captain in the past:
       -if @user.journeys_as_captain.journeys_in_past.any?
         - @user.journeys_as_captain.journeys_in_past.each do |journey|
           = "From #{journey.start_city} to #{journey.end_city}"
@@ -47,7 +40,7 @@
       - else 
         No journeys yet.
 
-      %h3 Journeys as a captain in the future:
+      %h2 Journeys as a captain in the future:
       -if @user.journeys_as_captain.journeys_in_future.any? 
         - @user.journeys_as_captain.journeys_in_future.each do |journey|
           = "From #{journey.start_city} to #{journey.end_city}"

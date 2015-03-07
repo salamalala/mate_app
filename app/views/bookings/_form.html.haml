@@ -9,8 +9,11 @@
           %li= message
           
   = b.hidden_field :journey_id, value: @journey.id
-  = b.label :berthbooked, "You booked #{@booking.berthbooked} berths on that journey" 
+  = b.label :berthbooked, "You booked #{@booking.berthbooked} berths on that journey"
+  %br 
+  %br
   = b.label "How many berths do you want in total: "
+
   = b.input :berthbooked, collection: 1..(@booking.sum_berthbooked_available_berth).to_i, include_blank: false, selected: params[:booking]&&params[:booking][:berthbooked], label: false
 
   = b.label "Write a comment: "
