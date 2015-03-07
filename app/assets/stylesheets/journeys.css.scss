@@ -27,6 +27,15 @@
 
 }
 
+.show_journey{
+  .white_container{
+    @include span-columns(9);
+    margin-top: 40px;
+  }
+}
+
+
+
 .weatherbox{
 
     .weather_icon{
@@ -57,7 +66,7 @@
 }
 
 .journey_information{
-  @include span-columns(5 of 12);
+  @include span-columns(5 of 9);
 
   h1{
     margin: 0;
@@ -76,47 +85,15 @@
     margin-right: 0;
 
   }
+
+  .b_w{
+    margin-right: 22px;
+  }
 }
 
-.images_information{
-  @include span-columns(3 of 12);
-  position: relative;
-  
-  .boat_image_journey{
-    width: 100%;
-    border: solid 1px gray;
-    z-index: 1;
-    border-radius: 3px;
-  }
-
-  .user_image_journey {
-    width: auto;
-    max-width: 30%;
-      height: auto;
-    max-height: 30%;  
-    position: absolute; 
-    top: -8px;
-    right: -8px;
-    z-index: 2;
-    border-radius: 100%;
-    transition: width 0.5s ease;
-    transform: rotate(10deg);
-    &:hover{
-      width: 35%;
-
-    }
-  }
-
-  .btn{
-    margin-top: 20px;
-    width: 100%;
-  }
-
-
-}
 
 .booking_information{
-  @include span-columns(4 of 12);
+  @include span-columns(4 of 9);
   // background-color: saturate($background-color, 90% );
   background-color: darken($background-color, 10%);  
   padding: 20px 20px 35px 20px;
@@ -202,7 +179,7 @@
 }
 
 #map_canvas{
-  @include span-columns(12 of 12);
+  @include span-columns(9 of 9);
   
 }
 
@@ -309,8 +286,47 @@
       pointer-events:none;
   }
 
+}
 
+.show_journey_images{
+  .white_container{
+    @include span-columns(3);
+  }
+}
+
+.images_information{
+  @include span-columns(3 of 3);
+  position: relative;
   
+  .boat_image_journey{
+    width: 100%;
+    border: solid 1px gray;
+    z-index: 1;
+    border-radius: 3px;
+  }
+
+  .user_image_journey {
+    width: auto;
+    max-width: 30%;
+      height: auto;
+    max-height: 30%;  
+    position: absolute; 
+    top: -8px;
+    right: -8px;
+    z-index: 2;
+    border-radius: 100%;
+    transition: width 0.5s ease;
+    transform: rotate(10deg);
+    &:hover{
+      width: 35%;
+
+    }
+  }
+
+  .btn{
+    margin-top: 20px;
+    width: 100%;
+  }
 
 
 }

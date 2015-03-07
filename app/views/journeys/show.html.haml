@@ -5,7 +5,7 @@
 #current_weather_partial
   Current weather 
 
-.container_above_image
+.container_above_image.show_journey
   .white_container
 
    
@@ -61,16 +61,6 @@
         = link_to 'Show all journeys', journeys_path, class: "btn b_w"
 
 
-
-      .images_information
-        = image_tag @journey.captain.boat.boat_image, class: "boat_image_journey"
-        %a{href: profile_path(@journey.try :captain)}
-          %img{src: @journey.captain.user_image, class: "user_image_journey"} 
-
-        %h3= "Captain for this journey:"
-        %p=  @journey.captain.try :name
-        = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} ", class: "btn turk"
-   
       
 
 
@@ -127,9 +117,21 @@
             %h2 
               There aren't any available berths for this journey anymore. 
 
-
-
     #map_canvas
+
+  .show_journey_images
+    .white_container
+      .images_information
+        = image_tag @journey.captain.boat.boat_image, class: "boat_image_journey"
+        %a{href: profile_path(@journey.try :captain)}
+          %img{src: @journey.captain.user_image, class: "user_image_journey"} 
+
+        %h3= "Captain for this journey:"
+        %p=  @journey.captain.try :name
+        = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :name} ", class: "btn turk"
+              
+
+
 
 
 
