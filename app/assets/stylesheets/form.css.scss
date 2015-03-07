@@ -37,3 +37,17 @@ input{
     background-color: saturate( $tertiary-color, 10% )
   }
 }
+
+textarea{
+  margin: 5px 7px 20px 7px;
+  border: none; 
+  font-family: $font-heading;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0 15px;
+  line-height: 40px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+
+}

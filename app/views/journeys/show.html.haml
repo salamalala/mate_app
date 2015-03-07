@@ -102,7 +102,7 @@
 
             -if current_user
               -if current_user.booked_on_journey?(@journey) 
-                %p You are already booked on that journey!
+                %h2 You are already booked on that journey!
 
               -else
                 %h2 
@@ -116,7 +116,7 @@
                   = b.input :dealconfirmation,  as: :boolean, label: 'Yes I agree '
                   = b.label "Write a comment: "
                   = b.input :comment, as: :text,label: false
-                  = b.button :submit, "Request to book"
+                  = b.button :submit, "Request to book", class: "btn turk"
                   /Doesnt work yet! 
                   / = b.mail_to @journey.try :captain_id, "Contact the captain"
 

@@ -121,10 +121,84 @@
   background-color: darken($background-color, 10%);  
   padding: 20px 20px 35px 20px;
   height: 100%;
+
+  .booking_berthbooked {
+    position:relative;
+    display: inline-block;
+  }
+
+  .booking_berthbooked:after {
+      content:'⌵';
+      font-size: 1.2em; 
+      right:20px;
+      line-height: 50px;
+      padding:0 0 10px;
+      position:absolute;
+      pointer-events:none;
+  }
+  
+
+  #error_explanation{
+    background-color: darken($background-color, 30%);
+    padding: 10px;
+  }
+
+  ul{
+    padding-left: 0;
+    list-style-type: none;
+  }
+
+  label.checkbox{
+    margin-right: 10px;
+  }
+
+  input[type="checkbox"] {
+   -webkit-appearance:none;/* Hides the default checkbox style */ 
+   height:1em;
+   width:1em;
+   cursor:pointer;
+   position:relative;
+   -webkit-transition: .15s;
+   border: solid 1.5px #354952;
+   background-color: darken($background-color, 30%);  
+  }
+
+  input[type="checkbox"]:checked {
+   background-color:$tertiary-color;
+  }
+
+  input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
+   position:absolute;
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+   line-height:1.2em;
+   text-align:center;
+   color:#fff;
+   content: '';
+  }
+
+  input[type="checkbox"]:checked:before {
+   content: '✓';
+  }
+
+  input[type="checkbox"]:hover:before {
+   background:rgba(255,255,255,0.3);
+  }
+
+
+  textarea{
+    width: 100%;
+  }
+
   .btn{
     margin-top: 20px;
     width: 100%;
   }
+
+
+
 }
 
 #map_canvas{
