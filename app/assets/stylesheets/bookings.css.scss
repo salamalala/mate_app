@@ -15,7 +15,7 @@
 
   .journey_item{
     @include span-columns(6);
-      @include omega(3n);
+    @include omega(3n);
     background-color: darken($background-color, 10%);  
     padding: 30px 20px;
     margin-top: 20px;
