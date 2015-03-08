@@ -50,11 +50,11 @@
         %p 
           = @journey.deal
 
+        %br
+        %br
+
         
-        .social_box
-          %h3 
-            Share that journey 
-            = social_share_button_tag("Check out the journey on Mate App")
+
 
         = link_to 'Edit Journey', edit_journey_path(@journey), class: "btn b_w" if can? :edit, @journey
 
@@ -131,7 +131,9 @@
         = mail_to "#{@journey.captain.try :email}", "Contact #{@journey.captain.try :first_name} ", class: "btn turk"
               
 
-
+  .social_box
+    .white_container
+      = social_share_button_tag("Check out the journey on Mate App")
 
 
 

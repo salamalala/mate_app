@@ -81,13 +81,12 @@
     display: inline-block;
   }
   .btn{
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
 
   }
 
   .b_w{
-    margin-right: 22px;
+    margin: 30px 22px 0 0;
   }
 }
 
@@ -206,54 +205,7 @@
   left: -9999px !important;
 }
 
-.social-share-button{
-  margin-top: 10px;
-  margin-bottom: 30px;
 
-
-  .social-share-button-twitter{
-    width: 30px;
-    height: 30px;
-    background: url("/assets/twitter.png") no-repeat;
-    -webkit-filter: saturate(50%);
-    margin-right: 5px;
-    &:hover{
-      -webkit-filter: saturate(100%);
-      transform: translateY(-3px);
-
-    }
-  }
-
-
-  .social-share-button-facebook{
-    margin-right: 5px;
-    width: 30px;
-    height: 30px;
-    background: url("/assets/facebook.png") no-repeat;
-    -webkit-filter: saturate(50%);
-    margin-right: 5px;
-    &:hover{
-      -webkit-filter: saturate(100%);
-      transform: translateY(-3px);
-
-    }
-  }
-
-    .social-share-button-pinterest{
-      margin-right: 5px;
-      width: 30px;
-      height: 30px;
-      background: url("/assets/pinterest.png") no-repeat;
-      -webkit-filter: saturate(50%);
-      margin-right: 5px;
-      &:hover{
-        -webkit-filter: saturate(100%);
-        transform: translateY(-3px);
-
-      }
-    }
-
-}
 
 
 .journey_form{
@@ -307,12 +259,14 @@
 .show_journey_images{
   .white_container{
     @include span-columns(3);
+    margin-bottom: 0;
   }
 }
 
 .images_information{
   @include span-columns(3 of 3);
   position: relative;
+
   
   .boat_image_journey{
     width: 100%;
@@ -343,7 +297,73 @@
     margin-top: 20px;
     width: 100%;
   }
+}
 
+
+.social_box{
+  .white_container{
+  @include span-columns(3 of 12);
+  background: none;
+  margin-top: 0;
+  padding: 0;
+  }
+  a{
+    display:block;
+    margin-top: 10px;
+    &:first-child{
+      margin-top: 30px;
+    }
+  }
+
+}
+
+.social-share-button{
+  margin-top: 10px;
+  margin-bottom: 30px;
+
+
+
+  .social-share-button-twitter{
+    width: 30px;
+    height: 30px;
+    background: url("/assets/twitter.png") no-repeat;
+    -webkit-filter: saturate(50%);
+    margin-right: 5px;
+    &:hover{
+      -webkit-filter: saturate(100%);
+      transform: translateY(-3px);
+
+    }
+  }
+
+
+  .social-share-button-facebook{
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    background: url("/assets/facebook.png") no-repeat;
+    -webkit-filter: saturate(50%);
+    margin-right: 5px;
+    &:hover{
+      -webkit-filter: saturate(100%);
+      transform: translateY(-3px);
+
+    }
+  }
+
+    .social-share-button-pinterest{
+      margin-right: 5px;
+      width: 30px;
+      height: 30px;
+      background: url("/assets/pinterest.png") no-repeat;
+      -webkit-filter: saturate(50%);
+      margin-right: 5px;
+      &:hover{
+        -webkit-filter: saturate(100%);
+        transform: translateY(-3px);
+
+      }
+    }
 
 }
 
