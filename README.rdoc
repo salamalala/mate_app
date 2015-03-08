@@ -2,5 +2,5 @@
 
 An app for sailors seeking additional crew for a trip, offering affordable sailing in return for working on the boat. 
 
-Technologies used: Rails, HAML, SASS, JQuery, Ajax, Google Maps and Open Weather API and Bourbon Neat.
+Technologies used: Rails, HAML, SASS, jQuery, Ajax, Google Maps API, Open Weather API and Bourbon Neat.
 
