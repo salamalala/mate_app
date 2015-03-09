@@ -12,7 +12,8 @@
               = "From #{booking.journey.start_city} to #{booking.journey.end_city}"
             .date
               = "#{booking.journey.start_date.strftime('%d/%m/%Y')} - #{booking.journey.end_date.strftime('%d/%m/%Y')}"
-            = "You booked #{booking.berthbooked} out of totally #{booking.journey.berth} berth"
+            %h4
+              = "You booked #{booking.berthbooked} out of total #{booking.journey.berth} berth"
             %p
               = "Your comment: #{booking.comment}"
             = "The status or your booking: '#{booking.status}'"
