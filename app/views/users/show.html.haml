@@ -16,6 +16,9 @@
       %h2 My Boat: 
            
       = image_tag @user.boat.try(:boat_image), class: "img_user"
+
+      -if current_user.id == @user.id
+        = link_to 'Edit Profile', edit_user_registration_path, class: "btn turk"
       
       %p
         = @user.boat.try :description
@@ -26,6 +29,7 @@
           = link_to "Manage boat", edit_boat_path(current_user.boat), class: "btn turk"
         - else
           = link_to "Add a boat to your profile", new_boat_path, class: "btn turk"
+
 
 
   .journey_history_column
