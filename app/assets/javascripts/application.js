@@ -99,7 +99,7 @@ myMap.getPosition = function(){
   }
 };
 
-
+//ajax for weather api for current position
 myMap.geolocationSuccess = function(position){
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
@@ -156,9 +156,7 @@ $(function() {
   });
 });
 
-// $('#inner-editor').click(function(){
-//   $('.datetimepicker').datetimepicker('show'); //support hide,show and destroy command
-// });
+
 
 
 
